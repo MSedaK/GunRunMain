@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class PortalSpawner : MonoBehaviour
 {
-    public GameObject portalPrefab; 
-    public GameObject enemyPrefab; 
+    public GameObject portalPrefabA; 
+    public GameObject portalPrefabB; 
+    public GameObject portalPrefabC; 
+    public GameObject enemyPrefab;
+
     void Start()
     {
-        SpawnPortal(new Vector3(6.7f, 18.1f, -30.1f)); 
-        SpawnPortal(new Vector3(-2f, 15.9f, 30.1f)); 
-        SpawnPortal(new Vector3(-10.68f, 17f, -1.86f)); 
+        SpawnPortal(portalPrefabA, new Vector3(6.7f, 18.1f, -30.1f)); 
+        SpawnPortal(portalPrefabB, new Vector3(-2f, 15.9f, 30.1f)); 
+        SpawnPortal(portalPrefabC, new Vector3(-76.5f, 13.3f, -12.2f)); 
     }
 
-    void SpawnPortal(Vector3 position)
+    void SpawnPortal(GameObject portalPrefab, Vector3 position)
     {
         GameObject portal = Instantiate(portalPrefab, position, Quaternion.identity);
 
@@ -27,3 +30,4 @@ public class PortalSpawner : MonoBehaviour
         Instantiate(enemyPrefab, portalPosition, Quaternion.identity);
     }
 }
+
