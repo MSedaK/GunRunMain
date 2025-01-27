@@ -53,27 +53,27 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Canik_UV_Material.001_AlbedoTransparency
-    second: {fileID: 2800000, guid: e5a078143fc4086428a27c3c63064379, type: 3}
+    second: {fileID: 2800000, guid: c2b74cf716aef294e91c9829b492a37c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Metal011_4K_Metalness
-    second: {fileID: 2800000, guid: d687f9eb8bbe1004688c52db24f45a0e, type: 3}
+    second: {fileID: 2800000, guid: 8120d70d214da514d8fcb0bc1f0e0773, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Metal011_4K_NormalGL
-    second: {fileID: 2800000, guid: 31f372d600b257e458303151e8921b49, type: 3}
+    second: {fileID: 2800000, guid: d2368df4f05c818428f5a4a2b515913d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Metal011_4K_Roughness
-    second: {fileID: 2800000, guid: 4b5811aaf725775408c9254fcbc01f02, type: 3}
+    second: {fileID: 2800000, guid: 3dd7682ccbd0d3d49a566a3b781d2fe0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: "Silencer_G\xFCncel_blinn1SG_AlbedoTransparency"
-    second: {fileID: 2800000, guid: 1f2153c970e45c4488505719682ab662, type: 3}
+    second: {fileID: 2800000, guid: 08e80d94c6ef7704b988b462335672b8, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
