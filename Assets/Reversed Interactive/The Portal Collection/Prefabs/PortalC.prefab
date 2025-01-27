@@ -152,6 +152,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalVFX
       objectReference: {fileID: 0}
+    - target: {fileID: 341351309545318492, guid: 4029604c54205db49bba0a28f1f348a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1070978699569929305, guid: 4029604c54205db49bba0a28f1f348a2,
         type: 3}
       propertyPath: m_Enabled
