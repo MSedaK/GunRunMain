@@ -55,6 +55,25 @@ public class DestructibleMeshExperience : MonoBehaviour
         {
             TryDestroyMeshSegment();
         }
+
+        if (OVRInput.GetDown(OVRInput.Button.One) ||
+            OVRInput.GetDown(OVRInput.Button.Three))
+        {
+            destructibleGlobalMeshSpawner.AddDestructibleGlobalMesh(MRUK.Instance.GetCurrentRoom());
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.Two) ||
+            OVRInput.GetDown(OVRInput.Button.Four))
+        {
+            destructibleGlobalMeshSpawner.RemoveDestructibleGlobalMesh(MRUK.Instance.GetCurrentRoom());
+        }
+
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) ||
+             OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger)) &&
+            _destructibleMeshComponent != null)
+        {
+            SceneDebugger.DebugDestructibleMeshComponent(_destructibleMeshComponent);
+        }
     }
 
     private void OnDestructibleMeshCreated(DestructibleMeshComponent destructibleMeshComponent)

@@ -10,14 +10,13 @@ public class GunShoot : MonoBehaviour
     [Range(0, 3000), SerializeField] private float bulletSpeed;
 
     [Space, SerializeField] private AudioSource audioSource;
+    [SerializeField] private float hapticDuration = 0.1f;
 
     private float lastShot;
 
-    public static event System.Action OnShootFired;
 
     private void Update()
     {
-        // Right Hand Index Trigger kontrolü
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
             Shoot();
@@ -31,6 +30,7 @@ public class GunShoot : MonoBehaviour
         lastShot = Time.time + shootDelay;
 
         GunShotAudio();
+        StartHapticFeedback(hapticDuration);
 
         var bulletPrefab = Instantiate(bullet, bulletPosition.position, bulletPosition.rotation);
         var bulletRB = bulletPrefab.GetComponent<Rigidbody>();
@@ -38,9 +38,6 @@ public class GunShoot : MonoBehaviour
         var direction = bulletPrefab.transform.TransformDirection(Vector3.forward);
         bulletRB.AddForce(direction * bulletSpeed);
         Destroy(bulletPrefab, 5f);
-
-        // WeaponManager'a ateþ edildiðini bildir
-        OnShootFired?.Invoke();
     }
 
     private void GunShotAudio()
@@ -49,5 +46,17 @@ public class GunShoot : MonoBehaviour
         audioSource.pitch = random;
 
         audioSource.Play();
+    }
+
+    private void StartHapticFeedback(float duration)
+    {
+        OVRInput.SetControllerVibration(0.8f, 1.0f, OVRInput.Controller.RTouch); 
+        StartCoroutine(StopHapticFeedback(duration));
+    }
+
+    private IEnumerator StopHapticFeedback(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch); 
     }
 }

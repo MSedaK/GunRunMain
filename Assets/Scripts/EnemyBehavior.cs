@@ -28,16 +28,15 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (targetPoint == null) return;
 
-        // Hedefe olan mesafeyi kontrol et
         float distanceToTarget = Vector3.Distance(transform.position, targetPoint.position);
 
         if (distanceToTarget > stopDistance)
         {
-            // Hedefe doðru hareket et
             Vector3 direction = (targetPoint.position - transform.position).normalized;
-            rb.MovePosition(transform.position + direction * moveSpeed * Time.deltaTime);
+            transform.position += direction * moveSpeed * Time.deltaTime;
         }
     }
+
 
     public void TakeDamage(float damage)
     {
