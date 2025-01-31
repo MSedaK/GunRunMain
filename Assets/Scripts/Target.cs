@@ -1,70 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
-public class Target : MonoBehaviour
+namespace _3rd_Party_Assets.Gun___Target.Scripts
 {
-    public GameObject Broken;
-    public MeshRenderer model;
-    private Transform point1;
-    private Transform point2;
-    public int points;
-    public bool despawn = true;
-    private float pathTime;
-    private float currentPathTime;
-    private bool moving;
-    private void Start()
+    public class Target : MonoBehaviour
     {
-        moving = true;
-        Destroy(gameObject, Random.Range(5f, 8f));
-        currentPathTime = 0;
-    }
+        private MeshRenderer _meshRenderer;
+        private BoxCollider _boxCollider;
+        private AudioSource _audioSource;
+        private ParticleSystem _particleSystem;
 
-    private void Update()
-    {
-        if (moving)
+        private Vector3 _randomRotation;
+        private bool _isDisabled;
+
+        private void Awake()
         {
-            currentPathTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(point1.position, point2.position, currentPathTime / pathTime);
-            if (currentPathTime / pathTime >= 1)
+            _meshRenderer = GetComponent<MeshRenderer>();
+            _boxCollider = GetComponent<BoxCollider>();
+            _audioSource = GetComponent<AudioSource>();
+            _particleSystem = GetComponentInChildren<ParticleSystem>();
+
+            _randomRotation = new Vector3(Random.Range(0.1f, 1f), Random.Range(0.1f, 1f), Random.Range(0.1f, 1f));
+        }
+
+        private void Update() => Rotate();
+
+        private void Rotate() => transform.Rotate(_randomRotation);
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if(!_isDisabled && other.gameObject.CompareTag("Bullet"))
             {
-                Destroy(gameObject, 1f);
+                Destroy(other.gameObject.gameObject);
+                ToggleTarget();
+                TargetDestroyEffect();
+                Invoke("ToggleTarger", 3f);
             }
         }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log("Hit");
-        if (other.CompareTag("Bullet"))
+        private void ToggleTarget()
         {
-            GetComponent<BoxCollider>().enabled = false;
-            GetComponent<AudioSource>().Play();
-            model.enabled = false;
-            Broken.SetActive(true);
-            Rigidbody[] pieces = Broken.GetComponentsInChildren<Rigidbody>();
-            float force = 1000;
-            foreach (Rigidbody rb in pieces)
-            {
-                rb.AddForce(new Vector3(Random.Range(-force, force), Random.Range(-force, force), Random.Range(-force, force)));
-            }
-            Destroy(gameObject, 3f);
-            if (FindObjectOfType<TargetManager>().isWave())
-            {
-                ScoreKeeper.current.ChangeScore(points);
-            }
-            moving = false;
+            _meshRenderer.enabled = !_isDisabled;
+            _boxCollider.enabled = !_isDisabled;
+
+            _isDisabled = !_isDisabled;
         }
-    }
 
-    internal void SetPath(Transform startPos, Transform endpos)
-    {
-        point1 = startPos;
-        point2 = endpos;
-    }
+        private void TargetDestroyEffect()
+        {
+            var random = Random.Range(0.8f, 1.2f);
+            _audioSource.pitch = random;    
 
-    public void SetPathTime(float t)
-    {
-        pathTime = t;
+            _audioSource.Play();
+            _particleSystem.Play();
+        }
     }
 }
+
+
