@@ -1922,8 +1922,8 @@ MonoBehaviour:
   vfxA: {fileID: 858550148}
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
-  killsToWeaponB: 2
-  killsToWeaponC: 15
+  killsToWeaponB: 6
+  killsToWeaponC: 8
   vfxDelay: 0.5
 --- !u!4 &686354534
 Transform:
