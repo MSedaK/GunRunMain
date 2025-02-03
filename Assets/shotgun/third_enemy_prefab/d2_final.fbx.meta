@@ -8,67 +8,67 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ayaklar
-    second: {fileID: 2100000, guid: e6537be359684dc418cbb0e4d03cd2b7, type: 2}
+    second: {fileID: 2100000, guid: 90e0651cefc3f834881425d5c00350f7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bacak_Detay
-    second: {fileID: 2100000, guid: d4f810edc0603f449a35c682c531e4c6, type: 2}
+    second: {fileID: 2100000, guid: 605fdf56f5a8a944d9fec48fd2346509, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Base
-    second: {fileID: 2100000, guid: 8f597778bbbea9f499e8ccda44ecc663, type: 2}
+    second: {fileID: 2100000, guid: 59f5564f4c0bc0f4783a43747683295a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Buttons
-    second: {fileID: 2100000, guid: 5d6a2f81d1d58c04abf77bf5796e46c9, type: 2}
+    second: {fileID: 2100000, guid: 625acc291fd744f44b28553c51e54401, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cable
-    second: {fileID: 2100000, guid: 26d75c73600128141b4d6a9bb941f389, type: 2}
+    second: {fileID: 2100000, guid: 11a5933644a005443a7438ab752aa09b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: "G\xF6z"
-    second: {fileID: 2100000, guid: 3d2d26217f259aa4faf7437d9e057302, type: 2}
+    second: {fileID: 2100000, guid: a8b1f53f1cbcfb942b9e776a65932419, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Kafa
-    second: {fileID: 2100000, guid: 9ae3a42bb772726498845f228d6829fc, type: 2}
+    second: {fileID: 2100000, guid: e839ec2a06c33944d8c608c3a946bcf4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Kask
-    second: {fileID: 2100000, guid: 8211d035ef302df43a69cd49a3faf957, type: 2}
+    second: {fileID: 2100000, guid: 261c5b37337b1d747888c503130bc0ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: "Ka\u015F"
-    second: {fileID: 2100000, guid: e4851a9f5c0af2744ac9bd3b4e1dd510, type: 2}
+    second: {fileID: 2100000, guid: 983258ed7feb13d4087097edf5d54e46, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Maske
-    second: {fileID: 2100000, guid: 72ae6f2f9179661439ad2ba33addf51c, type: 2}
+    second: {fileID: 2100000, guid: 2674273bd9314834a8d0adbbe3699a3b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Omuz ve Bel
-    second: {fileID: 2100000, guid: 8f35bfdaae5d8fd449448288b019dbe4, type: 2}
+    second: {fileID: 2100000, guid: 24c1b37c22c0bc34db170160bb2d653c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Silah_1
-    second: {fileID: 2100000, guid: 9a774cf0ea8861f41b6c6261f0bf3d03, type: 2}
+    second: {fileID: 2100000, guid: 21176421eacc7a244a2191988f97301e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Silah_2
-    second: {fileID: 2100000, guid: 591c276d7750d5846b81f97e2f5102fa, type: 2}
+    second: {fileID: 2100000, guid: 5f92e4a523e8eb249a69424f6f41f875, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

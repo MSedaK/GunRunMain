@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -8,11 +7,14 @@ public class GunFire : MonoBehaviour
     public float velocity;
     public GameObject bulletPrefab;
     public Transform barrel;
+    public Transform targetDirection;
     public AudioSource audioSource;
     public ParticleSystem ps;
+    public Animator gunAnimator;
+    public GameObject muzzleFlashPrefab;
 
     [Header("Haptic Feedback Settings")]
-    public float hapticStrength = 0.5f; 
+    public float hapticStrength = 0.5f;
 
     void Update()
     {
@@ -25,15 +27,21 @@ public class GunFire : MonoBehaviour
 
     public void Fire()
     {
-        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, barrel.rotation);
-        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * barrel.forward;
+        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, Quaternion.LookRotation(targetDirection.position - barrel.position));
+
+        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (targetDirection.position - barrel.position).normalized;
 
         audioSource.Play();
 
-        Animator anim;
-        if (TryGetComponent<Animator>(out anim))
+        if (gunAnimator != null)
         {
-            anim.SetTrigger("Fire");
+            gunAnimator.SetTrigger("Shoot");
+        }
+
+        if (muzzleFlashPrefab != null)
+        {
+            GameObject flash = Instantiate(muzzleFlashPrefab, barrel.position, barrel.rotation);
+            Destroy(flash, 0.2f); 
         }
 
         if (ps != null)
@@ -47,9 +55,7 @@ public class GunFire : MonoBehaviour
     private IEnumerator HapticFeedback()
     {
         OVRInput.SetControllerVibration(1, hapticStrength, OVRInput.Controller.RTouch);
-
         yield return new WaitForSeconds(0.1f);
-
         OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
     }
 }

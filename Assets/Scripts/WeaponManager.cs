@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -10,36 +9,42 @@ public class WeaponManager : MonoBehaviour
     public GameObject weaponC;
 
     [Header("Weapon VFX")]
-    public GameObject vfxA; // Silah A için VFX prefab
-    public GameObject vfxB; // Silah B için VFX prefab
-    public GameObject vfxC; // Silah C için VFX prefab
+    public GameObject vfxA;
+    public GameObject vfxB;
+    public GameObject vfxC;
 
-    private int currentWeapon = 0; // Aktif silahýn indeksi
-    private int shootCount = 0; // Ateþ sayýsý
+    private int currentWeapon = 0; 
+    private int enemyKillCount = 0; 
 
     [Header("Weapon Switch Settings")]
-    public int pressesToWeaponB = 5; // B'ye geçmek için gereken ateþ sayýsý
-    public int pressesToWeaponC = 10; // C'ye geçmek için gereken ateþ sayýsý
-    public float vfxDelay = 0.5f; // VFX'in ardýndan silahýn görünmesi için geçen süre
+    public int killsToWeaponB = 5; 
+    public int killsToWeaponC = 5; 
+    public float vfxDelay = 0.5f;
 
-    private void Update()
+    private void OnEnable()
     {
-        // Sað index tuþuna basýlma kontrolü
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
-        {
-            shootCount++;
-            CheckWeaponSwitch(shootCount);
-        }
+        EnemyHealth.OnEnemyKilled += OnEnemyKilled;
     }
 
-    public void CheckWeaponSwitch(int shootCount)
+    private void OnDisable()
     {
-        if (currentWeapon == 0 && shootCount >= pressesToWeaponB)
+        EnemyHealth.OnEnemyKilled -= OnEnemyKilled;
+    }
+
+    private void OnEnemyKilled()
+    {
+        enemyKillCount++;
+        CheckWeaponSwitch(enemyKillCount);
+    }
+
+    public void CheckWeaponSwitch(int killCount)
+    {
+        if (currentWeapon == 0 && killCount >= killsToWeaponB)
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA));
             currentWeapon = 1;
         }
-        else if (currentWeapon == 1 && shootCount >= pressesToWeaponC)
+        else if (currentWeapon == 1 && killCount >= killsToWeaponC)
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB));
             currentWeapon = 2;
@@ -48,22 +53,17 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject vfx)
     {
-        // Mevcut silahý gizle
         currentWeaponObj.SetActive(false);
 
-        // VFX'i çalýþtýr
         if (vfx != null)
         {
             GameObject spawnedVFX = Instantiate(vfx, currentWeaponObj.transform.position, currentWeaponObj.transform.rotation);
-            Destroy(spawnedVFX, 2f); // VFX'i 2 saniye sonra yok et
+            Destroy(spawnedVFX, 2f);
         }
 
-        // VFX süresince bekle
         yield return new WaitForSeconds(vfxDelay);
 
-        // Yeni silahý aktif hale getir
         nextWeaponObj.SetActive(true);
-
         Debug.Log("Yeni silaha geçildi: " + nextWeaponObj.name);
     }
 }
