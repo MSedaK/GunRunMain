@@ -1598,7 +1598,7 @@ Transform:
   m_GameObject: {fileID: 309251577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -123, y: -4.1545525, z: 77}
+  m_LocalPosition: {x: -123, y: -4.1545525, z: 69.05}
   m_LocalScale: {x: 3.0500016, y: 3.05, z: 3.0500016}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2609,7 +2609,7 @@ PrefabInstance:
     - target: {fileID: 3201919875482549888, guid: 160287223d0bc174a9e0c3ea37eb53f4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18666668
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 3201919875482549888, guid: 160287223d0bc174a9e0c3ea37eb53f4,
         type: 3}
@@ -3064,7 +3064,7 @@ MonoBehaviour:
   - {x: -0.9300001, y: -4.154552, z: 189.3}
   - {x: -0.9300001, y: -0.4945523, z: 189.3}
   spawnPointsC:
-  - {x: -123, y: -4.154552, z: 77}
+  - {x: -123, y: -4.154552, z: 69}
   - {x: -123, y: -0.4945523, z: 77}
   - {x: -125.8, y: -4.154552, z: 77}
   - {x: -125.8, y: -0.4945523, z: 77}
