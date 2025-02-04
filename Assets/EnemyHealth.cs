@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -31,6 +31,9 @@ public class EnemyHealth : MonoBehaviour
         }
 
         currentHealth -= damage;
+
+        GameManager.Instance.AddScore((int)damage);
+
         ShowFloatingText(damage, hitCollider);
 
         if (currentHealth <= 0)
@@ -45,14 +48,26 @@ public class EnemyHealth : MonoBehaviour
         {
             Vector3 hitPosition = hitCollider.ClosestPointOnBounds(transform.position);
             GameObject damageText = Instantiate(floatingTextPrefab, hitPosition, Quaternion.identity);
-            TextMeshPro textMesh = damageText.GetComponent<TextMeshPro>();
 
+            Vector3 moveDirection = agent.velocity.normalized;
+
+            if (moveDirection.magnitude < 0.1f)
+            {
+                moveDirection = transform.forward;
+            }
+
+            damageText.transform.rotation = Quaternion.LookRotation(moveDirection);
+
+            damageText.transform.position += new Vector3(0, 0.5f, 0);
+
+            TextMeshPro textMesh = damageText.GetComponent<TextMeshPro>();
             if (textMesh != null)
             {
                 textMesh.text = damage.ToString();
             }
         }
     }
+
 
     private void Die()
     {
@@ -64,14 +79,5 @@ public class EnemyHealth : MonoBehaviour
         }
 
         Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) 
-        {
-            Debug.Log("Enemy çarptý! Oyun durdu.");
-            GameManager.Instance.GameOver();
-        }
     }
 }

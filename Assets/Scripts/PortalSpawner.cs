@@ -1,57 +1,94 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalSpawner : MonoBehaviour
 {
-    public GameObject portalPrefabA; // Portal A prefab
-    public GameObject portalPrefabB; // Portal B prefab
-    public GameObject portalPrefabC; // Portal C prefab
+    public GameObject portalPrefabA;
+    public GameObject portalPrefabB;
+    public GameObject portalPrefabC;
 
-    public GameObject enemyPrefabA; // Portal A'nýn düþmaný
-    public GameObject enemyPrefabB; // Portal B'nin düþmaný
-    public GameObject enemyPrefabC; // Portal C'nin düþmaný
+    [Header("Enemy Prefabs for Portals")]
+    public GameObject enemyType1A;
+    public GameObject enemyType2A;
+    public GameObject enemyType1B;
+    public GameObject enemyType2B;
+    public GameObject enemyType1C;
+    public GameObject enemyType2C;
 
-    public float enemySpawnInterval = 2f; // Her düþman spawn arasý süre (2 saniye)
+    [Header("Enemy Spawn Settings")]
+    public float enemySpawnInterval = 2f;
 
-    // Her portal için spawn noktalarý
-    public Vector3 spawnPointA = new Vector3(0.3f, 1.5f, 0.0f); // Portal A'nýn spawn noktasý
-    public Vector3 spawnPointB = new Vector3(0.3f, 1.6f, 0.0f); // Portal B'nin spawn noktasý
-    public Vector3 spawnPointC = new Vector3(-115.35f, 0.34661f, 1.7658f); // Portal C'nin spawn noktasý
+    [Header("Portal Spawn Points")]
+    public Vector3[] spawnPointsA;
+    public Vector3[] spawnPointsB;
+    public Vector3[] spawnPointsC;
+
+    private int enemySpawnIndexA = 0;
+    private int enemySpawnIndexB = 0;
+    private int enemySpawnIndexC = 0;
 
     void Start()
     {
-        // Portallarý oluþtur
         SpawnPortalWithRotation(portalPrefabA, new Vector3(5.2f, -4.3f, -87.1f), Quaternion.Euler(0, -90, 0));
         SpawnPortalWithRotation(portalPrefabB, new Vector3(5.2f, -4.5f, 105f), Quaternion.Euler(0, 90, 0));
         SpawnPortal(portalPrefabC, new Vector3(-116.2f, -4.6f, 1.8f));
 
-        // Belirtilen spawn noktalarýndan düþman spawn etmeye baþla
-        StartCoroutine(SpawnEnemyFromPoint(spawnPointA, enemyPrefabA, Quaternion.Euler(0, 90, 0))); // Portal A'dan çýkan düþman 90 derece döndürülüyor
-        StartCoroutine(SpawnEnemyFromPoint(spawnPointB, enemyPrefabB, Quaternion.Euler(0, -90, 0))); // Portal B'den çýkan düþman -90 derece döndürülüyor
-        StartCoroutine(SpawnEnemyFromPoint(spawnPointC, enemyPrefabC, Quaternion.Euler(0, 180, 0))); // Portal C'den çýkan düþman 180 derece döndürülüyor
+        StartCoroutine(SpawnEnemyFromPointsA());
+        StartCoroutine(SpawnEnemyFromPointsB());
+        StartCoroutine(SpawnEnemyFromPointsC());
     }
 
     void SpawnPortal(GameObject portalPrefab, Vector3 position)
     {
-        // Portalý belirtilen pozisyonda oluþtur
         Instantiate(portalPrefab, position, Quaternion.identity);
     }
 
     void SpawnPortalWithRotation(GameObject portalPrefab, Vector3 position, Quaternion rotation)
     {
-        // Portalý belirtilen pozisyon ve rotasyonla oluþtur
         Instantiate(portalPrefab, position, rotation);
     }
 
-    IEnumerator SpawnEnemyFromPoint(Vector3 spawnPosition, GameObject enemyPrefab, Quaternion rotation)
+    IEnumerator SpawnEnemyFromPointsA()
     {
         while (true)
         {
-            // Belirtilen pozisyonda ve rotasyonla düþman spawn et
-            Instantiate(enemyPrefab, spawnPosition, rotation);
+            if (spawnPointsA.Length == 0) yield break;
 
-            // 2 saniye bekle
+            Vector3 spawnPos = spawnPointsA[enemySpawnIndexA];
+            GameObject enemyPrefab = (enemySpawnIndexA % 2 == 0) ? enemyType1A : enemyType2A;
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+            enemySpawnIndexA = (enemySpawnIndexA + 1) % spawnPointsA.Length;
+            yield return new WaitForSeconds(enemySpawnInterval);
+        }
+    }
+
+    IEnumerator SpawnEnemyFromPointsB()
+    {
+        while (true)
+        {
+            if (spawnPointsB.Length == 0) yield break;
+
+            Vector3 spawnPos = spawnPointsB[enemySpawnIndexB];
+            GameObject enemyPrefab = (enemySpawnIndexB % 2 == 0) ? enemyType1B : enemyType2B;
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+            enemySpawnIndexB = (enemySpawnIndexB + 1) % spawnPointsB.Length;
+            yield return new WaitForSeconds(enemySpawnInterval);
+        }
+    }
+
+    IEnumerator SpawnEnemyFromPointsC()
+    {
+        while (true)
+        {
+            if (spawnPointsC.Length == 0) yield break;
+
+            Vector3 spawnPos = spawnPointsC[enemySpawnIndexC];
+            GameObject enemyPrefab = (enemySpawnIndexC % 2 == 0) ? enemyType1C : enemyType2C;
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+            enemySpawnIndexC = (enemySpawnIndexC + 1) % spawnPointsC.Length;
             yield return new WaitForSeconds(enemySpawnInterval);
         }
     }

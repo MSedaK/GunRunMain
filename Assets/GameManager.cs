@@ -1,12 +1,17 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject restartCanvas; 
-    private float gameTimer = 0f;
-    public float gameDuration = 45f; 
+    public GameObject restartCanvas;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText; 
+
+    private float gameTimer;
+    public float gameDuration = 360f;
+    private int score = 0; 
 
     private void Awake()
     {
@@ -16,28 +21,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        gameTimer = gameDuration; 
+        UpdateTimerUI();
+    }
+
     private void Update()
     {
         if (Time.timeScale == 1)
         {
-            gameTimer += Time.deltaTime;
+            gameTimer -= Time.deltaTime;
+            UpdateTimerUI();
 
-            if (gameTimer >= gameDuration)
+            if (gameTimer <= 0)
             {
-                GameOver(); 
+                gameTimer = 0;
+                GameOver();
             }
         }
+    }
+
+    public void AddScore(int damage)
+    {
+        score += damage; 
+        scoreText.text = "Score: " + score; 
+    }
+
+    private void UpdateTimerUI()
+    {
+        timerText.text = "Time: " + Mathf.Ceil(gameTimer).ToString();
     }
 
     public void GameOver()
     {
         Time.timeScale = 0;
-        restartCanvas.SetActive(true); 
+        restartCanvas.SetActive(true);
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1; 
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
