@@ -16,6 +16,10 @@ public class GunFire : MonoBehaviour
     [Header("Haptic Feedback Settings")]
     public float hapticStrength = 0.5f;
 
+    [Header("Bullet Settings")]
+    public AudioClip bulletHitSound;  
+    public GameObject damageEffectPrefab;  
+
     void Update()
     {
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
@@ -31,6 +35,13 @@ public class GunFire : MonoBehaviour
 
         spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (targetDirection.position - barrel.position).normalized;
 
+        Bullet bulletScript = spawnedBullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.hitSound = bulletHitSound;
+            bulletScript.damageEffectPrefab = damageEffectPrefab;
+        }
+
         audioSource.Play();
 
         if (gunAnimator != null)
@@ -41,7 +52,7 @@ public class GunFire : MonoBehaviour
         if (muzzleFlashPrefab != null)
         {
             GameObject flash = Instantiate(muzzleFlashPrefab, barrel.position, barrel.rotation);
-            Destroy(flash, 0.2f); 
+            Destroy(flash, 0.2f);
         }
 
         if (ps != null)

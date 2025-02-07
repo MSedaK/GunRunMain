@@ -18,9 +18,13 @@ public class EnemyHealth : MonoBehaviour
     public GameObject deathVFX;
     public GameObject floatingTextPrefab;
 
+    public AudioClip damageSFX; 
+    private AudioSource audioSource;
+
     void Start()
     {
         currentHealth = totalHealth;
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     public void TakeDamage(float damage, Collider hitCollider)
@@ -39,6 +43,11 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }
+
+        if (audioSource != null && damageSFX != null)
+        {
+            audioSource.PlayOneShot(damageSFX); 
         }
     }
 
@@ -67,7 +76,6 @@ public class EnemyHealth : MonoBehaviour
             }
         }
     }
-
 
     private void Die()
     {
