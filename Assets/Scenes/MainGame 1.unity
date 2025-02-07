@@ -2397,7 +2397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &989108046
 Transform:
   m_ObjectHideFlags: 0
@@ -4036,7 +4036,7 @@ MonoBehaviour:
   restartCanvas: {fileID: 1043884475}
   scoreText: {fileID: 1734365164}
   timerText: {fileID: 1977108806}
-  gameDuration: 360
+  gameDuration: 1000
 --- !u!4 &1598248143
 Transform:
   m_ObjectHideFlags: 0
