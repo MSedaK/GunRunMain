@@ -11,34 +11,52 @@ public class EnemyHealth : MonoBehaviour
     public float totalHealth = 100f;
     private float currentHealth;
 
-    public float baseDamage = 50f;
     public float headshotMultiplier = 2f;
+    public float bodyMultiplier = 1f;
+    public float legsMultiplier = 0.7f;
 
     public Collider headCollider;
+    public Collider bodyCollider;
+    public Collider legsCollider;
+
     public GameObject deathVFX;
     public GameObject floatingTextPrefab;
 
-    public AudioClip damageSFX; 
+    public AudioClip damageSFX;
     private AudioSource audioSource;
 
     void Start()
     {
         currentHealth = totalHealth;
-        audioSource = GetComponent<AudioSource>(); 
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(float damage, Collider hitCollider)
     {
+        float adjustedDamage = 0f;
+
         if (hitCollider == headCollider)
         {
-            damage *= headshotMultiplier;
+            adjustedDamage = damage * headshotMultiplier;
+        }
+        else if (hitCollider == bodyCollider)
+        {
+            adjustedDamage = damage * bodyMultiplier;
+        }
+        else if (hitCollider == legsCollider)
+        {
+            adjustedDamage = damage * legsMultiplier;
+        }
+        else
+        {
+            adjustedDamage = damage; 
         }
 
-        currentHealth -= damage;
+        currentHealth -= adjustedDamage;
 
-        GameManager.Instance.AddScore((int)damage);
+        GameManager.Instance.AddScore((int)adjustedDamage);
 
-        ShowFloatingText(damage, hitCollider);
+        ShowFloatingText(adjustedDamage, hitCollider);
 
         if (currentHealth <= 0)
         {
@@ -47,7 +65,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (audioSource != null && damageSFX != null)
         {
-            audioSource.PlayOneShot(damageSFX); 
+            audioSource.PlayOneShot(damageSFX);
         }
     }
 
@@ -66,7 +84,6 @@ public class EnemyHealth : MonoBehaviour
             }
 
             damageText.transform.rotation = Quaternion.LookRotation(moveDirection);
-
             damageText.transform.position += new Vector3(0, 0.5f, 0);
 
             TextMeshPro textMesh = damageText.GetComponent<TextMeshPro>();

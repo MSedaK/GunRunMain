@@ -437,6 +437,14 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3605294741769963262}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 409793324004042887}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 6885560577140114106}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
         type: 3}
@@ -507,8 +515,50 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.0739832, y: 6.197382, z: 2.6057603}
-  m_Center: {x: 0.08643639, y: 2.799725, z: 0.3456484}
+  m_Size: {x: 2.0739832, y: 1.0255442, z: 2.121441}
+  m_Center: {x: 0.08643639, y: 5.3856444, z: 0.3769974}
+--- !u!65 &3605294741769963262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890586833633972550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0397477, y: 2.1777, z: 2.1015515}
+  m_Center: {x: 0.08932471, y: 3.6590724, z: 0.356574}
+--- !u!65 &409793324004042887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890586833633972550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0841246, y: 3.0762155, z: 2.349275}
+  m_Center: {x: 0.058873177, y: 1.0381078, z: 0.29658416}
 --- !u!195 &6885560577140114106
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -586,9 +636,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6885560577140114106}
   totalHealth: 100
-  baseDamage: 50
   headshotMultiplier: 2
+  bodyMultiplier: 1
+  legsMultiplier: 0.7
   headCollider: {fileID: 3358030305517442829}
+  bodyCollider: {fileID: 3605294741769963262}
+  legsCollider: {fileID: 409793324004042887}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
     type: 3}
   floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,

@@ -511,6 +511,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9fddb0122068b8449dd071833ee7a9d,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7189876766669499948}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9fddb0122068b8449dd071833ee7a9d,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: -5425655426325714936}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9fddb0122068b8449dd071833ee7a9d,
         type: 3}
@@ -575,8 +579,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2069727, y: 1.1203756, z: 1}
-  m_Center: {x: 0.10147303, y: 3.7262187, z: 0}
+  m_Size: {x: 0.7713662, y: 0.82202816, z: 1}
+  m_Center: {x: 0.07539478, y: 3.78365, z: 0}
+--- !u!65 &7189876766669499948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389302909607681519}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6536042, y: 0.3557968, z: 0.761032}
+  m_Center: {x: -0.1731979, y: 3.1857433, z: 0.010345995}
 --- !u!195 &-5425655426325714936
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -654,9 +679,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: -5425655426325714936}
   totalHealth: 100
-  baseDamage: 50
   headshotMultiplier: 2
+  bodyMultiplier: 1
+  legsMultiplier: 0.7
   headCollider: {fileID: 6455308466783463880}
+  bodyCollider: {fileID: 7189876766669499948}
+  legsCollider: {fileID: 0}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
     type: 3}
   floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
