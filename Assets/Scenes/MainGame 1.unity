@@ -2431,7 +2431,7 @@ MonoBehaviour:
     type: 3}
   portalPrefabC: {fileID: 5558067654107143860, guid: db426e1459566c342b66ce92c641b12b,
     type: 3}
-  enemyType1A: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+  enemyType1A: {fileID: 7428738968409397903, guid: 7821fbc9012f83348ac02a99a9f34eab,
     type: 3}
   enemyType2A: {fileID: 7389302909607681519, guid: 5804638824575d742ae3baec28851a70,
     type: 3}
@@ -2439,7 +2439,7 @@ MonoBehaviour:
     type: 3}
   enemyType2B: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
-  enemyType1C: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+  enemyType1C: {fileID: 7428738968409397903, guid: 7821fbc9012f83348ac02a99a9f34eab,
     type: 3}
   enemyType2C: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
