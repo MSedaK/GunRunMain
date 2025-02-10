@@ -145,6 +145,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3160899971368551707, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.253
+      objectReference: {fileID: 0}
+    - target: {fileID: -3160899971368551707, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.177
+      objectReference: {fileID: 0}
+    - target: {fileID: -3160899971368551707, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.20758721
       objectReference: {fileID: 0}
@@ -177,6 +187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 9.475998
+      objectReference: {fileID: 0}
+    - target: {fileID: -2015116917817835911, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.568
       objectReference: {fileID: 0}
     - target: {fileID: -2015116917817835911, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
@@ -600,8 +615,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6536042, y: 0.3557968, z: 0.761032}
-  m_Center: {x: -0.1731979, y: 3.1857433, z: 0.010345995}
+  m_Size: {x: 0.66665804, y: 0.4039464, z: 0.761032}
+  m_Center: {x: 0.1145277, y: 3.1616685, z: 0.010345995}
 --- !u!195 &-5425655426325714936
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -638,6 +653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: -5425655426325714936}
   speed: 5
+  speedIncrease1: 1.5
+  speedIncrease2: 2
 --- !u!54 &2005344425693268036
 Rigidbody:
   m_ObjectHideFlags: 0
