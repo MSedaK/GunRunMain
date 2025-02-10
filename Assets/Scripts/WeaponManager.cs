@@ -17,8 +17,8 @@ public class WeaponManager : MonoBehaviour
     private int enemyKillCount = 0; 
 
     [Header("Weapon Switch Settings")]
-    public int killsToWeaponB = 5; 
-    public int killsToWeaponC = 5; 
+    public int killsToWeaponB = 6; 
+    public int killsToWeaponC = 8;
     public float vfxDelay = 0.5f;
 
     private void OnEnable()
