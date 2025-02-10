@@ -41,37 +41,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.75830084
+      value: -0.12784865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.6504726
+      value: -0.98478395
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.033623714
+      value: -0.041463166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.027105458
+      value: -0.11016476
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 79.96
+      value: 14.044
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 29.653
+      value: 166.432
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 29.123
+      value: -186.501
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
@@ -110,52 +110,52 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -125.8
+      value: -125.933784
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.154552
+      value: -0.5958717
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 77
+      value: 73.97241
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9060718
+      value: 0.5733814
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.41929406
+      value: 0.8173171
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.04915096
+      value: 0.020815076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.028471675
+      value: 0.052850552
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -49.202
+      value: 69.239
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -9.954
+      value: 161.877
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 8.166
+      value: 164.516
       objectReference: {fileID: 0}
     - target: {fileID: -7106252656854166295, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
@@ -439,9 +439,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5563279828299346826}
   totalHealth: 100
-  baseDamage: 50
   headshotMultiplier: 2
+  bodyMultiplier: 1
+  legsMultiplier: 0.7
   headCollider: {fileID: 730331104952776391}
+  bodyCollider: {fileID: 0}
+  legsCollider: {fileID: 0}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
     type: 3}
   floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
