@@ -2431,8 +2431,10 @@ MonoBehaviour:
     type: 3}
   portalPrefabC: {fileID: 5558067654107143860, guid: db426e1459566c342b66ce92c641b12b,
     type: 3}
-  enemyType1A: {fileID: 0}
-  enemyType2A: {fileID: 0}
+  enemyType1A: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+    type: 3}
+  enemyType2A: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+    type: 3}
   enemyType1B: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
   enemyType2B: {fileID: 7389302909607681519, guid: cf2712822c907c644876d977504c47cc,
@@ -3214,6 +3216,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6257175581247931053, guid: 8ec97288ebebfe54b943c9c5c6533ac7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6257175581247931053, guid: 8ec97288ebebfe54b943c9c5c6533ac7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06809635
       objectReference: {fileID: 0}
     - target: {fileID: -2242836842083571596, guid: 8ec97288ebebfe54b943c9c5c6533ac7,
         type: 3}
