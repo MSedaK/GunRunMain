@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public static event Action OnEnemyKilled;
 
-    public NavMeshAgent agent;
+    public UnityEngine.AI.NavMeshAgent agent;
     public float totalHealth = 100f;
     private float currentHealth;
 
@@ -20,7 +20,9 @@ public class EnemyHealth : MonoBehaviour
     public Collider legsCollider;
 
     public GameObject deathVFX;
-    public GameObject floatingTextPrefab;
+    public GameObject headshotFloatingTextPrefab;  
+    public GameObject bodyFloatingTextPrefab;   
+    public GameObject legsFloatingTextPrefab;   
 
     public AudioClip damageSFX;
     private AudioSource audioSource;
@@ -35,28 +37,31 @@ public class EnemyHealth : MonoBehaviour
     {
         float adjustedDamage = 0f;
 
+
         if (hitCollider == headCollider)
         {
             adjustedDamage = damage * headshotMultiplier;
+            ShowFloatingText(adjustedDamage, headCollider, headshotFloatingTextPrefab); 
         }
         else if (hitCollider == bodyCollider)
         {
             adjustedDamage = damage * bodyMultiplier;
+            ShowFloatingText(adjustedDamage, bodyCollider, bodyFloatingTextPrefab); 
         }
         else if (hitCollider == legsCollider)
         {
             adjustedDamage = damage * legsMultiplier;
+            ShowFloatingText(adjustedDamage, legsCollider, legsFloatingTextPrefab); 
         }
         else
         {
-            adjustedDamage = damage; 
+            adjustedDamage = damage;
+            ShowFloatingText(adjustedDamage, hitCollider, bodyFloatingTextPrefab);
         }
 
         currentHealth -= adjustedDamage;
 
         GameManager.Instance.AddScore((int)adjustedDamage);
-
-        ShowFloatingText(adjustedDamage, hitCollider);
 
         if (currentHealth <= 0)
         {
@@ -69,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void ShowFloatingText(float damage, Collider hitCollider)
+    private void ShowFloatingText(float damage, Collider hitCollider, GameObject floatingTextPrefab)
     {
         if (floatingTextPrefab != null)
         {

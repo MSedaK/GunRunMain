@@ -17,6 +17,7 @@ public class PortalSpawner : MonoBehaviour
 
     [Header("Enemy Spawn Settings")]
     public float enemySpawnInterval = 2f;
+    public float delayBeforeEnemySpawn = 10f; 
 
     [Header("Portal Spawn Points")]
     public Vector3[] spawnPointsA;
@@ -29,10 +30,16 @@ public class PortalSpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnPortalWithRotation(portalPrefabA, new Vector3(5.2f, -4.3f, -87.1f), Quaternion.Euler(0, -90, 0));
+        StartCoroutine(SpawnPortals()); 
+    }
+
+    IEnumerator SpawnPortals()
+    {
+        SpawnPortalWithRotation(portalPrefabA, new Vector3(5.2f, -4.3f, -87.1f), Quaternion.Euler(0, 90, 0));
         SpawnPortalWithRotation(portalPrefabB, new Vector3(5.2f, -4.5f, 105f), Quaternion.Euler(0, 90, 0));
         SpawnPortal(portalPrefabC, new Vector3(-116.2f, -4.6f, 1.8f));
 
+        yield return new WaitForSeconds(delayBeforeEnemySpawn); 
         StartCoroutine(SpawnEnemyFromPointsA());
         StartCoroutine(SpawnEnemyFromPointsB());
         StartCoroutine(SpawnEnemyFromPointsC());
@@ -58,7 +65,6 @@ public class PortalSpawner : MonoBehaviour
             GameObject enemyPrefab = (enemySpawnIndexA % 2 == 0) ? enemyType1A : enemyType2A;
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
 
-
             enemySpawnIndexA = (enemySpawnIndexA + 1) % spawnPointsA.Length;
             yield return new WaitForSeconds(enemySpawnInterval);
         }
@@ -73,7 +79,6 @@ public class PortalSpawner : MonoBehaviour
             Vector3 spawnPos = spawnPointsB[enemySpawnIndexB];
             GameObject enemyPrefab = (enemySpawnIndexB % 2 == 0) ? enemyType1B : enemyType2B;
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
 
             enemySpawnIndexB = (enemySpawnIndexB + 1) % spawnPointsB.Length;
             yield return new WaitForSeconds(enemySpawnInterval);
@@ -90,7 +95,6 @@ public class PortalSpawner : MonoBehaviour
             GameObject enemyPrefab = (enemySpawnIndexC % 2 == 0) ? enemyType1C : enemyType2C;
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
 
-            
             enemySpawnIndexC = (enemySpawnIndexC + 1) % spawnPointsC.Length;
             yield return new WaitForSeconds(enemySpawnInterval);
         }
