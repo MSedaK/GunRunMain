@@ -1898,7 +1898,7 @@ MonoBehaviour:
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
   killsToWeaponB: 6
-  killsToWeaponC: 8
+  killsToWeaponC: 14
   vfxDelay: 0.5
 --- !u!4 &686354534
 Transform:
@@ -2444,6 +2444,7 @@ MonoBehaviour:
   enemyType2C: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
     type: 3}
   enemySpawnInterval: 3
+  delayBeforeEnemySpawn: 5
   spawnPointsA:
   - {x: 6.05, y: -2.22, z: -74.83}
   spawnPointsB:
