@@ -625,7 +625,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0e0a0d1a1d79da1468c0cfc01600086f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2334830646326187502, guid: 0e0a0d1a1d79da1468c0cfc01600086f,
         type: 3}
@@ -1061,7 +1061,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf3d72beea163b341bd709319e6ebebb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3542852092398272455, guid: bad987f4d787b954494d5dbb18c9a5b3,
         type: 3}
@@ -2175,7 +2175,7 @@ PrefabInstance:
     - target: {fileID: 8807710862574073316, guid: 160287223d0bc174a9e0c3ea37eb53f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2437,10 +2437,12 @@ MonoBehaviour:
     type: 3}
   enemyType1B: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
-  enemyType2B: {fileID: 7389302909607681519, guid: cf2712822c907c644876d977504c47cc,
+  enemyType2B: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
     type: 3}
-  enemyType1C: {fileID: 0}
-  enemyType2C: {fileID: 0}
+  enemyType1C: {fileID: 7389302909607681519, guid: 5804638824575d742ae3baec28851a70,
+    type: 3}
+  enemyType2C: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+    type: 3}
   enemySpawnInterval: 3
   spawnPointsA:
   - {x: 6.05, y: -2.22, z: -74.83}
@@ -3314,7 +3316,7 @@ PrefabInstance:
     - target: {fileID: 550435265322295922, guid: ded1fb601627d2348b307efdf42903cb,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2458816992530814004, guid: ded1fb601627d2348b307efdf42903cb,
         type: 3}
