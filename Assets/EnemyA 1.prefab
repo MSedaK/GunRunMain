@@ -371,7 +371,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7428738968409397903}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.78
+  m_Radius: 1.1
   m_Speed: 0.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -398,6 +398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5563279828299346826}
   speed: 5
+  speedIncrease1: 1.5
+  speedIncrease2: 2
 --- !u!54 &3543373595666245932
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -447,8 +449,9 @@ MonoBehaviour:
   legsCollider: {fileID: 0}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
     type: 3}
-  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
-    type: 3}
+  headshotFloatingTextPrefab: {fileID: 0}
+  bodyFloatingTextPrefab: {fileID: 0}
+  legsFloatingTextPrefab: {fileID: 0}
   damageSFX: {fileID: 8300000, guid: 867cc66055f5bff4eb5af9ddeb38b1dc, type: 3}
 --- !u!82 &2243756871369797238
 AudioSource:
