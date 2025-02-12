@@ -2685,15 +2685,15 @@ MonoBehaviour:
     type: 3}
   jamEnemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
     type: 3}
-  flyingEnemy: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
+  flyingEnemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
     type: 3}
-  tallEnemy: {fileID: 7389302909607681519, guid: 5804638824575d742ae3baec28851a70,
+  tallEnemy: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
-  middleEnemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+  middleEnemy: {fileID: 1227626682587902074, guid: 452a5a4aaff96c048a6d676d781ec4b1,
     type: 3}
-  enemySpawnInterval: 3
+  enemySpawnInterval: 1
   delayBeforeFirstWave: 10
-  waveDelay: 5
+  waveDelay: 10
   spawnPointsA:
   - {x: 6.05, y: -2.22, z: -74.83}
   spawnPointsB:
@@ -6345,7 +6345,7 @@ MonoBehaviour:
   audioSource: {fileID: 919132149274874143}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 254192719}
-  muzzleFlashPrefab: {fileID: 6980259576133684760, guid: 1f58a1dea6bbd9347843e4935585e6a2,
+  muzzleFlashPrefab: {fileID: 9156974889021201898, guid: e149d31226196b14cacf4499b808e7f3,
     type: 3}
   hapticStrength: 0.5
   bulletHitSound: {fileID: 0}
