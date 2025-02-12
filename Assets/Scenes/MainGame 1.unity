@@ -2683,7 +2683,7 @@ MonoBehaviour:
     type: 3}
   portalPrefabC: {fileID: 5558067654107143860, guid: db426e1459566c342b66ce92c641b12b,
     type: 3}
-  jamEnemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+  jamEnemy: {fileID: 7389302909607681519, guid: 5804638824575d742ae3baec28851a70,
     type: 3}
   flyingEnemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
     type: 3}
@@ -2695,7 +2695,7 @@ MonoBehaviour:
   delayBeforeFirstWave: 10
   waveDelay: 10
   spawnPointsA:
-  - {x: 6.05, y: -2.22, z: -74.83}
+  - {x: 6.05, y: 1.97, z: -74.83}
   spawnPointsB:
   - {x: 6, y: -3, z: 112}
   - {x: 6, y: -3, z: 112}
