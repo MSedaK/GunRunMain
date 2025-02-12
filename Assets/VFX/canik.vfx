@@ -564,7 +564,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.OrientedBox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.03999999910593033,"y":0.009999999776482582,"z":0.11999999731779099},"angles":{"x":0.0,"y":0.0,"z":1042.0},"size":{"x":1.7000000476837159,"y":1.7000000476837159,"z":1.0}}'
+      m_SerializableObject: '{"center":{"x":-0.497830867767334,"y":0.1909678727388382,"z":-0.012641488574445248},"angles":{"x":93.30000305175781,"y":12.199999809265137,"z":1042.0},"size":{"x":-4.159999847412109,"y":0.07999999821186066,"z":-0.019999999552965165}}'
     m_Space: 0
   m_Property:
     name: FieldTransform
@@ -3836,7 +3836,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":1.0,"y":0.8999999761581421,"z":0.1599999964237213}'
+      m_SerializableObject: '{"x":10.760000228881836,"y":0.8999999761581421,"z":0.12999999523162843}'
     m_Space: 2147483647
   m_Property:
     name: HSV
@@ -4141,7 +4141,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.012983030639588833,"g":0.012983030639588833,"b":0.012983030639588833,"a":1.0},"time":0.0},{"color":{"r":766.99609375,"g":334.4302978515625,"b":0.0,"a":1.0},"time":0.30588236451148989},{"color":{"r":1.25,"g":0.5013420581817627,"b":0.13089001178741456,"a":1.0},"time":0.5000076293945313},{"color":{"r":3.499999761581421,"g":3.1169660091400148,"b":0.5130889415740967,"a":1.0},"time":0.7029373645782471},{"color":{"r":63.99999237060547,"g":34.20842361450195,"b":19.434553146362306,"a":1.0},"time":0.9000076055526733},{"color":{"r":11.99999713897705,"g":4.6541428565979,"b":2.5130884647369386,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0235294122248888,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":2.0,"g":1.20794677734375,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":766.99609375,"g":334.4302978515625,"b":0.0,"a":1.0},"time":0.30588236451148989},{"color":{"r":1.25,"g":0.5013420581817627,"b":0.13089001178741456,"a":1.0},"time":0.5000076293945313},{"color":{"r":3.499999761581421,"g":3.1169660091400148,"b":0.5130889415740967,"a":1.0},"time":0.7029373645782471},{"color":{"r":63.99999237060547,"g":34.20842361450195,"b":19.434553146362306,"a":1.0},"time":0.9000076055526733},{"color":{"r":11.99999713897705,"g":4.6541428565979,"b":2.5130884647369386,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0235294122248888,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: gradient
@@ -4379,7 +4379,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 0.982
     m_Space: 2147483647
   m_Property:
     name: ArcSequencer
