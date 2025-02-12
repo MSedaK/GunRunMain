@@ -20,38 +20,41 @@ public class EnemyHealth : MonoBehaviour
     public Collider legsCollider;
 
     public GameObject deathVFX;
-    public GameObject headshotFloatingTextPrefab;  
-    public GameObject bodyFloatingTextPrefab;   
-    public GameObject legsFloatingTextPrefab;   
+    public GameObject headshotFloatingTextPrefab;
+    public GameObject bodyFloatingTextPrefab;
+    public GameObject legsFloatingTextPrefab;
 
     public AudioClip damageSFX;
     private AudioSource audioSource;
+
+    private GunFire gunFire;
 
     void Start()
     {
         currentHealth = totalHealth;
         audioSource = GetComponent<AudioSource>();
+
+        gunFire = FindObjectOfType<GunFire>();
     }
 
     public void TakeDamage(float damage, Collider hitCollider)
     {
         float adjustedDamage = 0f;
 
-
         if (hitCollider == headCollider)
         {
             adjustedDamage = damage * headshotMultiplier;
-            ShowFloatingText(adjustedDamage, headCollider, headshotFloatingTextPrefab); 
+            ShowFloatingText(adjustedDamage, headCollider, headshotFloatingTextPrefab);
         }
         else if (hitCollider == bodyCollider)
         {
             adjustedDamage = damage * bodyMultiplier;
-            ShowFloatingText(adjustedDamage, bodyCollider, bodyFloatingTextPrefab); 
+            ShowFloatingText(adjustedDamage, bodyCollider, bodyFloatingTextPrefab);
         }
         else if (hitCollider == legsCollider)
         {
             adjustedDamage = damage * legsMultiplier;
-            ShowFloatingText(adjustedDamage, legsCollider, legsFloatingTextPrefab); 
+            ShowFloatingText(adjustedDamage, legsCollider, legsFloatingTextPrefab);
         }
         else
         {
@@ -102,6 +105,11 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         OnEnemyKilled?.Invoke();
+
+        if (gunFire != null)
+        {
+            gunFire.Reload();
+        }
 
         if (deathVFX != null)
         {

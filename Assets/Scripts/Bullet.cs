@@ -3,8 +3,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float damage = 50f;
-    public AudioClip hitSound;  
-    public GameObject damageEffectPrefab;  
+    public AudioClip hitSound;
+    public GameObject damageEffectPrefab;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("TargetBoard"))
@@ -17,22 +18,16 @@ public class Bullet : MonoBehaviour
                     enemyHealth.TakeDamage(damage, other);
                 }
             }
-
-            if (other.CompareTag("TargetBoard"))
+            else if (other.CompareTag("TargetBoard"))
             {
-                AudioSource.PlayClipAtPoint(hitSound, other.transform.position);
-
-                ShowDamageEffect(other);
+                TargetBoardHealth boardHealth = other.GetComponent<TargetBoardHealth>();
+                if (boardHealth != null)
+                {
+                    boardHealth.TakeDamage(damage, other.ClosestPoint(transform.position));
+                }
             }
 
             Destroy(gameObject);
         }
-    }
-
-    private void ShowDamageEffect(Collider board)
-    {
-        GameObject damageEffect = Instantiate(damageEffectPrefab, board.transform.position, Quaternion.identity);
-        damageEffect.transform.SetParent(board.transform); 
-        Destroy(damageEffect, 2f); 
     }
 }

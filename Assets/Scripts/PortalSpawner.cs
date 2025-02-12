@@ -8,16 +8,15 @@ public class PortalSpawner : MonoBehaviour
     public GameObject portalPrefabC;
 
     [Header("Enemy Prefabs for Portals")]
-    public GameObject enemyType1A;
-    public GameObject enemyType2A;
-    public GameObject enemyType1B;
-    public GameObject enemyType2B;
-    public GameObject enemyType1C;
-    public GameObject enemyType2C;
+    public GameObject jamEnemy;
+    public GameObject flyingEnemy;
+    public GameObject tallEnemy;
+    public GameObject middleEnemy;
 
     [Header("Enemy Spawn Settings")]
     public float enemySpawnInterval = 2f;
-    public float delayBeforeEnemySpawn = 10f; 
+    public float delayBeforeFirstWave = 10f;
+    public float waveDelay = 5f; 
 
     [Header("Portal Spawn Points")]
     public Vector3[] spawnPointsA;
@@ -30,7 +29,7 @@ public class PortalSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnPortals()); 
+        StartCoroutine(SpawnPortals());
     }
 
     IEnumerator SpawnPortals()
@@ -39,10 +38,26 @@ public class PortalSpawner : MonoBehaviour
         SpawnPortalWithRotation(portalPrefabB, new Vector3(5.2f, -4.5f, 105f), Quaternion.Euler(0, 90, 0));
         SpawnPortal(portalPrefabC, new Vector3(-116.2f, -4.6f, 1.8f));
 
-        yield return new WaitForSeconds(delayBeforeEnemySpawn); 
-        StartCoroutine(SpawnEnemyFromPointsA());
-        StartCoroutine(SpawnEnemyFromPointsB());
-        StartCoroutine(SpawnEnemyFromPointsC());
+        yield return new WaitForSeconds(delayBeforeFirstWave);  
+
+        // **1. DALGA**
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(2, jamEnemy, 2, jamEnemy, 2, jamEnemy)
+        ));
+
+        yield return new WaitForSeconds(waveDelay); 
+
+        // **2. DALGA**
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(3, flyingEnemy, 3, flyingEnemy, 3, flyingEnemy)
+        ));
+
+        yield return new WaitForSeconds(waveDelay);
+
+        // **3. DALGA**
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, tallEnemy, 1, middleEnemy, 1, tallEnemy, 1, middleEnemy, 1, tallEnemy, 1, middleEnemy)
+        ));
     }
 
     void SpawnPortal(GameObject portalPrefab, Vector3 position)
@@ -55,48 +70,44 @@ public class PortalSpawner : MonoBehaviour
         Instantiate(portalPrefab, position, rotation);
     }
 
-    IEnumerator SpawnEnemyFromPointsA()
+    IEnumerator SpawnWave(EnemyWaveData waveData)
     {
-        while (true)
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A1, waveData.enemyA1));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B1, waveData.enemyB1));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C1, waveData.enemyC1));
+
+        if (waveData.A2 > 0) yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A2, waveData.enemyA2));
+        if (waveData.B2 > 0) yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B2, waveData.enemyB2));
+        if (waveData.C2 > 0) yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C2, waveData.enemyC2));
+    }
+
+    IEnumerator SpawnEnemiesAtPortal(Vector3[] spawnPoints, int enemyCount, GameObject enemyType)
+    {
+        for (int i = 0; i < enemyCount; i++)
         {
-            if (spawnPointsA.Length == 0) yield break;
+            if (spawnPoints.Length == 0 || enemyType == null) yield break;
 
-            Vector3 spawnPos = spawnPointsA[enemySpawnIndexA];
-            GameObject enemyPrefab = (enemySpawnIndexA % 2 == 0) ? enemyType1A : enemyType2A;
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
-            enemySpawnIndexA = (enemySpawnIndexA + 1) % spawnPointsA.Length;
+            Vector3 spawnPos = spawnPoints[i % spawnPoints.Length];  
+            Instantiate(enemyType, spawnPos, Quaternion.identity);
             yield return new WaitForSeconds(enemySpawnInterval);
         }
     }
+}
 
-    IEnumerator SpawnEnemyFromPointsB()
+public class EnemyWaveData
+{
+    public int A1, B1, C1, A2, B2, C2;
+    public GameObject enemyA1, enemyB1, enemyC1, enemyA2, enemyB2, enemyC2;
+
+    public EnemyWaveData(
+        int a1, GameObject eA1, int b1, GameObject eB1, int c1, GameObject eC1,
+        int a2 = 0, GameObject eA2 = null, int b2 = 0, GameObject eB2 = null, int c2 = 0, GameObject eC2 = null)
     {
-        while (true)
-        {
-            if (spawnPointsB.Length == 0) yield break;
-
-            Vector3 spawnPos = spawnPointsB[enemySpawnIndexB];
-            GameObject enemyPrefab = (enemySpawnIndexB % 2 == 0) ? enemyType1B : enemyType2B;
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
-            enemySpawnIndexB = (enemySpawnIndexB + 1) % spawnPointsB.Length;
-            yield return new WaitForSeconds(enemySpawnInterval);
-        }
-    }
-
-    IEnumerator SpawnEnemyFromPointsC()
-    {
-        while (true)
-        {
-            if (spawnPointsC.Length == 0) yield break;
-
-            Vector3 spawnPos = spawnPointsC[enemySpawnIndexC];
-            GameObject enemyPrefab = (enemySpawnIndexC % 2 == 0) ? enemyType1C : enemyType2C;
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
-            enemySpawnIndexC = (enemySpawnIndexC + 1) % spawnPointsC.Length;
-            yield return new WaitForSeconds(enemySpawnInterval);
-        }
+        A1 = a1; enemyA1 = eA1;
+        B1 = b1; enemyB1 = eB1;
+        C1 = c1; enemyC1 = eC1;
+        A2 = a2; enemyA2 = eA2;
+        B2 = b2; enemyB2 = eB2;
+        C2 = c2; enemyC2 = eC2;
     }
 }

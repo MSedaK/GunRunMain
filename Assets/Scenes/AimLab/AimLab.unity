@@ -1556,6 +1556,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 565381176}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 565381180}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &565381175 stripped
 GameObject:
@@ -1579,6 +1583,22 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!114 &565381180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565381175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e797830be3ba1b146bff4aa0cfef16fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 100
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+    type: 3}
+  hitSound: {fileID: 0}
 --- !u!1 &589265073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,6 +3020,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1303204615}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1303204619}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &1303204614 stripped
 GameObject:
@@ -3023,6 +3047,22 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!114 &1303204619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303204614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e797830be3ba1b146bff4aa0cfef16fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 100
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+    type: 3}
+  hitSound: {fileID: 0}
 --- !u!4 &1336050736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1483132742354894387, guid: df322b73ee6eb974b8f36b84756a002f,
@@ -3120,6 +3160,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1356266282}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1356266286}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &1356266281 stripped
 GameObject:
@@ -3143,6 +3187,22 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!114 &1356266286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356266281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e797830be3ba1b146bff4aa0cfef16fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 100
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+    type: 3}
+  hitSound: {fileID: 0}
 --- !u!1 &1411298299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,6 +3364,9 @@ MonoBehaviour:
   hapticStrength: 0.5
   bulletHitSound: {fileID: 0}
   damageEffectPrefab: {fileID: 0}
+  maxAmmo: 20
+  ammoText: {fileID: 0}
+  ammoUI: {fileID: 0}
 --- !u!65 &1520961233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3595,6 +3658,9 @@ MonoBehaviour:
   hapticStrength: 0.5
   bulletHitSound: {fileID: 0}
   damageEffectPrefab: {fileID: 0}
+  maxAmmo: 20
+  ammoText: {fileID: 0}
+  ammoUI: {fileID: 0}
 --- !u!95 &1557148723
 Animator:
   serializedVersion: 5
@@ -3956,6 +4022,9 @@ MonoBehaviour:
   hapticStrength: 0.5
   bulletHitSound: {fileID: 0}
   damageEffectPrefab: {fileID: 0}
+  maxAmmo: 20
+  ammoText: {fileID: 0}
+  ammoUI: {fileID: 0}
 --- !u!82 &1568836275
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4674,6 +4743,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1763556288}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1763556292}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &1763556285 stripped
 GameObject:
@@ -4718,6 +4791,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 26.36654, y: 156.67041, z: 452.36115}
   m_Center: {x: 0.5283994, y: -0.68171567, z: 133.5051}
+--- !u!114 &1763556292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763556285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e797830be3ba1b146bff4aa0cfef16fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 100
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+    type: 3}
+  hitSound: {fileID: 0}
 --- !u!1 &1798341815
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,6 +5303,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2080479818}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2080479822}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &2080479817 stripped
 GameObject:
@@ -5237,6 +5330,22 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!114 &2080479822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080479817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e797830be3ba1b146bff4aa0cfef16fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 100
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+    type: 3}
+  hitSound: {fileID: 0}
 --- !u!4 &2114685576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2480023906595299757, guid: 45c9971cac582af4eacf78204e046e99,

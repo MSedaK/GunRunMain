@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
+using TMPro;  // UI için ekledik
 
 public class GunFire : MonoBehaviour
 {
@@ -17,15 +18,45 @@ public class GunFire : MonoBehaviour
     public float hapticStrength = 0.5f;
 
     [Header("Bullet Settings")]
-    public AudioClip bulletHitSound;  
-    public GameObject damageEffectPrefab;  
+    public AudioClip bulletHitSound;
+    public GameObject damageEffectPrefab;
+
+    [Header("Ammo Settings")]
+    public int maxAmmo = 20; 
+    private int currentAmmo; 
+    public TextMeshProUGUI ammoText; 
+    public GameObject ammoUI;  
+
+    void Start()
+    {
+        currentAmmo = maxAmmo;  
+        UpdateAmmoDisplay();  
+
+        EnemyHealth.OnEnemyKilled += Reload;
+    }
+
+    void OnDestroy()
+    {
+        EnemyHealth.OnEnemyKilled -= Reload;
+    }
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+        if (ammoUI != null)
+        {
+            ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
+        }
+
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0)
         {
             Fire();
             StartCoroutine(HapticFeedback());
+            currentAmmo--;  
+            UpdateAmmoDisplay();  
+        }
+        else if (currentAmmo == 0)
+        {
+            Reload();
         }
     }
 
@@ -68,5 +99,19 @@ public class GunFire : MonoBehaviour
         OVRInput.SetControllerVibration(1, hapticStrength, OVRInput.Controller.RTouch);
         yield return new WaitForSeconds(0.1f);
         OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    }
+
+    public void Reload()
+    {
+        currentAmmo = maxAmmo;
+        UpdateAmmoDisplay();  
+    }
+
+    public void UpdateAmmoDisplay()
+    {
+        if (ammoText != null)
+        {
+            ammoText.text = currentAmmo.ToString();  
+        }
     }
 }
