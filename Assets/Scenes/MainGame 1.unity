@@ -2714,13 +2714,13 @@ MonoBehaviour:
     type: 3}
   portalPrefabC: {fileID: 5558067654107143860, guid: db426e1459566c342b66ce92c641b12b,
     type: 3}
-  jamEnemy: {fileID: 7389302909607681519, guid: 5804638824575d742ae3baec28851a70,
+  jamEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
     type: 3}
-  flyingEnemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+  flyingEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
     type: 3}
   tallEnemy: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
-  middleEnemy: {fileID: 1227626682587902074, guid: 452a5a4aaff96c048a6d676d781ec4b1,
+  middleEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
     type: 3}
   enemySpawnInterval: 1
   delayBeforeFirstWave: 5
