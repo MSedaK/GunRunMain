@@ -2341,6 +2341,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1108407952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &856131810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856131811}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &856131811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856131810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -128.31, y: -0.67, z: 1.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &858550146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2692,15 +2723,14 @@ MonoBehaviour:
   middleEnemy: {fileID: 1227626682587902074, guid: 452a5a4aaff96c048a6d676d781ec4b1,
     type: 3}
   enemySpawnInterval: 1
-  delayBeforeFirstWave: 10
-  waveDelay: 10
+  delayBeforeFirstWave: 5
+  waveDelay: 5
   spawnPointsA:
   - {x: 6.05, y: 1.97, z: -74.83}
   spawnPointsB:
   - {x: 6, y: -3, z: 112}
-  - {x: 6, y: -3, z: 112}
   spawnPointsC:
-  - {x: -123, y: -4.154552, z: 69}
+  - {x: -128.31, y: -0.67, z: 1.43}
 --- !u!1 &1001116741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -6679,3 +6709,4 @@ SceneRoots:
   - {fileID: 1598248143}
   - {fileID: 1043884479}
   - {fileID: 1097889446}
+  - {fileID: 856131811}
