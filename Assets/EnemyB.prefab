@@ -741,7 +741,7 @@ MonoBehaviour:
   headshotMultiplier: 2
   bodyMultiplier: 1
   legsMultiplier: 0.7
-  headCollider: {fileID: 0}
+  headCollider: {fileID: 7317725756591936538}
   bodyCollider: {fileID: 0}
   legsCollider: {fileID: 0}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,

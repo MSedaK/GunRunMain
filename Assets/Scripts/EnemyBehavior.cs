@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     private void OnDisable()
     {
         EnemyHealth.OnEnemyKilled -= OnEnemyKilled; 
-    }
+    }   
 
     private void OnEnemyKilled()
     {
