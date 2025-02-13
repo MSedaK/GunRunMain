@@ -132,6 +132,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7367984890164173507}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 13e81c146f01b66449de5fe7588bcc68,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5772473069757679888}
   m_SourcePrefab: {fileID: 100100000, guid: 13e81c146f01b66449de5fe7588bcc68, type: 3}
 --- !u!4 &3834910447137277127 stripped
 Transform:
@@ -166,6 +170,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &5772473069757679888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500087887521193597}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 181.73352, y: 364.9284, z: 225.20818}
+  m_Center: {x: 37.260586, y: -0.82709855, z: -2.7671342}
 --- !u!1001 &7771321154360960990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,10 +395,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 730331104952776391}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5563279828299346826}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
@@ -398,27 +419,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7771321154360960990}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &730331104952776391
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7428738968409397903}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.797292, y: 4.576508, z: 4.650334}
-  m_Center: {x: 0.083718054, y: 9.710887, z: -0.6857172}
 --- !u!195 &5563279828299346826
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
   headshotMultiplier: 2
   bodyMultiplier: 1
   legsMultiplier: 0.7
-  headCollider: {fileID: 730331104952776391}
+  headCollider: {fileID: 5772473069757679888}
   bodyCollider: {fileID: 0}
   legsCollider: {fileID: 0}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,

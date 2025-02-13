@@ -2691,8 +2691,8 @@ MonoBehaviour:
     type: 3}
   middleEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
     type: 3}
-  enemySpawnInterval: 2
-  delayBeforeFirstWave: 5
+  enemySpawnInterval: 1.5
+  delayBeforeFirstWave: 3
   waveDelay: 5
   spawnPointsA:
   - {x: 5.55, y: 2.18, z: -86.31}
