@@ -39,6 +39,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage, Collider hitCollider)
     {
+        Debug.Log(hitCollider.name + " tarafından vuruldu! Hasar: " + damage);
+
         float adjustedDamage = 0f;
 
         if (hitCollider == headCollider)

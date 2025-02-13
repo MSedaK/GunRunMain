@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -9,7 +7,8 @@ public class TargetBoardHealth : MonoBehaviour
     private float currentHealth;
 
     public GameObject floatingTextPrefab;
-    public AudioClip hitSound; 
+    public GameObject hitEffectPrefab; 
+    public AudioClip hitSound;
     private AudioSource audioSource;
 
     void Start()
@@ -23,6 +22,7 @@ public class TargetBoardHealth : MonoBehaviour
         currentHealth -= damage;
 
         ShowFloatingText(damage, hitPoint);
+        PlayHitEffect(hitPoint);
 
         if (audioSource != null && hitSound != null)
         {
@@ -42,7 +42,16 @@ public class TargetBoardHealth : MonoBehaviour
                 textMesh.text = damage.ToString();
             }
 
-            Destroy(damageText, 1.5f); 
+            Destroy(damageText, 1.5f);
+        }
+    }
+
+    private void PlayHitEffect(Vector3 hitPoint)
+    {
+        if (hitEffectPrefab != null)
+        {
+            GameObject hitEffect = Instantiate(hitEffectPrefab, hitPoint, Quaternion.identity);
+            Destroy(hitEffect, 1.5f);
         }
     }
 }

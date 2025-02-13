@@ -442,6 +442,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 14318613}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 14318619}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &14318612 stripped
 GameObject:
@@ -462,9 +466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: 08e4e6ded71a2a3469114bddd27f5b38,
     type: 3}
-  hitSound: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
 --- !u!65 &14318614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -502,6 +507,33 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!54 &14318619
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14318612}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &20541571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4453513310108136, guid: 835e735ca71bf78459fb2cababd74112,
@@ -1098,6 +1130,9 @@ MonoBehaviour:
   weaponA: {fileID: 0}
   weaponB: {fileID: 0}
   weaponC: {fileID: 0}
+  weaponAImage: {fileID: 0}
+  weaponBImage: {fileID: 0}
+  weaponCImage: {fileID: 0}
   vfxA: {fileID: 0}
   vfxB: {fileID: 0}
   vfxC: {fileID: 0}
@@ -1314,9 +1349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fe4d670e9998549b36fc437f7ecf3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canik: {fileID: 0}
-  Silencer: {fileID: 0}
-  Shotgun: {fileID: 0}
+  Canik: {fileID: 1520961230}
+  Silencer: {fileID: 1568836271}
+  Shotgun: {fileID: 1557148720}
 --- !u!4 &423542543
 Transform:
   m_ObjectHideFlags: 0
@@ -2783,6 +2818,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 757368795}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 757368801}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &757368794 stripped
 GameObject:
@@ -2803,9 +2842,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: 08e4e6ded71a2a3469114bddd27f5b38,
     type: 3}
-  hitSound: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
 --- !u!65 &757368796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2843,6 +2883,33 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!54 &757368801
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757368794}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &787814108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4453513310108136, guid: 835e735ca71bf78459fb2cababd74112,
@@ -4871,6 +4938,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1763556292}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1763556296}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &1763556285 stripped
 GameObject:
@@ -4928,9 +4999,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: 08e4e6ded71a2a3469114bddd27f5b38,
     type: 3}
-  hitSound: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
+--- !u!54 &1763556296
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763556285}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1798341815
 GameObject:
   m_ObjectHideFlags: 0
@@ -5534,6 +5633,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2047712667}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2047712673}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &2047712666 stripped
 GameObject:
@@ -5554,9 +5657,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: 08e4e6ded71a2a3469114bddd27f5b38,
     type: 3}
-  hitSound: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
 --- !u!65 &2047712668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5594,6 +5698,33 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!54 &2047712673
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047712666}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2062356501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5822,6 +5953,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2077397733}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3f5f561b5a22b4388e483df152d11d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2077397739}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3f5f561b5a22b4388e483df152d11d, type: 3}
 --- !u!1 &2077397732 stripped
 GameObject:
@@ -5842,9 +5977,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  floatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
+  floatingTextPrefab: {fileID: 7127387094801913698, guid: 08e4e6ded71a2a3469114bddd27f5b38,
     type: 3}
-  hitSound: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
 --- !u!65 &2077397734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5882,6 +6018,33 @@ MonoBehaviour:
   floatAmount: 0.5
   swaySpeed: 0.8
   swayAmount: 0.3
+--- !u!54 &2077397739
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077397732}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &2114685576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2480023906595299757, guid: 45c9971cac582af4eacf78204e046e99,

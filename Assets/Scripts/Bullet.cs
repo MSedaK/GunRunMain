@@ -8,24 +8,20 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("TargetBoard"))
+        EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
+        if (enemyHealth != null)
         {
-            if (other.CompareTag("Enemy"))
-            {
-                EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-                if (enemyHealth != null)
-                {
-                    enemyHealth.TakeDamage(damage, other);
-                }
-            }
-            else if (other.CompareTag("TargetBoard"))
-            {
-                TargetBoardHealth boardHealth = other.GetComponent<TargetBoardHealth>();
-                if (boardHealth != null)
-                {
-                    boardHealth.TakeDamage(damage, other.ClosestPoint(transform.position));
-                }
-            }
+            Debug.Log("Düþmana hasar verildi: " + damage);
+            enemyHealth.TakeDamage(damage, other);
+            Destroy(gameObject);
+            return;
+        }
+
+        TargetBoardHealth boardHealth = other.GetComponentInParent<TargetBoardHealth>();
+        if (boardHealth != null)
+        {
+            Debug.Log("Target Board'a hasar verildi: " + damage);
+            boardHealth.TakeDamage(damage, other.ClosestPoint(transform.position));
 
             Destroy(gameObject);
         }
