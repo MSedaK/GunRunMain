@@ -7,9 +7,13 @@ public class GunFire : MonoBehaviour
 {
     public float velocity;
     public GameObject bulletPrefab;
+
+    // Barrel ve Target Direction'lar
     public Transform barrel1;
-    public Transform barrel2;
-    public Transform targetDirection;
+    public Transform barrel2; // Ýkinci namlu
+    public Transform targetDirection1;
+    public Transform targetDirection2; // Ýkinci hedef yönü
+
     public AudioSource audioSource;
     public ParticleSystem ps;
     public Animator gunAnimator;
@@ -23,15 +27,18 @@ public class GunFire : MonoBehaviour
     public GameObject damageEffectPrefab;
 
     [Header("Ammo Settings")]
-    public int maxAmmo = 20; 
-    private int currentAmmo; 
-    public TextMeshProUGUI ammoText; 
-    public GameObject ammoUI;  
+    public int maxAmmo = 20;
+    private int currentAmmo;
+    public TextMeshProUGUI ammoText;
+    public GameObject ammoUI;
+
+    [Header("Weapon Settings")]
+    public bool useDualBarrel = false; // Çift namlu ile ateþ edip etmeyeceðini belirler
 
     void Start()
     {
-        currentAmmo = maxAmmo;  
-        UpdateAmmoDisplay();  
+        currentAmmo = maxAmmo;
+        UpdateAmmoDisplay();
 
         EnemyHealth.OnEnemyKilled += Reload;
     }
@@ -52,10 +59,10 @@ public class GunFire : MonoBehaviour
         {
             Fire();
             StartCoroutine(HapticFeedback());
-            currentAmmo--;  
-            UpdateAmmoDisplay();  
+            currentAmmo -= useDualBarrel ? 2 : 1; // Eðer çift barrel kullanýlýyorsa iki mermi eksilt
+            UpdateAmmoDisplay();
         }
-        else if (currentAmmo == 0)
+        else if (currentAmmo <= 0)
         {
             Reload();
         }
@@ -63,9 +70,28 @@ public class GunFire : MonoBehaviour
 
     public void Fire()
     {
-        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel1.position, Quaternion.LookRotation(targetDirection.position - barrel1.position));
+        FireFromBarrel(barrel1, targetDirection1);
 
-        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (targetDirection.position - barrel1.position).normalized;
+        if (useDualBarrel && barrel2 != null && targetDirection2 != null)
+        {
+            FireFromBarrel(barrel2, targetDirection2);
+        }
+
+        if (gunAnimator != null)
+        {
+            gunAnimator.SetTrigger("Shoot");
+        }
+
+        if (ps != null)
+        {
+            ps.Play();
+        }
+    }
+
+    private void FireFromBarrel(Transform barrel, Transform target)
+    {
+        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, Quaternion.LookRotation(target.position - barrel.position));
+        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (target.position - barrel.position).normalized;
 
         Bullet bulletScript = spawnedBullet.GetComponent<Bullet>();
         if (bulletScript != null)
@@ -76,20 +102,10 @@ public class GunFire : MonoBehaviour
 
         audioSource.Play();
 
-        if (gunAnimator != null)
-        {
-            gunAnimator.SetTrigger("Shoot");
-        }
-
         if (muzzleFlashPrefab != null)
         {
-            GameObject flash = Instantiate(muzzleFlashPrefab, barrel1.position, barrel1.rotation);
+            GameObject flash = Instantiate(muzzleFlashPrefab, barrel.position, barrel.rotation);
             Destroy(flash, 0.2f);
-        }
-
-        if (ps != null)
-        {
-            ps.Play();
         }
 
         Destroy(spawnedBullet, 2f);
@@ -105,14 +121,14 @@ public class GunFire : MonoBehaviour
     public void Reload()
     {
         currentAmmo = maxAmmo;
-        UpdateAmmoDisplay();  
+        UpdateAmmoDisplay();
     }
 
     public void UpdateAmmoDisplay()
     {
         if (ammoText != null)
         {
-            ammoText.text = currentAmmo.ToString();  
+            ammoText.text = currentAmmo.ToString();
         }
     }
 }

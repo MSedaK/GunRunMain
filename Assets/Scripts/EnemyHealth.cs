@@ -118,6 +118,12 @@ public class EnemyHealth : MonoBehaviour
             Instantiate(deathVFX, transform.position, Quaternion.identity);
         }
 
-        Destroy(gameObject);
+        if (audioSource != null && damageSFX != null)
+        {
+            audioSource.PlayOneShot(damageSFX);
+        }
+
+        Destroy(gameObject, 0.3f); 
     }
+
 }

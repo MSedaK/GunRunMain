@@ -416,7 +416,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2243756871369797238}
+      addedObject: {fileID: -7959274240020546496}
   m_SourcePrefab: {fileID: 100100000, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0, type: 3}
 --- !u!1 &7428738968409397903 stripped
 GameObject:
@@ -518,7 +518,7 @@ MonoBehaviour:
   legsFloatingTextPrefab: {fileID: 7127387094801913698, guid: c78aa9b28f85a8f4a955fc04b0f716d2,
     type: 3}
   damageSFX: {fileID: 8300000, guid: 867cc66055f5bff4eb5af9ddeb38b1dc, type: 3}
---- !u!82 &2243756871369797238
+--- !u!82 &-7959274240020546496
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
