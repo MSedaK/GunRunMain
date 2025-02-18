@@ -7,7 +7,8 @@ public class GunFire : MonoBehaviour
 {
     public float velocity;
     public GameObject bulletPrefab;
-    public Transform barrel;
+    public Transform barrel1;
+    public Transform barrel2;
     public Transform targetDirection;
     public AudioSource audioSource;
     public ParticleSystem ps;
@@ -62,9 +63,9 @@ public class GunFire : MonoBehaviour
 
     public void Fire()
     {
-        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, Quaternion.LookRotation(targetDirection.position - barrel.position));
+        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel1.position, Quaternion.LookRotation(targetDirection.position - barrel1.position));
 
-        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (targetDirection.position - barrel.position).normalized;
+        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (targetDirection.position - barrel1.position).normalized;
 
         Bullet bulletScript = spawnedBullet.GetComponent<Bullet>();
         if (bulletScript != null)
@@ -82,7 +83,7 @@ public class GunFire : MonoBehaviour
 
         if (muzzleFlashPrefab != null)
         {
-            GameObject flash = Instantiate(muzzleFlashPrefab, barrel.position, barrel.rotation);
+            GameObject flash = Instantiate(muzzleFlashPrefab, barrel1.position, barrel1.rotation);
             Destroy(flash, 0.2f);
         }
 
