@@ -58,6 +58,48 @@ public class PortalSpawner : MonoBehaviour
             new EnemyWaveData(1, middleEnemy, 1, middleEnemy, 1, middleEnemy, 1, tallEnemy, 1, tallEnemy, 1, tallEnemy),
             3f 
         ));
+
+        yield return new WaitForSeconds(delayBeforeFirstWave);
+
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, jamEnemy, 1, jamEnemy, 1, jamEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy),
+            1f
+        ));
+
+        yield return new WaitForSeconds(waveDelay);
+
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, middleEnemy, 1, middleEnemy, 1, middleEnemy),
+            1.5f
+        ));
+
+        yield return new WaitForSeconds(waveDelay);
+
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, middleEnemy, 1, middleEnemy, 1, middleEnemy, 1, tallEnemy, 1, tallEnemy, 1, tallEnemy),
+            3f
+        ));
+
+        yield return new WaitForSeconds(delayBeforeFirstWave);
+
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, jamEnemy, 1, jamEnemy, 1, jamEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy),
+            1f
+        ));
+
+        yield return new WaitForSeconds(waveDelay);
+
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, middleEnemy, 1, middleEnemy, 1, middleEnemy),
+            1.5f
+        ));
+
+        yield return new WaitForSeconds(waveDelay);
+
+        yield return StartCoroutine(SpawnWave(
+            new EnemyWaveData(1, middleEnemy, 1, middleEnemy, 1, middleEnemy, 1, tallEnemy, 1, tallEnemy, 1, tallEnemy),
+            3f
+        ));
     }
 
     void SpawnPortal(GameObject portalPrefab, Vector3 position)

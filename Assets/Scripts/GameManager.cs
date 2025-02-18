@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateTimerUI()
     {
-        timerText.text = "Time: " + Mathf.Ceil(gameTimer).ToString();
+        timerText.text = Mathf.Ceil(gameTimer).ToString();
     }
 
     public void GameOver()
