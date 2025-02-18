@@ -8,6 +8,13 @@ TagManager:
   - Enemy
   - TargetBoard
   - WeaponButton
+  - PlayButton
+  - InfoButton
+  - OptionsButton
+  - RightButton
+  - LeftButton
+  - IncreaseSound
+  - DecreaseSound
   layers:
   - Default
   - TransparentFX
