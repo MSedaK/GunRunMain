@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6cbb95a189f2d6f4798f9b83e0929380, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3abd006774725c94aa6c2e306a977f47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a96a44cbd5f29cb4db0ec7b07916daa6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67cf5bbc6dc747a43b4105aa625998d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3504,8 +3504,10 @@ MonoBehaviour:
   velocity: 20
   bulletPrefab: {fileID: 4858235730514071926, guid: 394911edc6b548747a1abc01b82d45c6,
     type: 3}
-  barrel: {fileID: 1168770723}
-  targetDirection: {fileID: 1719601426}
+  barrel1: {fileID: 0}
+  barrel2: {fileID: 0}
+  targetDirection1: {fileID: 0}
+  targetDirection2: {fileID: 0}
   audioSource: {fileID: 1520961234}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 1520961236}
@@ -3517,6 +3519,7 @@ MonoBehaviour:
   maxAmmo: 20
   ammoText: {fileID: 0}
   ammoUI: {fileID: 0}
+  useDualBarrel: 0
 --- !u!65 &1520961233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3798,8 +3801,10 @@ MonoBehaviour:
   velocity: 20
   bulletPrefab: {fileID: 4858235730514071926, guid: 394911edc6b548747a1abc01b82d45c6,
     type: 3}
-  barrel: {fileID: 601456110}
-  targetDirection: {fileID: 1593654783}
+  barrel1: {fileID: 0}
+  barrel2: {fileID: 0}
+  targetDirection1: {fileID: 0}
+  targetDirection2: {fileID: 0}
   audioSource: {fileID: 1557148724}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 1557148723}
@@ -3811,6 +3816,7 @@ MonoBehaviour:
   maxAmmo: 20
   ammoText: {fileID: 0}
   ammoUI: {fileID: 0}
+  useDualBarrel: 0
 --- !u!95 &1557148723
 Animator:
   serializedVersion: 5
@@ -4162,8 +4168,10 @@ MonoBehaviour:
   velocity: 20
   bulletPrefab: {fileID: 4858235730514071926, guid: 394911edc6b548747a1abc01b82d45c6,
     type: 3}
-  barrel: {fileID: 1178140454}
-  targetDirection: {fileID: 539358940}
+  barrel1: {fileID: 0}
+  barrel2: {fileID: 0}
+  targetDirection1: {fileID: 0}
+  targetDirection2: {fileID: 0}
   audioSource: {fileID: 1568836275}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 1568836277}
@@ -4175,6 +4183,7 @@ MonoBehaviour:
   maxAmmo: 20
   ammoText: {fileID: 0}
   ammoUI: {fileID: 0}
+  useDualBarrel: 0
 --- !u!82 &1568836275
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4460,15 +4469,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650637002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 86.52021, y: 86.52021, z: 17.659702}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalScale: {x: 99.5242, y: 99.5242, z: 20.313955}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 272249375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 137, y: -40.2}
+  m_AnchoredPosition: {x: 137, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1650637004
@@ -5307,15 +5316,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919554540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 87.28159, y: 87.28159, z: 17.815107}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 142.82759, y: 142.82759, z: 29.152641}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 272249375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.3, y: -22.5}
+  m_AnchoredPosition: {x: 15.8, y: -45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1919554542
@@ -5416,8 +5425,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014909770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 86.52021, y: 86.52021, z: 17.659702}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000017997}
+  m_LocalScale: {x: 318.23865, y: 318.23865, z: 64.95592}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 272249375}
