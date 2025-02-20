@@ -748,7 +748,7 @@ MonoBehaviour:
   headCollider: {fileID: 8323801529303494359}
   bodyCollider: {fileID: 0}
   legsCollider: {fileID: 0}
-  deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
+  deathVFX: {fileID: 6898325121035049961, guid: c96d9bbeb8861aa4298824e4be38b5cb,
     type: 3}
   headshotFloatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
     type: 3}
@@ -757,6 +757,7 @@ MonoBehaviour:
   legsFloatingTextPrefab: {fileID: 7127387094801913698, guid: c78aa9b28f85a8f4a955fc04b0f716d2,
     type: 3}
   damageSFX: {fileID: 8300000, guid: 024d7c4e076aec745ae91618e8f44f36, type: 3}
+  deathSFX: {fileID: 0}
 --- !u!82 &7953985913148112249
 AudioSource:
   m_ObjectHideFlags: 0
@@ -767,7 +768,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 024d7c4e076aec745ae91618e8f44f36, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

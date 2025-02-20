@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject legsFloatingTextPrefab;
 
     public AudioClip damageSFX;
+    public AudioClip deathSFX; 
     private AudioSource audioSource;
 
     private GunFire gunFire;
@@ -118,12 +119,19 @@ public class EnemyHealth : MonoBehaviour
             Instantiate(deathVFX, transform.position, Quaternion.identity);
         }
 
-        if (audioSource != null && damageSFX != null)
+        if (audioSource != null)
         {
-            audioSource.PlayOneShot(damageSFX);
+            if (deathSFX != null)
+            {
+                audioSource.PlayOneShot(deathSFX); 
+            }
+
+            if (damageSFX != null)
+            {
+                audioSource.PlayOneShot(damageSFX);
+            }
         }
 
-        Destroy(gameObject, 0.3f); 
+        Destroy(gameObject, 0.5f); 
     }
-
 }

@@ -644,7 +644,7 @@ MonoBehaviour:
   headCollider: {fileID: 3358030305517442829}
   bodyCollider: {fileID: 3605294741769963262}
   legsCollider: {fileID: 409793324004042887}
-  deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
+  deathVFX: {fileID: 6898325121035049961, guid: c96d9bbeb8861aa4298824e4be38b5cb,
     type: 3}
   headshotFloatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
     type: 3}
@@ -653,6 +653,7 @@ MonoBehaviour:
   legsFloatingTextPrefab: {fileID: 7127387094801913698, guid: c78aa9b28f85a8f4a955fc04b0f716d2,
     type: 3}
   damageSFX: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
+  deathSFX: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
 --- !u!82 &-2040925210178826460
 AudioSource:
   m_ObjectHideFlags: 0
