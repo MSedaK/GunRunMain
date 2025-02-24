@@ -38,8 +38,7 @@ public class UIBulletCollision : MonoBehaviour
         }
         else if (buttonCollider.CompareTag("InfoButton")) 
         {
-            //ShowPanel(infoPanel);
-            infoPanel.SetActive(true);
+            ShowPanel(infoPanel);
         }
         else if (buttonCollider.CompareTag("OptionsButton")) 
         {
@@ -50,14 +49,14 @@ public class UIBulletCollision : MonoBehaviour
             ShowPanel(mainMenuPanel);
         }
 
-        Destroy(other.gameObject); 
+        //Destroy(other.gameObject); 
     }
 
     private void ShowPanel(GameObject panelToShow)
     {
         if (mainMenuPanel) mainMenuPanel.SetActive(false);
         if (infoPanel) infoPanel.SetActive(false);
-        if (optionsPanel) optionsPanel.SetActive(false);
+        if (optionsPanel) optionsPanel.SetActive(false); 
 
         if (panelToShow)
         {
