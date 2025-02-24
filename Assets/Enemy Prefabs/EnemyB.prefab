@@ -757,7 +757,7 @@ MonoBehaviour:
   legsFloatingTextPrefab: {fileID: 7127387094801913698, guid: c78aa9b28f85a8f4a955fc04b0f716d2,
     type: 3}
   damageSFX: {fileID: 8300000, guid: 024d7c4e076aec745ae91618e8f44f36, type: 3}
-  deathSFX: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
 --- !u!82 &7953985913148112249
 AudioSource:
   m_ObjectHideFlags: 0

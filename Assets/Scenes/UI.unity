@@ -2339,6 +2339,7 @@ RectTransform:
   - {fileID: 762398425}
   - {fileID: 1029786158}
   - {fileID: 1943558136}
+  - {fileID: 1092491080}
   m_Father: {fileID: 1745996864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3169,6 +3170,7 @@ GameObject:
   - component: {fileID: 1083481730}
   - component: {fileID: 1083481729}
   - component: {fileID: 1083481732}
+  - component: {fileID: 1083481733}
   m_Layer: 0
   m_Name: Play (1)
   m_TagString: PlayButton
@@ -3311,6 +3313,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 160.84952, y: 29.10605, z: 9.833709}
   m_Center: {x: 0.18742175, y: -0.6097132, z: -1.4369462}
+--- !u!114 &1083481733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083481727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574fcc48f757ed64bb8d0911168c5276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuPanel: {fileID: 372604639}
+  infoPanel: {fileID: 762398424}
+  optionsPanel: {fileID: 1029786157}
+  countdownTextObj: {fileID: 1943558135}
+  gameSceneName: MainGame 1
+  countdownTime: 5
 --- !u!1 &1087723263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,12 +3387,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092491079}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.79}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 500, y: 500, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 689137375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1092491081
 MonoBehaviour:
@@ -7052,8 +7072,10 @@ MonoBehaviour:
   velocity: 20
   bulletPrefab: {fileID: 4858235730514071926, guid: 394911edc6b548747a1abc01b82d45c6,
     type: 3}
-  barrel: {fileID: 1240140240}
-  targetDirection: {fileID: 776307975}
+  barrel1: {fileID: 1240140240}
+  barrel2: {fileID: 0}
+  targetDirection1: {fileID: 776307975}
+  targetDirection2: {fileID: 0}
   audioSource: {fileID: 1796518478}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 1796518480}
@@ -7065,6 +7087,7 @@ MonoBehaviour:
   maxAmmo: 20
   ammoText: {fileID: 495933651}
   ammoUI: {fileID: 1619912100}
+  useDualBarrel: 0
 --- !u!65 &1796518477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8294,6 +8317,7 @@ GameObject:
   - component: {fileID: 2096847737}
   - component: {fileID: 2096847736}
   - component: {fileID: 2096847739}
+  - component: {fileID: 2096847740}
   m_Layer: 0
   m_Name: Info (1)
   m_TagString: InfoButton
@@ -8364,19 +8388,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2096847737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowWeapons
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2096847737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8436,6 +8448,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 158.77036, y: 28.774393, z: 6.77347}
   m_Center: {x: -0.3987296, y: -0.21216513, z: -0.2391134}
+--- !u!114 &2096847740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096847734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574fcc48f757ed64bb8d0911168c5276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuPanel: {fileID: 372604639}
+  infoPanel: {fileID: 762398424}
+  optionsPanel: {fileID: 1029786157}
+  countdownTextObj: {fileID: 1943558135}
+  gameSceneName: MainGame 1
+  countdownTime: 5
 --- !u!1 &2123294262
 GameObject:
   m_ObjectHideFlags: 0
@@ -8519,6 +8549,5 @@ SceneRoots:
   - {fileID: 1745996862}
   - {fileID: 212549542}
   - {fileID: 1400393184}
-  - {fileID: 1092491080}
   - {fileID: 599752885}
   - {fileID: 2021510079}

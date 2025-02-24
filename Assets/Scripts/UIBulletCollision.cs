@@ -36,11 +36,12 @@ public class UIBulletCollision : MonoBehaviour
         {
             StartCoroutine(StartGameCountdown());
         }
-        else if (buttonCollider.CompareTag("InfoButtonTag")) 
+        else if (buttonCollider.CompareTag("InfoButton")) 
         {
-            ShowPanel(infoPanel);
+            //ShowPanel(infoPanel);
+            infoPanel.SetActive(true);
         }
-        else if (buttonCollider.CompareTag("OptionsButtonTag")) 
+        else if (buttonCollider.CompareTag("OptionsButton")) 
         {
             ShowPanel(optionsPanel);
         }
