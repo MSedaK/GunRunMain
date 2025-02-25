@@ -441,6 +441,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8821155080224466411}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 6885560577140114106}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
         type: 3}
@@ -458,10 +462,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -2040925210178826460}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 08696641078ea244aa11934da13d994c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8821155080224466411}
   m_SourcePrefab: {fileID: 100100000, guid: 08696641078ea244aa11934da13d994c, type: 3}
 --- !u!4 &7407064898151173116 stripped
 Transform:
@@ -538,6 +538,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0397477, y: 2.1777, z: 2.1015515}
   m_Center: {x: 0.08932471, y: 3.6590724, z: 0.356574}
+--- !u!65 &8821155080224466411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890586833633972550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0841246, y: 3.0762155, z: 2.349275}
+  m_Center: {x: 0.058873177, y: 1.0381078, z: 0.29658416}
 --- !u!195 &6885560577140114106
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -573,7 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6885560577140114106}
-  speed: 5
+  speed: 2.5
   speedIncrease1: 1.5
   speedIncrease2: 2
 --- !u!54 &-5109993789153487798
@@ -620,7 +641,7 @@ MonoBehaviour:
   headshotMultiplier: 2
   bodyMultiplier: 1
   legsMultiplier: 0.7
-  headCollider: {fileID: 3358030305517442829}
+  headCollider: {fileID: 3605294741769963262}
   bodyCollider: {fileID: 3605294741769963262}
   legsCollider: {fileID: 8821155080224466411}
   deathVFX: {fileID: 6898325121035049961, guid: c96d9bbeb8861aa4298824e4be38b5cb,
@@ -729,27 +750,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &8821155080224466411
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7890586833633972550}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0841246, y: 3.0762155, z: 2.349275}
-  m_Center: {x: 0.058873177, y: 1.0381078, z: 0.29658416}
 --- !u!1001 &7273604127835545497
 PrefabInstance:
   m_ObjectHideFlags: 0

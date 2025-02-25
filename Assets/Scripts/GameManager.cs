@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject restartCanvas;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI timerText; 
+    public TextMeshProUGUI timerText;
+    public AudioSource backgroundMusic; 
 
     private float gameTimer;
     public float gameDuration = 360f;
-    private int score = 0; 
+    private int score = 0;
 
     private void Awake()
     {
@@ -23,8 +24,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameTimer = gameDuration; 
+        gameTimer = gameDuration;
         UpdateTimerUI();
+
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.Play();
+        }
     }
 
     private void Update()
@@ -44,8 +50,8 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int damage)
     {
-        score += damage; 
-        scoreText.text = score.ToString(); 
+        score += damage;
+        scoreText.text = score.ToString();
     }
 
     private void UpdateTimerUI()
@@ -57,6 +63,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         restartCanvas.SetActive(true);
+
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.Stop();
+        }
     }
 
     public void RestartGame()
