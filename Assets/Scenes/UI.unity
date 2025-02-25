@@ -428,8 +428,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1 &37401925
 GameObject:
@@ -767,6 +768,7 @@ GameObject:
   - component: {fileID: 164498536}
   - component: {fileID: 164498535}
   - component: {fileID: 164498538}
+  - component: {fileID: 164498539}
   m_Layer: 0
   m_Name: MinusButtonSound
   m_TagString: IncreaseSound
@@ -907,7 +909,20 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 157.80768, y: 29.7908, z: 28.902582}
-  m_Center: {x: -0.63246864, y: 0.03700333, z: 5.4491973}
+  m_Center: {x: 0.21, y: 0.23, z: 5.4491973}
+--- !u!114 &164498539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164498533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fbaf4ea51f9db4cbb21ad48f7a77be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeStep: 0.5
 --- !u!1 &174794059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1136,7 @@ GameObject:
   - component: {fileID: 235374734}
   - component: {fileID: 235374733}
   - component: {fileID: 235374736}
+  - component: {fileID: 235374737}
   m_Layer: 0
   m_Name: MinusButtonMusic
   m_TagString: IncreaseSound
@@ -1249,7 +1265,20 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 159.19662, y: 30.021524, z: 24.733295}
-  m_Center: {x: -1.3248124, y: -0.026492715, z: 3.608341}
+  m_Center: {x: 0.65, y: 0.64, z: 3.608341}
+--- !u!114 &235374737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235374731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fbaf4ea51f9db4cbb21ad48f7a77be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeStep: 0.5
 --- !u!1 &256560285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2037,141 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495933649}
   m_CullTransparentMesh: 1
+--- !u!1 &513949462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 513949463}
+  - component: {fileID: 513949465}
+  - component: {fileID: 513949464}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &513949463
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513949462}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 689137375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &513949464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513949462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9e1a2b2bd2b41e84491bb55058b3842f, type: 2}
+  m_sharedMaterial: {fileID: -5625019351856145523, guid: 9e1a2b2bd2b41e84491bb55058b3842f,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &513949465
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513949462}
+  m_CullTransparentMesh: 1
 --- !u!1 &541234886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,10 +2568,10 @@ RectTransform:
   m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 513949463}
   - {fileID: 372604640}
   - {fileID: 762398425}
   - {fileID: 1029786158}
-  - {fileID: 1943558136}
   - {fileID: 1092491080}
   m_Father: {fileID: 1745996864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3447,8 +3611,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 513949462}
   gameSceneName: MainGame 1
+  gameSceneIndex: 1
   countdownTime: 5
 --- !u!1 &1087723263
 GameObject:
@@ -3528,8 +3693,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1001 &1098713318
 PrefabInstance:
@@ -3621,6 +3787,7 @@ GameObject:
   - component: {fileID: 1101825553}
   - component: {fileID: 1101825552}
   - component: {fileID: 1101825555}
+  - component: {fileID: 1101825556}
   m_Layer: 0
   m_Name: RightArrow
   m_TagString: RightButton
@@ -3749,7 +3916,23 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 136.42264, y: 28.911188, z: 49.788754}
-  m_Center: {x: -3.7876287, y: -1.1419796, z: 2.9067738}
+  m_Center: {x: 1.46, y: 0.87, z: 2.9067738}
+--- !u!114 &1101825556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101825550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff364d032f765d42b92a793ad430af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPanels:
+  - {fileID: 1980819712}
+  - {fileID: 1921931839}
+  - {fileID: 2123294262}
 --- !u!1001 &1108407952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4191,8 +4374,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 513949462}
   gameSceneName: MainGame 1
+  gameSceneIndex: 1
   countdownTime: 5
 --- !u!1 &1218082651
 GameObject:
@@ -4207,6 +4391,7 @@ GameObject:
   - component: {fileID: 1218082654}
   - component: {fileID: 1218082653}
   - component: {fileID: 1218082656}
+  - component: {fileID: 1218082657}
   m_Layer: 0
   m_Name: LeftArrow
   m_TagString: LeftButton
@@ -4347,7 +4532,23 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 142.15143, y: 28.48454, z: 17.201017}
-  m_Center: {x: -5.7463374, y: 0.3052234, z: 2.9669645}
+  m_Center: {x: 0.65, y: 1.57, z: 2.9669645}
+--- !u!114 &1218082657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218082651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff364d032f765d42b92a793ad430af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPanels:
+  - {fileID: 1980819712}
+  - {fileID: 1921931839}
+  - {fileID: 2123294262}
 --- !u!1 &1233856836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,8 +5174,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1 &1317071808
 GameObject:
@@ -5147,8 +5349,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 513949462}
   gameSceneName: MainGame 1
+  gameSceneIndex: 1
   countdownTime: 5
 --- !u!1 &1364230847
 GameObject:
@@ -5163,6 +5366,7 @@ GameObject:
   - component: {fileID: 1364230850}
   - component: {fileID: 1364230849}
   - component: {fileID: 1364230852}
+  - component: {fileID: 1364230853}
   m_Layer: 0
   m_Name: PlusButtonMusic
   m_TagString: DecreaseSound
@@ -5303,7 +5507,20 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 159.29338, y: 29.947918, z: 23.870298}
-  m_Center: {x: -0.2897889, y: -0.037592918, z: -4.0018797}
+  m_Center: {x: 1.35, y: 0.07, z: 0.35}
+--- !u!114 &1364230853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364230847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fbaf4ea51f9db4cbb21ad48f7a77be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeStep: 0.5
 --- !u!1 &1380174055
 GameObject:
   m_ObjectHideFlags: 0
@@ -5846,8 +6063,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1 &1527373027
 GameObject:
@@ -6980,8 +7198,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1001 &1796518473
 PrefabInstance:
@@ -7785,8 +8004,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1 &1915638343
 GameObject:
@@ -7998,186 +8218,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921931839}
   m_CullTransparentMesh: 1
---- !u!1 &1943558135
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1943558136}
-  - component: {fileID: 1943558137}
-  m_Layer: 0
-  m_Name: CountDown
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1943558136
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943558135}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1961168959}
-  m_Father: {fileID: 689137375}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1943558137
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943558135}
-  m_CullTransparentMesh: 1
---- !u!1 &1961168958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1961168959}
-  - component: {fileID: 1961168961}
-  - component: {fileID: 1961168960}
-  m_Layer: 0
-  m_Name: Sound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1961168959
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961168958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.155008, y: 2.0472577, z: 2.155008}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1943558136}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 1}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1961168960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961168958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 5
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e1a2b2bd2b41e84491bb55058b3842f, type: 2}
-  m_sharedMaterial: {fileID: -5625019351856145523, guid: 9e1a2b2bd2b41e84491bb55058b3842f,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1961168961
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961168958}
-  m_CullTransparentMesh: 1
 --- !u!1 &1980819712
 GameObject:
   m_ObjectHideFlags: 0
@@ -8342,6 +8382,7 @@ GameObject:
   - component: {fileID: 2043233138}
   - component: {fileID: 2043233137}
   - component: {fileID: 2043233140}
+  - component: {fileID: 2043233141}
   m_Layer: 0
   m_Name: PlusButtonSound
   m_TagString: DecreaseSound
@@ -8482,7 +8523,20 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 158.6919, y: 30.0017, z: 44.725307}
-  m_Center: {x: -0.021468455, y: -0.02837349, z: -3.5844176}
+  m_Center: {x: 1.83, y: 0.38, z: 0.5}
+--- !u!114 &2043233141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043233135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fbaf4ea51f9db4cbb21ad48f7a77be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeStep: 0.5
 --- !u!1 &2052145309
 GameObject:
   m_ObjectHideFlags: 0
@@ -8704,8 +8758,9 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 1943558135}
+  countdownTextObj: {fileID: 0}
   gameSceneName: MainGame 1
+  gameSceneIndex: -1
   countdownTime: 5
 --- !u!1 &2123294262
 GameObject:
