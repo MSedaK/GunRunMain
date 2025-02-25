@@ -25,12 +25,10 @@ public class EnemyHealth : MonoBehaviour
     public GameObject legsFloatingTextPrefab;
 
     public AudioClip damageSFX;
-    public AudioClip deathSFX; 
+    public AudioClip deathSFX;
     private AudioSource audioSource;
 
     private GunFire gunFire;
-
-    public Collider[] legsColliders;
 
     void Start()
     {
@@ -56,10 +54,10 @@ public class EnemyHealth : MonoBehaviour
             adjustedDamage = damage * bodyMultiplier;
             ShowFloatingText(adjustedDamage, bodyCollider, bodyFloatingTextPrefab);
         }
-        else if (Array.Exists(legsColliders, collider => collider == hitCollider))
+        else if (hitCollider == legsCollider)
         {
             adjustedDamage = damage * legsMultiplier;
-            ShowFloatingText(adjustedDamage, hitCollider, legsFloatingTextPrefab);
+            ShowFloatingText(adjustedDamage, legsCollider, legsFloatingTextPrefab);
         }
         else
         {
@@ -116,27 +114,24 @@ public class EnemyHealth : MonoBehaviour
             gunFire.Reload();
         }
 
-        if (agent != null) agent.enabled = false;
-        Collider[] colliders = GetComponentsInChildren<Collider>();
-        foreach (Collider col in colliders) col.enabled = false;
-
-        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer mesh in meshRenderers) mesh.enabled = false;
-
         if (deathVFX != null)
         {
-            GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
-            Destroy(vfx, 2f); 
+            Instantiate(deathVFX, transform.position, Quaternion.identity);
         }
 
-        float sfxDuration = 0f;
-        if (audioSource != null && deathSFX != null)
+        if (audioSource != null)
         {
-            audioSource.PlayOneShot(deathSFX);
-            sfxDuration = deathSFX.length;
+            if (deathSFX != null)
+            {
+                audioSource.PlayOneShot(deathSFX);
+            }
+
+            if (damageSFX != null)
+            {
+                audioSource.PlayOneShot(damageSFX);
+            }
         }
 
-        Destroy(gameObject, Mathf.Max(sfxDuration, 2f));
+        Destroy(gameObject, 0.4f);
     }
-
 }
