@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
-using TMPro;  
+using TMPro;  // UI için ekledik
 
 public class GunFire : MonoBehaviour
 {
     public float velocity;
     public GameObject bulletPrefab;
 
+    // Barrel ve Target Direction'lar
     public Transform barrel1;
-    public Transform barrel2; 
+    public Transform barrel2; // Ýkinci namlu
     public Transform targetDirection1;
-    public Transform targetDirection2;
+    public Transform targetDirection2; // Ýkinci hedef yönü
 
     public AudioSource audioSource;
     public ParticleSystem ps;
@@ -32,13 +33,7 @@ public class GunFire : MonoBehaviour
     public GameObject ammoUI;
 
     [Header("Weapon Settings")]
-    public bool useDualBarrel = false;
-
-    [Header("Fire Settings")]
-    public float fireCooldown = 0.5f; 
-    private bool canFire = true;
-    private Coroutine fireCooldownCoroutine;
-
+    public bool useDualBarrel = false; // Çift namlu ile ateþ edip etmeyeceðini belirler
 
     void Start()
     {
@@ -60,27 +55,18 @@ public class GunFire : MonoBehaviour
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && canFire)
-    {
-        Fire();
-        StartCoroutine(HapticFeedback());
-        currentAmmo -= useDualBarrel ? 2 : 1;
-        UpdateAmmoDisplay();
-        canFire = false;
-        fireCooldownCoroutine = StartCoroutine(FireCooldown());
-    }
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0)
+        {
+            Fire();
+            StartCoroutine(HapticFeedback());
+            currentAmmo -= useDualBarrel ? 2 : 1; // Eðer çift barrel kullanýlýyorsa iki mermi eksilt
+            UpdateAmmoDisplay();
+        }
         else if (currentAmmo <= 0)
         {
             Reload();
         }
     }
-
-    private IEnumerator FireCooldown()
-    {
-        yield return new WaitForSeconds(fireCooldown);
-        canFire = true;
-    }
-
 
     public void Fire()
     {
