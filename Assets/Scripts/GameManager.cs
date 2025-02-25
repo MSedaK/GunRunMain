@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int damage)
     {
         score += damage; 
-        scoreText.text = "Score: " + score; 
+        scoreText.text = score.ToString(); 
     }
 
     private void UpdateTimerUI()

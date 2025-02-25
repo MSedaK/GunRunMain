@@ -33,7 +33,13 @@ public class GunFire : MonoBehaviour
     public GameObject ammoUI;
 
     [Header("Weapon Settings")]
-    public bool useDualBarrel = false; 
+    public bool useDualBarrel = false;
+
+    [Header("Fire Settings")]
+    public float fireCooldown = 0.5f; 
+    private bool canFire = true; 
+    private Coroutine fireCooldownCoroutine; 
+
 
     void Start()
     {
@@ -61,11 +67,19 @@ public class GunFire : MonoBehaviour
             StartCoroutine(HapticFeedback());
             currentAmmo -= useDualBarrel ? 2 : 1; 
             UpdateAmmoDisplay();
+            canFire = false;
+            fireCooldownCoroutine = StartCoroutine(FireCooldown());
         }
         else if (currentAmmo <= 0)
         {
             Reload();
         }
+    }
+
+    private IEnumerator FireCooldown()
+    {
+        yield return new WaitForSeconds(fireCooldown);
+        canFire = true;
     }
 
     public void Fire()

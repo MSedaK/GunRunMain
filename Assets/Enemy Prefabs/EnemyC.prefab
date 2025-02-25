@@ -552,7 +552,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 8
+  m_StoppingDistance: 9
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -633,8 +633,6 @@ MonoBehaviour:
     type: 3}
   damageSFX: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
   deathSFX: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
-  legsColliders:
-  - {fileID: 8821155080224466411}
 --- !u!82 &-2040925210178826460
 AudioSource:
   m_ObjectHideFlags: 0
@@ -645,9 +643,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3abb0569b18777e4e8b800f4d99463ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.682
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -80,9 +80,9 @@ MonoBehaviour:
   barrel2: {fileID: 0}
   targetDirection1: {fileID: 1035974652741622666}
   targetDirection2: {fileID: 0}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6724985295172540221}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
-  gunAnimator: {fileID: 0}
+  gunAnimator: {fileID: 3578077172020105891}
   muzzleFlashPrefab: {fileID: 9156974889021201898, guid: e149d31226196b14cacf4499b808e7f3,
     type: 3}
   hapticStrength: 0.5

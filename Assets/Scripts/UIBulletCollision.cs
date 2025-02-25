@@ -9,18 +9,18 @@ public class UIBulletCollision : MonoBehaviour
     public GameObject infoPanel;
     public GameObject optionsPanel;
     public GameObject countdownTextObj;
-    public string gameSceneName = "GameScene"; 
-    public int gameSceneIndex = -1; 
+    public string gameSceneName = "GameScene";
+    public int gameSceneIndex = 1;
     public float countdownTime = 5f;
 
-    private TMP_Text countdownText; 
+    private TMP_Text countdownText;
 
     private void Start()
     {
         if (countdownTextObj != null)
         {
-            countdownText = countdownTextObj.GetComponent<TMP_Text>(); 
-            countdownTextObj.SetActive(false); 
+            countdownText = countdownTextObj.GetComponent<TMP_Text>();
+            countdownTextObj.SetActive(false);
         }
         else
         {
@@ -32,9 +32,9 @@ public class UIBulletCollision : MonoBehaviour
     {
         if (!other.CompareTag("Bullet")) return;
 
-        Debug.Log("Bullet hit: " + this.gameObject.name); 
+        Debug.Log("Bullet hit: " + this.gameObject.name);
 
-        if (gameObject.CompareTag("PlayButton")) 
+        if (gameObject.CompareTag("PlayButton"))
         {
             StartCoroutine(StartGameCountdown());
         }
@@ -50,8 +50,11 @@ public class UIBulletCollision : MonoBehaviour
         {
             ShowPanel(mainMenuPanel);
         }
-
-        //Destroy(other.gameObject); 
+        else if (gameObject.CompareTag("TrainingLabButton"))
+        {
+            Debug.Log("Loading AimLab scene...");
+            SceneManager.LoadScene("AimLab");
+        }
     }
 
     private void ShowPanel(GameObject panelToShow)
@@ -67,8 +70,8 @@ public class UIBulletCollision : MonoBehaviour
     {
         Debug.Log("Countdown started");
 
-        ShowPanel(null); 
-        countdownTextObj.SetActive(true); 
+        ShowPanel(null);
+        countdownTextObj.SetActive(true);
 
         if (countdownText == null)
         {
@@ -79,12 +82,14 @@ public class UIBulletCollision : MonoBehaviour
         float timeLeft = countdownTime;
         while (timeLeft > 0)
         {
+            Debug.Log($"Time Left: {timeLeft}");  // Konsola geri sayýmý yazdýrýyoruz
             countdownText.text = timeLeft.ToString("0");
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f);  // 1 saniye beklemesi lazým
             timeLeft--;
         }
 
         countdownText.text = "GO!";
+        Debug.Log("Countdown finished!");
         yield return new WaitForSeconds(1f);
 
         Debug.Log("Loading scene...");
@@ -98,4 +103,5 @@ public class UIBulletCollision : MonoBehaviour
             SceneManager.LoadScene(gameSceneName);
         }
     }
+
 }

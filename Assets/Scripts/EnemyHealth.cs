@@ -114,24 +114,28 @@ public class EnemyHealth : MonoBehaviour
             gunFire.Reload();
         }
 
+        if (agent != null) agent.enabled = false;
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders) col.enabled = false;
+
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mesh in meshRenderers) mesh.enabled = false;
+
         if (deathVFX != null)
         {
-            Instantiate(deathVFX, transform.position, Quaternion.identity);
+            GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
+            Destroy(vfx, 2f); 
         }
 
-        if (audioSource != null)
+        float sfxDuration = 0f;
+        if (audioSource != null && deathSFX != null)
         {
-            if (deathSFX != null)
-            {
-                audioSource.PlayOneShot(deathSFX);
-            }
-
-            if (damageSFX != null)
-            {
-                audioSource.PlayOneShot(damageSFX);
-            }
+            audioSource.PlayOneShot(deathSFX);
+            sfxDuration = deathSFX.length;
         }
 
-        Destroy(gameObject, 0.4f);
+        Destroy(gameObject, Mathf.Max(sfxDuration, 2f));
     }
+
+
 }

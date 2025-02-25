@@ -15,6 +15,9 @@ TagManager:
   - LeftButton
   - IncreaseSound
   - DecreaseSound
+  - TrainingLabButton
+  - RetryButton
+  - BackToMainMenu
   layers:
   - Default
   - TransparentFX

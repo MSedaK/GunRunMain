@@ -1,22 +1,30 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BulletCollision : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("WeaponButton")) // Butona temas etti mi?
+        if (other.CompareTag("WeaponButton")) 
         {
-            string buttonName = other.name; // Çarpýlan butonun adý
+            string buttonName = other.name; 
 
-            // WeaponSelector script'ine eriþ
             WeaponSelector weaponSelector = FindObjectOfType<WeaponSelector>();
             if (weaponSelector != null)
             {
                 weaponSelector.SelectWeapon(buttonName);
             }
 
-            // Mermiyi yok et
             Destroy(gameObject);
+        }
+
+        if (other.CompareTag("RetryButton"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else if (other.CompareTag("BackToMainMenu"))
+        {
+            SceneManager.LoadScene("UI");
         }
     }
 }
