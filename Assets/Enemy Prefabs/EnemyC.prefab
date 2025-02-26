@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6885560577140114106}
-  speed: 2.5
+  speed: 10
   speedIncrease1: 1.5
   speedIncrease2: 2
 --- !u!54 &-5109993789153487798
@@ -728,7 +728,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.36232, y: 2.3232012, z: 2.180519}
-  m_Center: {x: -0.12362671, y: 3.6349235, z: 0.48391342}
+  m_Center: {x: 0.14, y: 3.6349235, z: 0.48391342}
 --- !u!65 &6269652400985770463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.57341, y: 2.3142931, z: 2.6950607}
-  m_Center: {x: -0.20303345, y: 1.1797489, z: 0.20833969}
+  m_Center: {x: 0.17, y: 1.1797489, z: 0.20833969}
 --- !u!1001 &7273604127835545497
 PrefabInstance:
   m_ObjectHideFlags: 0

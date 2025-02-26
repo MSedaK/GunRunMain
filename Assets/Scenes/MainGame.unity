@@ -627,13 +627,13 @@ PrefabInstance:
         type: 3}
       propertyPath: SceneSettings.SceneJsons.Array.data[0]
       value: 
-      objectReference: {fileID: 11500000, guid: 4a98a8b18029a74418f87aa9dc5fb7f4,
-        type: 3}
+      objectReference: {fileID: 4900000, guid: 5c33e7b3e50fc944889c808743559b6f, type: 3}
     - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44,
         type: 3}
       propertyPath: SceneSettings.SceneJsons.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11500000, guid: 4a98a8b18029a74418f87aa9dc5fb7f4,
+        type: 3}
     - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44,
         type: 3}
       propertyPath: <RoomUpdatedEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
@@ -6782,7 +6782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d9923d717baa8c94f8d2ffee44b9acf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c152d33b512c5f3488fec33f196e10b5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8658,6 +8658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 330169171559280388, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
+      propertyPath: velocity
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 330169171559280388, guid: 838cce0ec0b560242bebc96a38be7940,
+        type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 777044013}
@@ -9114,6 +9119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 09cbef9bb9436e94dbace4919ba7f84b,
+        type: 3}
+      propertyPath: velocity
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6601680754758611970, guid: 09cbef9bb9436e94dbace4919ba7f84b,
         type: 3}

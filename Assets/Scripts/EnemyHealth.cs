@@ -133,7 +133,7 @@ public class EnemyHealth : MonoBehaviour
             sfxDuration = deathSFX.length;
         }
 
-        Destroy(gameObject, Mathf.Max(sfxDuration, 1f));
+        Destroy(gameObject, Mathf.Max(sfxDuration, 0.4f));
     }
 
     private void OnTriggerEnter(Collider other)
