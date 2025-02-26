@@ -8,23 +8,27 @@ public class WeaponManager : MonoBehaviour
     public GameObject weaponA;
     public GameObject weaponB;
     public GameObject weaponC;
+    public GameObject weaponD;
 
     [Header("Weapon UI Images")]
     public Image weaponAImage;
     public Image weaponBImage;
     public Image weaponCImage;
+    public Image weaponDImage;
 
     [Header("Weapon VFX")]
     public GameObject vfxA;
     public GameObject vfxB;
     public GameObject vfxC;
+    public GameObject vfxD;
 
     private int currentWeapon = 0;
     private int enemyKillCount = 0;
 
     [Header("Weapon Switch Settings")]
-    public int killsToWeaponB = 6;
-    public int killsToWeaponC = 8;
+    public int killsToWeaponB = 10;
+    public int killsToWeaponC = 22;
+    public int killsToWeaponD = 36;
     public float vfxDelay = 0.5f;
 
     private void Start()
