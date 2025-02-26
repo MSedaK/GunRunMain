@@ -682,7 +682,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 7.86
-  m_BaseOffset: 0.36
+  m_BaseOffset: 4.57
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5983245924216379642
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: -5425655426325714936}
-  speed: 5
+  speed: 10
   speedIncrease1: 1.5
   speedIncrease2: 2
 --- !u!54 &2005344425693268036
