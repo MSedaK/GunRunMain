@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 50f;
-    public float speed = 20f; // Mermi hýzý
+    public float damage = 100f;
+    public float speed = 20f; 
     public AudioClip hitSound;
     public GameObject damageEffectPrefab;
     private bool isGameOver = false;

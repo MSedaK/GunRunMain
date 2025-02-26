@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.3
+      value: 9.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e81c146f01b66449de5fe7588bcc68,
         type: 3}
@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
@@ -467,8 +467,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 7.41
-  m_BaseOffset: 0.36
+  m_Height: 9.39
+  m_BaseOffset: 11
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &-7569501002151125879
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5563279828299346826}
-  speed: 5
+  speed: 10
   speedIncrease1: 1.5
   speedIncrease2: 2
 --- !u!54 &3543373595666245932
