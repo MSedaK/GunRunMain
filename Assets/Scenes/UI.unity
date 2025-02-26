@@ -428,10 +428,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!1 &37401925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,7 +1822,6 @@ GameObject:
   - component: {fileID: 463060328}
   - component: {fileID: 463060327}
   - component: {fileID: 463060326}
-  - component: {fileID: 463060325}
   m_Layer: 0
   m_Name: TRAINING LAB (2)
   m_TagString: TrainingLabButton
@@ -1853,19 +1849,6 @@ RectTransform:
   m_AnchoredPosition: {x: -257.27, y: -124.9}
   m_SizeDelta: {x: 161.41, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &463060325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463060323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
 --- !u!114 &463060326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1881,10 +1864,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 513949462}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: 1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!65 &463060327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2060,7 +2040,6 @@ GameObject:
   m_Component:
   - component: {fileID: 513949463}
   - component: {fileID: 513949465}
-  - component: {fileID: 513949466}
   - component: {fileID: 513949464}
   m_Layer: 0
   m_Name: Text (TMP)
@@ -2068,7 +2047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &513949463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2108,7 +2087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e1a2b2bd2b41e84491bb55058b3842f, type: 2}
   m_sharedMaterial: {fileID: -5625019351856145523, guid: 9e1a2b2bd2b41e84491bb55058b3842f,
@@ -2186,19 +2165,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513949462}
   m_CullTransparentMesh: 1
---- !u!114 &513949466
+--- !u!1 &529416331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529416333}
+  - component: {fileID: 529416332}
+  m_Layer: 0
+  m_Name: CountDownManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &529416332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513949462}
+  m_GameObject: {fileID: 529416331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
+  m_Script: {fileID: 11500000, guid: dafe7db857723d74ea54c1f4b4103ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
+--- !u!4 &529416333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529416331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1448474, y: 0.056798935, z: 0.06467295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541234886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,6 +2586,7 @@ GameObject:
   - component: {fileID: 689137377}
   - component: {fileID: 689137376}
   - component: {fileID: 689137380}
+  - component: {fileID: 689137381}
   m_Layer: 0
   m_Name: Local Canvas
   m_TagString: Untagged
@@ -2599,6 +2610,7 @@ RectTransform:
   - {fileID: 372604640}
   - {fileID: 762398425}
   - {fileID: 1029786158}
+  - {fileID: 2020998385}
   - {fileID: 1092491080}
   m_Father: {fileID: 1745996864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2689,6 +2701,22 @@ MonoBehaviour:
     m_Bits: 4294967295
   pointer: {fileID: 977683001}
   sortOrder: 0
+--- !u!114 &689137381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689137374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574fcc48f757ed64bb8d0911168c5276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuPanel: {fileID: 372604639}
+  infoPanel: {fileID: 762398424}
+  optionsPanel: {fileID: 1029786157}
+  countdownText: {fileID: 2020998386}
 --- !u!1 &747705050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &762398425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3001,6 +3029,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 09cbef9bb9436e94dbace4919ba7f84b,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4858235730514071926, guid: 23c91020b1c2d7a4aa990b8e7d060f7d,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3296,7 +3330,6 @@ GameObject:
   - component: {fileID: 976558347}
   - component: {fileID: 976558346}
   - component: {fileID: 976558345}
-  - component: {fileID: 976558344}
   m_Layer: 0
   m_Name: TRAINING LAB
   m_TagString: TrainingLabButton
@@ -3324,19 +3357,6 @@ RectTransform:
   m_AnchoredPosition: {x: -257.27, y: -124.9}
   m_SizeDelta: {x: 161.41, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &976558344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976558342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
 --- !u!114 &976558345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3352,10 +3372,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 513949462}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: 1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!65 &976558346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3715,7 +3732,6 @@ GameObject:
   - component: {fileID: 1083481729}
   - component: {fileID: 1083481732}
   - component: {fileID: 1083481733}
-  - component: {fileID: 1083481734}
   m_Layer: 0
   m_Name: Play (1)
   m_TagString: PlayButton
@@ -3873,23 +3889,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 513949462}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: 1
-  countdownTime: 5
---- !u!114 &1083481734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083481727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1087723263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,10 +3968,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: MainGame 1
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 0}
 --- !u!1001 &1098713318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4207,9 +4204,6 @@ MonoBehaviour:
   weaponPanels:
   - {fileID: 1980819712}
   - {fileID: 1921931839}
-  - {fileID: 2123294262}
-  - {fileID: 1921931839}
-  - {fileID: 1980819712}
   - {fileID: 2123294262}
 --- !u!1001 &1108407952
 PrefabInstance:
@@ -4495,7 +4489,6 @@ GameObject:
   - component: {fileID: 1208581267}
   - component: {fileID: 1208581270}
   - component: {fileID: 1208581271}
-  - component: {fileID: 1208581272}
   m_Layer: 0
   m_Name: Play
   m_TagString: PlayButton
@@ -4653,23 +4646,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 513949462}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: 1
-  countdownTime: 5
---- !u!114 &1208581272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208581265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1218082651
 GameObject:
   m_ObjectHideFlags: 0
@@ -4838,12 +4815,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPanels:
-  - {fileID: 1980819712}
-  - {fileID: 1921931839}
   - {fileID: 2123294262}
   - {fileID: 1921931839}
   - {fileID: 1980819712}
-  - {fileID: 2123294262}
 --- !u!1 &1233856836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,10 +5412,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1317071808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5456,7 +5427,6 @@ GameObject:
   - component: {fileID: 1317071810}
   - component: {fileID: 1317071813}
   - component: {fileID: 1317071814}
-  - component: {fileID: 1317071815}
   m_Layer: 0
   m_Name: Play (2)
   m_TagString: PlayButton
@@ -5614,23 +5584,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 513949462}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: 1
-  countdownTime: 5
---- !u!114 &1317071815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317071808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1364230847
 GameObject:
   m_ObjectHideFlags: 0
@@ -6341,10 +6295,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1527373027
 GameObject:
   m_ObjectHideFlags: 0
@@ -6494,7 +6445,6 @@ GameObject:
   - component: {fileID: 1561528712}
   - component: {fileID: 1561528711}
   - component: {fileID: 1561528710}
-  - component: {fileID: 1561528709}
   m_Layer: 0
   m_Name: TRAINING LAB (1)
   m_TagString: TrainingLabButton
@@ -6522,19 +6472,6 @@ RectTransform:
   m_AnchoredPosition: {x: -257.27, y: -124.9}
   m_SizeDelta: {x: 161.41, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1561528709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561528707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39f417625ed55c4d80302b468391571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownText: {fileID: 513949464}
 --- !u!114 &1561528710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6550,10 +6487,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 513949462}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: 1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!65 &1561528711
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7543,10 +7477,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1798385373
 GameObject:
   m_ObjectHideFlags: 0
@@ -7915,10 +7846,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!1 &1915638343
 GameObject:
   m_ObjectHideFlags: 0
@@ -8235,6 +8163,141 @@ Transform:
   m_Children: []
   m_Father: {fileID: 135892983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2020998384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2020998385}
+  - component: {fileID: 2020998387}
+  - component: {fileID: 2020998386}
+  m_Layer: 0
+  m_Name: Countdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2020998385
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020998384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.7016, y: 1.8508, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 689137375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2020998386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020998384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b757c1d942421ca44aa0be239ff25cdd, type: 2}
+  m_sharedMaterial: {fileID: 7873896905698015693, guid: b757c1d942421ca44aa0be239ff25cdd,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2020998387
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020998384}
+  m_CullTransparentMesh: 1
 --- !u!1 &2021510077
 GameObject:
   m_ObjectHideFlags: 0
@@ -8804,10 +8867,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 372604639}
   infoPanel: {fileID: 762398424}
   optionsPanel: {fileID: 1029786157}
-  countdownTextObj: {fileID: 0}
-  gameSceneName: 'MainGame '
-  gameSceneIndex: -1
-  countdownTime: 5
+  countdownText: {fileID: 2020998386}
 --- !u!1 &2123294262
 GameObject:
   m_ObjectHideFlags: 0
@@ -8893,3 +8953,4 @@ SceneRoots:
   - {fileID: 1400393184}
   - {fileID: 599752885}
   - {fileID: 2021510079}
+  - {fileID: 529416333}

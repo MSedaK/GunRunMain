@@ -14,18 +14,18 @@ public class PortalSpawner : MonoBehaviour
     public GameObject middleEnemy;
 
     [Header("Enemy Spawn Settings")]
-    public float enemySpawnInterval = 1.5f; 
+    public float enemySpawnInterval = 1.5f;
     public float delayBeforeFirstWave = 10f;
     public float waveDelay = 5f;
+    public float postWaveSpawnDelay = 5f;
 
     [Header("Portal Spawn Points")]
     public Vector3[] spawnPointsA;
     public Vector3[] spawnPointsB;
     public Vector3[] spawnPointsC;
 
-    private int enemySpawnIndexA = 0;
-    private int enemySpawnIndexB = 0;
-    private int enemySpawnIndexC = 0;
+    private int currentWave = 1;
+    private bool isSpawning = false;
 
     void Start()
     {
@@ -40,66 +40,15 @@ public class PortalSpawner : MonoBehaviour
 
         yield return new WaitForSeconds(delayBeforeFirstWave);
 
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, jamEnemy, 1, jamEnemy, 1, jamEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy),
-            1f 
-        ));
-
-        yield return new WaitForSeconds(waveDelay);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, middleEnemy, 1, middleEnemy, 1, middleEnemy),
-            1.5f 
-        ));
-
-        yield return new WaitForSeconds(waveDelay);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, middleEnemy, 1, middleEnemy, 1, middleEnemy, 1, tallEnemy, 1, tallEnemy, 1, tallEnemy),
-            3f 
-        ));
-
-        yield return new WaitForSeconds(delayBeforeFirstWave);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, jamEnemy, 1, jamEnemy, 1, jamEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy),
-            1f
-        ));
-
-        yield return new WaitForSeconds(waveDelay);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, middleEnemy, 1, middleEnemy, 1, middleEnemy),
-            1.5f
-        ));
-
-        yield return new WaitForSeconds(waveDelay);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, middleEnemy, 1, middleEnemy, 1, middleEnemy, 1, tallEnemy, 1, tallEnemy, 1, tallEnemy),
-            3f
-        ));
-
-        yield return new WaitForSeconds(delayBeforeFirstWave);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, jamEnemy, 1, jamEnemy, 1, jamEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy),
-            1f
-        ));
-
-        yield return new WaitForSeconds(waveDelay);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, flyingEnemy, 1, flyingEnemy, 1, flyingEnemy, 1, middleEnemy, 1, middleEnemy, 1, middleEnemy),
-            1.5f
-        ));
-
-        yield return new WaitForSeconds(waveDelay);
-
-        yield return StartCoroutine(SpawnWave(
-            new EnemyWaveData(1, middleEnemy, 1, middleEnemy, 1, middleEnemy, 1, tallEnemy, 1, tallEnemy, 1, tallEnemy),
-            3f
-        ));
+        while (true)
+        {
+            isSpawning = true;
+            float enemySpeed = GetEnemySpeedForWave(currentWave);
+            yield return StartCoroutine(SpawnWave(new EnemyWaveData(1, jamEnemy, 1, flyingEnemy, 1, middleEnemy, 1, tallEnemy, 1, flyingEnemy, 1, middleEnemy), enemySpeed));
+            isSpawning = false;
+            yield return new WaitForSeconds(postWaveSpawnDelay);
+            currentWave++;
+        }
     }
 
     void SpawnPortal(GameObject portalPrefab, Vector3 position)
@@ -112,21 +61,26 @@ public class PortalSpawner : MonoBehaviour
         Instantiate(portalPrefab, position, rotation);
     }
 
-    IEnumerator SpawnWave(EnemyWaveData waveData, float speedMultiplier)
+    IEnumerator SpawnWave(EnemyWaveData waveData, float enemySpeed)
     {
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A1, waveData.enemyA1, speedMultiplier));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B1, waveData.enemyB1, speedMultiplier));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C1, waveData.enemyC1, speedMultiplier));
+        if (!isSpawning) yield break;
 
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A2, waveData.enemyA2, speedMultiplier));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B2, waveData.enemyB2, speedMultiplier));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C2, waveData.enemyC2, speedMultiplier));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A1, waveData.enemyA1, enemySpeed));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B1, waveData.enemyB1, enemySpeed));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C1, waveData.enemyC1, enemySpeed));
+
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A2, waveData.enemyA2, enemySpeed));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B2, waveData.enemyB2, enemySpeed));
+        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C2, waveData.enemyC2, enemySpeed));
     }
 
-    IEnumerator SpawnEnemiesAtPortal(Vector3[] spawnPoints, int enemyCount, GameObject enemyType, float speedMultiplier)
+    IEnumerator SpawnEnemiesAtPortal(Vector3[] spawnPoints, int enemyCount, GameObject enemyType, float enemySpeed)
     {
+        if (!isSpawning) yield break;
+
         for (int i = 0; i < enemyCount; i++)
         {
+            if (!isSpawning) yield break;
             if (spawnPoints.Length == 0 || enemyType == null) yield break;
 
             Vector3 spawnPos = spawnPoints[i % spawnPoints.Length];
@@ -135,11 +89,16 @@ public class PortalSpawner : MonoBehaviour
             EnemyBehavior enemyBehavior = enemy.GetComponent<EnemyBehavior>();
             if (enemyBehavior != null)
             {
-                enemyBehavior.speed *= speedMultiplier; 
+                enemyBehavior.speed = enemySpeed;
             }
 
-            yield return new WaitForSeconds(enemySpawnInterval); 
+            yield return new WaitForSeconds(enemySpawnInterval);
         }
+    }
+
+    float GetEnemySpeedForWave(int waveNumber)
+    {
+        return 3f + (waveNumber - 1) * 2f;
     }
 }
 

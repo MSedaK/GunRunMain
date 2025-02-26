@@ -8,24 +8,11 @@ public class UIBulletCollision : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject infoPanel;
     public GameObject optionsPanel;
-    public GameObject countdownTextObj;
-    public string gameSceneName = "GameScene";
-    public int gameSceneIndex = 1;
-    public float countdownTime = 5f;
-
-    private TMP_Text countdownText;
+    public TextMeshProUGUI countdownText; // Geri sayým için UI metni
 
     private void Start()
     {
-        if (countdownTextObj != null)
-        {
-            countdownText = countdownTextObj.GetComponent<TMP_Text>();
-            countdownTextObj.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("countdownTextObj is NULL! Assign it in the Inspector.");
-        }
+        if (countdownText) countdownText.gameObject.SetActive(false); // Geri sayým baþlangýçta gizli
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,40 +55,24 @@ public class UIBulletCollision : MonoBehaviour
 
     private IEnumerator StartGameCountdown()
     {
-        Debug.Log("Countdown started");
-
-        ShowPanel(null);
-        countdownTextObj.SetActive(true);
-
-        if (countdownText == null)
+        if (countdownText)
         {
-            Debug.LogError("countdownText is NULL! TMP_Text component is not assigned.");
-            yield break;
-        }
+            countdownText.gameObject.SetActive(true);
 
-        float timeLeft = countdownTime;
-        while (timeLeft > 0)
-        {
-            Debug.Log($"Time Left: {timeLeft}");  // Konsola geri sayýmý yazdýrýyoruz
-            countdownText.text = timeLeft.ToString("0");
-            yield return new WaitForSeconds(1f);  // 1 saniye beklemesi lazým
-            timeLeft--;
-        }
+            for (int i = 5; i > 0; i--)
+            {
+                countdownText.text = "Starting in " + i + "...";
+                yield return new WaitForSeconds(1f);
+            }
 
-        countdownText.text = "GO!";
-        Debug.Log("Countdown finished!");
-        yield return new WaitForSeconds(1f);
-
-        Debug.Log("Loading scene...");
-
-        if (gameSceneIndex >= 0)
-        {
-            SceneManager.LoadScene(gameSceneIndex);
+            countdownText.text = "GO!";
+            yield return new WaitForSeconds(0.5f);
+            SceneManager.LoadScene("MainGame");
         }
         else
         {
-            SceneManager.LoadScene(gameSceneName);
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene("MainGame");
         }
     }
-
 }

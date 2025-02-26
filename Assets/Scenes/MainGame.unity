@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1203,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &482062135
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1212,7 +1212,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482062134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.56}
+  m_LocalPosition: {x: 0, y: 0, z: 181}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1224,7 +1224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.23, y: 60}
+  m_AnchoredPosition: {x: 58, y: 60}
   m_SizeDelta: {x: 542.31, y: 245.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &482062136
@@ -2084,6 +2084,7 @@ GameObject:
   - component: {fileID: 621448710}
   - component: {fileID: 621448709}
   - component: {fileID: 621448711}
+  - component: {fileID: 621448712}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: RetryButton
@@ -2168,8 +2169,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 154.05101, y: 54.374695, z: 17.576529}
-  m_Center: {x: 1.1152477, y: 1.2441539, z: 2.4311867}
+  m_Size: {x: 205.21997, y: 54.374695, z: 612.30475}
+  m_Center: {x: -0.047281187, y: 1.2441536, z: 243.26434}
+--- !u!114 &621448712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621448707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d681700d165be459d42ea93e8a52a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartCanvas: {fileID: 482062134}
+  scoreText: {fileID: 1734365164}
+  timerText: {fileID: 1977108806}
+  timeAndScorePanel: {fileID: 0}
+  backgroundMusic: {fileID: 1598248144}
+  gameDuration: 120
 --- !u!1 &624129841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,9 +3042,10 @@ MonoBehaviour:
     type: 3}
   middleEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
     type: 3}
-  enemySpawnInterval: 1.5
+  enemySpawnInterval: 3
   delayBeforeFirstWave: 3
   waveDelay: 5
+  postWaveSpawnDelay: 5
   spawnPointsA:
   - {x: 5.55, y: 2.18, z: -86.31}
   spawnPointsB:
@@ -5269,6 +5289,7 @@ GameObject:
   - component: {fileID: 1458377586}
   - component: {fileID: 1458377585}
   - component: {fileID: 1458377587}
+  - component: {fileID: 1458377588}
   m_Layer: 5
   m_Name: BackToMainMenu
   m_TagString: BackToMainMenu
@@ -5353,8 +5374,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 154.05101, y: 54.374695, z: 17.576529}
-  m_Center: {x: 1.1152477, y: 1.2441539, z: 2.4311867}
+  m_Size: {x: 154.05101, y: 82.58431, z: 484.8647}
+  m_Center: {x: 1.1143423, y: 5.156312, z: 163.51462}
+--- !u!114 &1458377588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458377583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d681700d165be459d42ea93e8a52a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartCanvas: {fileID: 482062134}
+  scoreText: {fileID: 1734365164}
+  timerText: {fileID: 1977108806}
+  timeAndScorePanel: {fileID: 0}
+  backgroundMusic: {fileID: 1598248144}
+  gameDuration: 120
 --- !u!1 &1471895619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5612,6 +5651,7 @@ MonoBehaviour:
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
   timerText: {fileID: 1977108806}
+  timeAndScorePanel: {fileID: 0}
   backgroundMusic: {fileID: 1598248144}
   gameDuration: 120
 --- !u!4 &1598248143
@@ -6268,7 +6308,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1745996878}
+      addedObject: {fileID: 1745996883}
     - targetCorrespondingSourceObject: {fileID: 100006, guid: 126d619cf4daa52469682f85c1378b4a,
         type: 3}
       insertIndex: -1
@@ -6408,8 +6448,8 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
---- !u!136 &1745996878
-CapsuleCollider:
+--- !u!65 &1745996883
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6426,11 +6466,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.1052847
-  m_Height: 3.4814155
-  m_Direction: 1
-  m_Center: {x: -0.14580083, y: -0.49843037, z: 0.09827757}
+  serializedVersion: 3
+  m_Size: {x: 3.8240147, y: 7.839983, z: 4.416426}
+  m_Center: {x: 0.11838292, y: 0.056798816, z: -0.10558796}
 --- !u!1 &1750434390
 GameObject:
   m_ObjectHideFlags: 0
@@ -6623,7 +6661,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787585507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.56}
+  m_LocalPosition: {x: 0, y: 0, z: 48}
   m_LocalScale: {x: 0.73484, y: 0.73484, z: 0.73484}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6635,7 +6673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.23, y: 246.6}
+  m_AnchoredPosition: {x: 15, y: 202}
   m_SizeDelta: {x: 542.31, y: 245.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787585509

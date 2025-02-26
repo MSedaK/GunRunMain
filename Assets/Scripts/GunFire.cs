@@ -38,14 +38,11 @@ public class GunFire : MonoBehaviour
     [Header("Fire Settings")]
     public float fireCooldown = 0.5f; 
     private bool canFire = true; 
-    private Coroutine fireCooldownCoroutine; 
-
 
     void Start()
     {
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
-
         EnemyHealth.OnEnemyKilled += Reload;
     }
 
@@ -61,14 +58,9 @@ public class GunFire : MonoBehaviour
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0)
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && canFire)
         {
-            Fire();
-            StartCoroutine(HapticFeedback());
-            currentAmmo -= useDualBarrel ? 2 : 1; 
-            UpdateAmmoDisplay();
-            canFire = false;
-            fireCooldownCoroutine = StartCoroutine(FireCooldown());
+            StartCoroutine(FireWithCooldown());
         }
         else if (currentAmmo <= 0)
         {
@@ -76,10 +68,17 @@ public class GunFire : MonoBehaviour
         }
     }
 
-    private IEnumerator FireCooldown()
+    private IEnumerator FireWithCooldown()
     {
-        yield return new WaitForSeconds(fireCooldown);
-        canFire = true;
+        canFire = false; 
+        Fire();
+        StartCoroutine(HapticFeedback());
+        currentAmmo -= useDualBarrel ? 2 : 1; 
+        UpdateAmmoDisplay();
+        
+        yield return new WaitForSeconds(fireCooldown); 
+
+        canFire = true; 
     }
 
     public void Fire()

@@ -3,8 +3,18 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float damage = 50f;
+    public float speed = 20f; // Mermi hýzý
     public AudioClip hitSound;
     public GameObject damageEffectPrefab;
+    private bool isGameOver = false;
+
+    private void Update()
+    {
+        if (!isGameOver)
+        {
+            transform.position += transform.forward * speed * Time.unscaledDeltaTime;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,8 +32,12 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Target Board'a hasar verildi: " + damage);
             boardHealth.TakeDamage(damage, other.ClosestPoint(transform.position));
-
             Destroy(gameObject);
         }
+    }
+
+    public void SetGameOverState(bool state)
+    {
+        isGameOver = state;
     }
 }

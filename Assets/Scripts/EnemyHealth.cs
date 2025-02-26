@@ -34,7 +34,6 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = totalHealth;
         audioSource = GetComponent<AudioSource>();
-
         gunFire = FindObjectOfType<GunFire>();
     }
 
@@ -124,7 +123,7 @@ public class EnemyHealth : MonoBehaviour
         if (deathVFX != null)
         {
             GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
-            Destroy(vfx, 2f); 
+            Destroy(vfx, 2f);
         }
 
         float sfxDuration = 0f;
@@ -134,8 +133,15 @@ public class EnemyHealth : MonoBehaviour
             sfxDuration = deathSFX.length;
         }
 
-        Destroy(gameObject, Mathf.Max(sfxDuration, 2f));
+        Destroy(gameObject, Mathf.Max(sfxDuration, 1f));
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            Debug.Log("Düşman oyuncuya çarptı! " + other.name + " vuruldu!");
+            GameManager.Instance.GameOver(other);
+        }
+    }
 }

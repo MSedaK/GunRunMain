@@ -52,31 +52,42 @@ public class WeaponManager : MonoBehaviour
     {
         if (currentWeapon == 0 && killCount >= killsToWeaponB)
         {
-            StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA));
+            StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA, vfxB)); // Eski ve yeni silah VFX'lerini geçiyoruz
             currentWeapon = 1;
-            UpdateWeaponUI();
         }
         else if (currentWeapon == 1 && killCount >= killsToWeaponC)
         {
-            StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB));
+            StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB, vfxC)); // Eski ve yeni silah VFX'lerini geçiyoruz
             currentWeapon = 2;
-            UpdateWeaponUI();
         }
+
+        UpdateWeaponUI();
     }
 
-    private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject vfx)
+    private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
-        currentWeaponObj.SetActive(false);
-
-        if (vfx != null)
+        // 1. Eski silahýn VFX'ini çalýþtýr ve 3 saniye sonra yok et
+        if (currentWeaponVFX != null)
         {
-            GameObject spawnedVFX = Instantiate(vfx, currentWeaponObj.transform.position, currentWeaponObj.transform.rotation);
-            Destroy(spawnedVFX, 2f);
+            GameObject spawnedVFX = Instantiate(currentWeaponVFX, currentWeaponObj.transform.position, Quaternion.identity);
+            Destroy(spawnedVFX, 3f); // VFX 3 saniye sonra yok olur
         }
+
+        currentWeaponObj.SetActive(false);
 
         yield return new WaitForSeconds(vfxDelay);
 
+        // 4. Yeni silahýn VFX'ini çalýþtýr ve 3 saniye sonra yok et
+        if (nextWeaponVFX != null)
+        {
+            GameObject spawnedVFX = Instantiate(nextWeaponVFX, nextWeaponObj.transform.position, Quaternion.identity);
+            Destroy(spawnedVFX, 3f); // VFX 3 saniye sonra yok olur
+        }
+
+        // 5. Yeni silahý aç
         nextWeaponObj.SetActive(true);
+
+        // Silah deðiþtirildiðini log'a yaz
         Debug.Log("Yeni silaha geçildi: " + nextWeaponObj.name);
 
         UpdateWeaponUI();
