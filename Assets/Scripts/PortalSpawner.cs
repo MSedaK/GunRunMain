@@ -44,7 +44,8 @@ public class PortalSpawner : MonoBehaviour
         {
             isSpawning = true;
             float enemySpeed = GetEnemySpeedForWave(currentWave);
-            yield return StartCoroutine(SpawnWave(new EnemyWaveData(1, jamEnemy, 1, flyingEnemy, 1, middleEnemy, 1, tallEnemy, 1, flyingEnemy, 1, middleEnemy), enemySpeed));
+            EnemyWaveData waveData = GetWaveData(currentWave);
+            yield return StartCoroutine(SpawnWave(waveData, enemySpeed));
             isSpawning = false;
             yield return new WaitForSeconds(postWaveSpawnDelay);
             currentWave++;
@@ -65,57 +66,69 @@ public class PortalSpawner : MonoBehaviour
     {
         if (!isSpawning) yield break;
 
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A1, waveData.enemyA1, enemySpeed));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B1, waveData.enemyB1, enemySpeed));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C1, waveData.enemyC1, enemySpeed));
-
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsA, waveData.A2, waveData.enemyA2, enemySpeed));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsB, waveData.B2, waveData.enemyB2, enemySpeed));
-        yield return StartCoroutine(SpawnEnemiesAtPortal(spawnPointsC, waveData.C2, waveData.enemyC2, enemySpeed));
+        for (int i = 0; i < waveData.enemyCount; i++)
+        {
+            yield return SpawnEnemyAtPortal(spawnPointsA, waveData.GetEnemyForPortal("A", i), enemySpeed);
+            yield return SpawnEnemyAtPortal(spawnPointsB, waveData.GetEnemyForPortal("B", i), enemySpeed);
+            yield return SpawnEnemyAtPortal(spawnPointsC, waveData.GetEnemyForPortal("C", i), enemySpeed);
+        }
     }
 
-    IEnumerator SpawnEnemiesAtPortal(Vector3[] spawnPoints, int enemyCount, GameObject enemyType, float enemySpeed)
+    IEnumerator SpawnEnemyAtPortal(Vector3[] spawnPoints, GameObject enemyType, float enemySpeed)
     {
-        if (!isSpawning) yield break;
+        if (!isSpawning || enemyType == null) yield break;
 
-        for (int i = 0; i < enemyCount; i++)
+        Vector3 spawnPos = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject enemy = Instantiate(enemyType, spawnPos, Quaternion.identity);
+
+        EnemyBehavior enemyBehavior = enemy.GetComponent<EnemyBehavior>();
+        if (enemyBehavior != null)
         {
-            if (!isSpawning) yield break;
-            if (spawnPoints.Length == 0 || enemyType == null) yield break;
-
-            Vector3 spawnPos = spawnPoints[i % spawnPoints.Length];
-            GameObject enemy = Instantiate(enemyType, spawnPos, Quaternion.identity);
-
-            EnemyBehavior enemyBehavior = enemy.GetComponent<EnemyBehavior>();
-            if (enemyBehavior != null)
-            {
-                enemyBehavior.speed = enemySpeed;
-            }
-
-            yield return new WaitForSeconds(enemySpawnInterval);
+            enemyBehavior.speed = enemySpeed;
         }
+
+        yield return new WaitForSeconds(enemySpawnInterval);
     }
 
     float GetEnemySpeedForWave(int waveNumber)
     {
         return 3f + (waveNumber - 1) * 2f;
     }
+
+    EnemyWaveData GetWaveData(int wave)
+    {
+        switch (wave)
+        {
+            case 1:
+                return new EnemyWaveData(new GameObject[] { jamEnemy, jamEnemy, flyingEnemy }, 3);
+            case 2:
+                return new EnemyWaveData(new GameObject[] { flyingEnemy, flyingEnemy, tallEnemy }, 3);
+            case 3:
+                return new EnemyWaveData(new GameObject[] { tallEnemy, tallEnemy, middleEnemy }, 3);
+            case 4:
+                return new EnemyWaveData(new GameObject[] { middleEnemy, jamEnemy, jamEnemy }, 3);
+            default:
+                return new EnemyWaveData(new GameObject[] { jamEnemy, flyingEnemy, tallEnemy }, 3);
+        }
+    }
 }
 
 public class EnemyWaveData
 {
-    public int A1, B1, C1, A2, B2, C2;
-    public GameObject enemyA1, enemyB1, enemyC1, enemyA2, enemyB2, enemyC2;
+    private GameObject[] portalEnemies;
+    public int enemyCount;
 
-    public EnemyWaveData(
-        int a1, GameObject eA1, int b1, GameObject eB1, int c1, GameObject eC1,
-        int a2 = 0, GameObject eA2 = null, int b2 = 0, GameObject eB2 = null, int c2 = 0, GameObject eC2 = null)
+    public EnemyWaveData(GameObject[] enemies, int count)
     {
-        A1 = a1; enemyA1 = eA1;
-        B1 = b1; enemyB1 = eB1;
-        C1 = c1; enemyC1 = eC1;
-        A2 = a2; enemyA2 = eA2;
-        B2 = b2; enemyB2 = eB2;
-        C2 = c2; enemyC2 = eC2;
+        portalEnemies = enemies;
+        enemyCount = count;
+    }
+
+    public GameObject GetEnemyForPortal(string portal, int index)
+    {
+        if (portal == "A") return portalEnemies[0];
+        if (portal == "B") return portalEnemies[1];
+        if (portal == "C") return portalEnemies[2];
+        return null;
     }
 }
