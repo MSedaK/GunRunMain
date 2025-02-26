@@ -3042,10 +3042,9 @@ MonoBehaviour:
     type: 3}
   middleEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
     type: 3}
-  enemySpawnInterval: 3
-  delayBeforeFirstWave: 3
-  waveDelay: 5
-  postWaveSpawnDelay: 5
+  enemySpawnInterval: 2
+  delayBeforeFirstWave: 5
+  postWaveSpawnDelay: 15
   spawnPointsA:
   - {x: 5.55, y: 2.18, z: -86.31}
   spawnPointsB:
@@ -5737,9 +5736,9 @@ MonoBehaviour:
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
   timerText: {fileID: 1977108806}
-  timeAndScorePanel: {fileID: 0}
+  timeAndScorePanel: {fileID: 1787585507}
   backgroundMusic: {fileID: 1598248144}
-  gameDuration: 120
+  gameDuration: 150
 --- !u!4 &1598248143
 Transform:
   m_ObjectHideFlags: 0

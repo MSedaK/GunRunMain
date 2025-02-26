@@ -14,10 +14,9 @@ public class PortalSpawner : MonoBehaviour
     public GameObject middleEnemy;
 
     [Header("Enemy Spawn Settings")]
-    public float enemySpawnInterval = 1.5f;
+    public float enemySpawnInterval = 2f;
     public float delayBeforeFirstWave = 10f;
-    public float waveDelay = 5f;
-    public float postWaveSpawnDelay = 5f;
+    public float postWaveSpawnDelay = 15f;
 
     [Header("Portal Spawn Points")]
     public Vector3[] spawnPointsA;
@@ -66,11 +65,11 @@ public class PortalSpawner : MonoBehaviour
     {
         if (!isSpawning) yield break;
 
-        for (int i = 0; i < waveData.enemyCount; i++)
+        for (int i = 0; i < waveData.spawnSequence.Length; i++)
         {
-            yield return SpawnEnemyAtPortal(spawnPointsA, waveData.GetEnemyForPortal("A", i), enemySpeed);
-            yield return SpawnEnemyAtPortal(spawnPointsB, waveData.GetEnemyForPortal("B", i), enemySpeed);
-            yield return SpawnEnemyAtPortal(spawnPointsC, waveData.GetEnemyForPortal("C", i), enemySpeed);
+            yield return SpawnEnemyAtPortal(spawnPointsA, waveData.spawnSequence[i][0], enemySpeed);
+            yield return SpawnEnemyAtPortal(spawnPointsB, waveData.spawnSequence[i][1], enemySpeed);
+            yield return SpawnEnemyAtPortal(spawnPointsC, waveData.spawnSequence[i][2], enemySpeed);
         }
     }
 
@@ -100,35 +99,50 @@ public class PortalSpawner : MonoBehaviour
         switch (wave)
         {
             case 1:
-                return new EnemyWaveData(new GameObject[] { jamEnemy, jamEnemy, flyingEnemy }, 3);
+                return new EnemyWaveData(new GameObject[][]
+                {
+                    new GameObject[] { jamEnemy, jamEnemy, jamEnemy }, 
+                    new GameObject[] { jamEnemy, jamEnemy, jamEnemy }, 
+                    new GameObject[] { jamEnemy, jamEnemy, jamEnemy } 
+                });
             case 2:
-                return new EnemyWaveData(new GameObject[] { flyingEnemy, flyingEnemy, tallEnemy }, 3);
+                return new EnemyWaveData(new GameObject[][]
+                {
+                    new GameObject[] { jamEnemy, jamEnemy, jamEnemy },
+                    new GameObject[] { flyingEnemy, flyingEnemy, flyingEnemy },
+                    new GameObject[] { flyingEnemy, flyingEnemy, flyingEnemy }
+                });
             case 3:
-                return new EnemyWaveData(new GameObject[] { tallEnemy, tallEnemy, middleEnemy }, 3);
+                return new EnemyWaveData(new GameObject[][]
+                {
+                    new GameObject[] {flyingEnemy, flyingEnemy, flyingEnemy },
+                    new GameObject[] { middleEnemy, middleEnemy, middleEnemy },
+                    new GameObject[] { middleEnemy, middleEnemy, middleEnemy }
+                });
             case 4:
-                return new EnemyWaveData(new GameObject[] { middleEnemy, jamEnemy, jamEnemy }, 3);
+                return new EnemyWaveData(new GameObject[][]
+                {
+                    new GameObject[] {middleEnemy, middleEnemy, middleEnemy},
+                    new GameObject[] { tallEnemy, tallEnemy, tallEnemy },
+                    new GameObject[] { tallEnemy, tallEnemy, tallEnemy }
+                });
             default:
-                return new EnemyWaveData(new GameObject[] { jamEnemy, flyingEnemy, tallEnemy }, 3);
+                return new EnemyWaveData(new GameObject[][]
+                {
+                    new GameObject[] { jamEnemy, flyingEnemy, tallEnemy },
+                    new GameObject[] { middleEnemy, jamEnemy, flyingEnemy },
+                    new GameObject[] { tallEnemy, middleEnemy, jamEnemy }
+                });
         }
     }
 }
 
 public class EnemyWaveData
 {
-    private GameObject[] portalEnemies;
-    public int enemyCount;
+    public GameObject[][] spawnSequence;
 
-    public EnemyWaveData(GameObject[] enemies, int count)
+    public EnemyWaveData(GameObject[][] sequence)
     {
-        portalEnemies = enemies;
-        enemyCount = count;
-    }
-
-    public GameObject GetEnemyForPortal(string portal, int index)
-    {
-        if (portal == "A") return portalEnemies[0];
-        if (portal == "B") return portalEnemies[1];
-        if (portal == "C") return portalEnemies[2];
-        return null;
+        spawnSequence = sequence;
     }
 }

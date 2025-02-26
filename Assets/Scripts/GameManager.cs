@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public AudioSource backgroundMusic;
 
     private float gameTimer;
-    public float gameDuration = 360f;
+    public float gameDuration = 150f;
     private int score = 0;
     private bool isGameOver = false;
 
