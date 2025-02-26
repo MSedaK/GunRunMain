@@ -11,8 +11,10 @@ public class GunFire : MonoBehaviour
 
     public Transform barrel1;
     public Transform barrel2; 
+    public Transform barrel3; 
     public Transform targetDirection1;
     public Transform targetDirection2; 
+    public Transform targetDirection3; 
 
     public AudioSource audioSource;
     public ParticleSystem ps;
@@ -85,9 +87,10 @@ public class GunFire : MonoBehaviour
     {
         FireFromBarrel(barrel1, targetDirection1);
 
-        if (useDualBarrel && barrel2 != null && targetDirection2 != null)
+        if (useDualBarrel && barrel2 && barrel3 != null && targetDirection2 != null)
         {
             FireFromBarrel(barrel2, targetDirection2);
+            FireFromBarrel(barrel3, targetDirection3);
         }
 
         if (gunAnimator != null)
