@@ -36,6 +36,8 @@ public class GunFire : MonoBehaviour
 
     [Header("Weapon Settings")]
     public bool useDualBarrel = false;
+    public bool isAutomatic = false;
+    private bool isFiring = false;
 
     [Header("Fire Settings")]
     public float fireCooldown = 0.5f; 
@@ -60,11 +62,27 @@ public class GunFire : MonoBehaviour
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && canFire)
+        if (isAutomatic)
         {
-            StartCoroutine(FireWithCooldown());
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && !isFiring)
+            {
+                isFiring = true;
+                StartCoroutine(AutoFire());
+            }
+            else if (!OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || currentAmmo <= 0)
+            {
+                isFiring = false;
+            }
         }
-        else if (currentAmmo <= 0)
+        else
+        {
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && canFire)
+            {
+                StartCoroutine(FireWithCooldown());
+            }
+        }
+
+        if (currentAmmo <= 0)
         {
             Reload();
         }
@@ -81,6 +99,19 @@ public class GunFire : MonoBehaviour
         yield return new WaitForSeconds(fireCooldown); 
 
         canFire = true; 
+    }
+    
+    private IEnumerator AutoFire()
+    {
+        while (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0)
+        {
+            Fire();
+            StartCoroutine(HapticFeedback());
+            currentAmmo -= useDualBarrel ? 2 : 1;
+            UpdateAmmoDisplay();
+
+            yield return new WaitForSeconds(fireCooldown);
+        }
     }
 
     public void Fire()
