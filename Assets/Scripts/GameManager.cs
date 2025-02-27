@@ -6,14 +6,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject restartCanvas;
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText; 
+    public TextMeshProUGUI secondaryScoreText;
     public TextMeshProUGUI timerText;
     public GameObject timeAndScorePanel;
     public AudioSource backgroundMusic;
 
     private float gameTimer;
     public float gameDuration = 150f;
-    private int score = 0;
+
+    private int score = 0; 
+
     private bool isGameOver = false;
 
     private void Awake()
@@ -33,11 +36,13 @@ public class GameManager : MonoBehaviour
         {
             backgroundMusic.Play();
         }
+
+        UpdateScoreUI(); 
     }
 
     private void Update()
     {
-        if (!isGameOver) 
+        if (!isGameOver)
         {
             gameTimer -= Time.deltaTime;
             UpdateTimerUI();
@@ -45,7 +50,7 @@ public class GameManager : MonoBehaviour
             if (gameTimer <= 0)
             {
                 gameTimer = 0;
-                GameOver(null); 
+                GameOver(null);
             }
         }
     }
@@ -53,12 +58,25 @@ public class GameManager : MonoBehaviour
     public void AddScore(int damage)
     {
         score += damage;
-        scoreText.text = score.ToString();
+        UpdateScoreUI(); 
     }
 
     private void UpdateTimerUI()
     {
         timerText.text = Mathf.Ceil(gameTimer).ToString();
+    }
+
+    // Skor UI'yi güncelleyen fonksiyon
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString(); 
+        }
+        if (secondaryScoreText != null)
+        {
+            secondaryScoreText.text = score.ToString(); 
+        }
     }
 
     public void GameOver(Collider hitCollider)
@@ -72,13 +90,7 @@ public class GameManager : MonoBehaviour
             enemy.gameObject.GetComponentInChildren<Animator>().speed = 0;
             enemy.DisableColliders();
             Debug.Log($"Enemy {enemy.name} is disabled.");
-            //enemy.enabled = false;
             enemy.Stop();
-            //if (enemy.GetComponent<Rigidbody>() != null)
-            //{
-            //    enemy.GetComponent<Rigidbody>().isKinematic = true;
-            //    enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            //}
         }
 
         if (timeAndScorePanel != null)

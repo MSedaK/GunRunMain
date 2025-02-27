@@ -101,23 +101,23 @@ public class PortalSpawner : MonoBehaviour
             case 1:
                 return new EnemyWaveData(new GameObject[][]
                 {
+                    new GameObject[] { jamEnemy, jamEnemy, middleEnemy }, 
                     new GameObject[] { jamEnemy, jamEnemy, jamEnemy }, 
-                    new GameObject[] { jamEnemy, jamEnemy, jamEnemy }, 
-                    new GameObject[] { jamEnemy, jamEnemy, jamEnemy }
+                    new GameObject[] { jamEnemy, jamEnemy, middleEnemy }
                     
                 });
             case 2:
                 return new EnemyWaveData(new GameObject[][]
                 {
                     new GameObject[] { jamEnemy, jamEnemy, jamEnemy },
+                    new GameObject[] { flyingEnemy, flyingEnemy, middleEnemy },
                     new GameObject[] { flyingEnemy, flyingEnemy, flyingEnemy },
-                    new GameObject[] { flyingEnemy, flyingEnemy, flyingEnemy },
-                    new GameObject[] { flyingEnemy, flyingEnemy, flyingEnemy }
+                    new GameObject[] { flyingEnemy, flyingEnemy, middleEnemy }
                 });
             case 3:
                 return new EnemyWaveData(new GameObject[][]
                 {
-                    new GameObject[] {flyingEnemy, flyingEnemy, flyingEnemy },
+                    new GameObject[] {flyingEnemy, flyingEnemy, middleEnemy },
                     new GameObject[] { middleEnemy, middleEnemy, middleEnemy },
                     new GameObject[] { jamEnemy, jamEnemy, jamEnemy },
                     new GameObject[] { middleEnemy, middleEnemy, middleEnemy },
@@ -130,18 +130,18 @@ public class PortalSpawner : MonoBehaviour
                     new GameObject[] {middleEnemy, middleEnemy, middleEnemy},
                     new GameObject[] {middleEnemy, middleEnemy, middleEnemy},
                     new GameObject[] { tallEnemy, tallEnemy, flyingEnemy },
-                    new GameObject[] { tallEnemy, jamEnemy, jamEnemy },
-                    new GameObject[] { tallEnemy, tallEnemy, tallEnemy }
+                    new GameObject[] { tallEnemy, jamEnemy,middleEnemy },
+                    new GameObject[] { tallEnemy, tallEnemy, middleEnemy }
                 });
             default:
                 return new EnemyWaveData(new GameObject[][]
                 {
-                    new GameObject[] { jamEnemy, flyingEnemy, tallEnemy },
-                    new GameObject[] { middleEnemy, jamEnemy, flyingEnemy },
+                    new GameObject[] { jamEnemy, flyingEnemy, middleEnemy },
+                    new GameObject[] { middleEnemy, jamEnemy, middleEnemy },
                     new GameObject[] { tallEnemy, middleEnemy, jamEnemy },
                     new GameObject[] { middleEnemy, jamEnemy, flyingEnemy },
-                    new GameObject[] { middleEnemy, jamEnemy, flyingEnemy },
-                      new GameObject[] { tallEnemy, middleEnemy, jamEnemy }
+                    new GameObject[] { middleEnemy, jamEnemy,middleEnemy},
+                      new GameObject[] { tallEnemy, middleEnemy, middleEnemy }
                 });
         }
     }

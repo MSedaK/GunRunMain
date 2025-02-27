@@ -10,11 +10,11 @@ public class GunFire : MonoBehaviour
     public GameObject bulletPrefab;
 
     public Transform barrel1;
-    public Transform barrel2; 
-    public Transform barrel3; 
+    public Transform barrel2;
+    public Transform barrel3;
     public Transform targetDirection1;
-    public Transform targetDirection2; 
-    public Transform targetDirection3; 
+    public Transform targetDirection2;
+    public Transform targetDirection3;
 
     public AudioSource audioSource;
     public ParticleSystem ps;
@@ -40,8 +40,12 @@ public class GunFire : MonoBehaviour
     private bool isFiring = false;
 
     [Header("Fire Settings")]
-    public float fireCooldown = 0.5f; 
-    private bool canFire = true; 
+    public float fireCooldown = 0.5f;
+    private bool canFire = true;
+
+    [Header("Weapon Type")]
+    public bool isBaretta = false;  
+    public bool isLeftHanded = false; 
 
     void Start()
     {
@@ -62,21 +66,24 @@ public class GunFire : MonoBehaviour
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
         }
 
+        OVRInput.Button fireButton = isLeftHanded ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
+
         if (isAutomatic)
         {
-            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && !isFiring)
+            if (OVRInput.Get(fireButton) && currentAmmo > 0 && !isFiring)
             {
                 isFiring = true;
-                StartCoroutine(AutoFire());
+                StartCoroutine(AutoFire(fireButton));
             }
-            else if (!OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || currentAmmo <= 0)
+            else if (!OVRInput.Get(fireButton) || currentAmmo <= 0)
             {
                 isFiring = false;
+                StopFireSound();
             }
         }
         else
         {
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && canFire)
+            if (OVRInput.GetDown(fireButton) && currentAmmo > 0 && canFire)
             {
                 StartCoroutine(FireWithCooldown());
             }
@@ -90,20 +97,27 @@ public class GunFire : MonoBehaviour
 
     private IEnumerator FireWithCooldown()
     {
-        canFire = false; 
+        canFire = false;
         Fire();
         StartCoroutine(HapticFeedback());
-        currentAmmo -= useDualBarrel ? 2 : 1; 
+        currentAmmo -= useDualBarrel ? 2 : 1;
         UpdateAmmoDisplay();
-        
-        yield return new WaitForSeconds(fireCooldown); 
 
-        canFire = true; 
+        yield return new WaitForSeconds(fireCooldown);
+
+        canFire = true;
     }
-    
-    private IEnumerator AutoFire()
+
+    private IEnumerator AutoFire(OVRInput.Button fireButton)
     {
-        while (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0)
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Stop();
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
+        while (OVRInput.Get(fireButton) && currentAmmo > 0)
         {
             Fire();
             StartCoroutine(HapticFeedback());
@@ -111,6 +125,17 @@ public class GunFire : MonoBehaviour
             UpdateAmmoDisplay();
 
             yield return new WaitForSeconds(fireCooldown);
+        }
+
+        StopFireSound();
+    }
+
+    private void StopFireSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.loop = false;
+            audioSource.Stop();
         }
     }
 
@@ -160,9 +185,10 @@ public class GunFire : MonoBehaviour
 
     private IEnumerator HapticFeedback()
     {
-        OVRInput.SetControllerVibration(1, hapticStrength, OVRInput.Controller.RTouch);
+        OVRInput.Controller controller = isLeftHanded ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
+        OVRInput.SetControllerVibration(1, hapticStrength, controller);
         yield return new WaitForSeconds(0.1f);
-        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+        OVRInput.SetControllerVibration(0, 0, controller);
     }
 
     public void Reload()
@@ -177,5 +203,11 @@ public class GunFire : MonoBehaviour
         {
             ammoText.text = currentAmmo.ToString();
         }
+    }
+
+    public void SetWeapon(bool isBaretta, bool isLeftHanded)
+    {
+        this.isBaretta = isBaretta;
+        this.isLeftHanded = isLeftHanded;
     }
 }
