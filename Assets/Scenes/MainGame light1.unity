@@ -1689,8 +1689,10 @@ MonoBehaviour:
     type: 3}
   barrel1: {fileID: 0}
   barrel2: {fileID: 0}
+  barrel3: {fileID: 0}
   targetDirection1: {fileID: 0}
   targetDirection2: {fileID: 0}
+  targetDirection3: {fileID: 0}
   audioSource: {fileID: 307939647}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 307939644}
@@ -2920,14 +2922,18 @@ MonoBehaviour:
   weaponA: {fileID: 157625249}
   weaponB: {fileID: 1438535334}
   weaponC: {fileID: 1232345932}
+  weaponD: {fileID: 0}
   weaponAImage: {fileID: 1888233862}
   weaponBImage: {fileID: 1317056651}
   weaponCImage: {fileID: 55648973}
+  weaponDImage: {fileID: 0}
   vfxA: {fileID: 2033851911}
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
+  vfxD: {fileID: 0}
   killsToWeaponB: 6
   killsToWeaponC: 14
+  killsToWeaponD: 36
   vfxDelay: 0.5
 --- !u!4 &686354534
 Transform:
@@ -3406,8 +3412,10 @@ MonoBehaviour:
     type: 3}
   barrel1: {fileID: 1111010335}
   barrel2: {fileID: 0}
+  barrel3: {fileID: 0}
   targetDirection1: {fileID: 1295510554}
   targetDirection2: {fileID: 0}
+  targetDirection3: {fileID: 0}
   audioSource: {fileID: 730468978}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 730468980}
@@ -4628,7 +4636,6 @@ MonoBehaviour:
     type: 3}
   enemySpawnInterval: 1.5
   delayBeforeFirstWave: 3
-  waveDelay: 5
   postWaveSpawnDelay: 5
   spawnPointsA:
   - {x: 5.55, y: 2.18, z: -86.31}
@@ -5964,8 +5971,10 @@ MonoBehaviour:
     type: 3}
   barrel1: {fileID: 711083242}
   barrel2: {fileID: 1471895620}
+  barrel3: {fileID: 0}
   targetDirection1: {fileID: 1721917460}
   targetDirection2: {fileID: 70352542}
+  targetDirection3: {fileID: 0}
   audioSource: {fileID: 1232345935}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 1232345936}
@@ -6628,6 +6637,55 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1108407955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1513912424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513912426}
+  - component: {fileID: 1513912425}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1513912425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513912424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 3f1b1a4749c4eaa4282e78af14a89cd7, type: 2}
+--- !u!4 &1513912426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513912424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.009640932, y: 4.0870066, z: 17.476463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1533764476
 GameObject:
@@ -9924,3 +9982,4 @@ SceneRoots:
   - {fileID: 1043884479}
   - {fileID: 1097889446}
   - {fileID: 50737459}
+  - {fileID: 1513912426}

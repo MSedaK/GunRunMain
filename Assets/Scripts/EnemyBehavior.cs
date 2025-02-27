@@ -11,7 +11,9 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Speed Increases")]
     public float speedIncrease1 = 1.5f; 
-    public float speedIncrease2 = 2f; 
+    public float speedIncrease2 = 2f;
+
+    [SerializeField] private List<Collider> colliders;
 
     private void OnEnable()
     {
@@ -37,6 +39,19 @@ public class EnemyBehavior : MonoBehaviour
         {
             speed = speedIncrease2;
             Debug.Log("Hýz arttý: 6. düþmaný öldürdün.");
+        }
+    }
+
+    public void Stop()
+    {
+        agent.isStopped = true;
+    }
+
+    public void DisableColliders()
+    {
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
         }
     }
 

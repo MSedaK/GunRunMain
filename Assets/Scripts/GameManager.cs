@@ -66,14 +66,19 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
-        foreach (EnemyHealth enemy in enemies)
+        EnemyBehavior[] enemies = FindObjectsOfType<EnemyBehavior>();
+        foreach (EnemyBehavior enemy in enemies)
         {
-            enemy.enabled = false;
-            if (enemy.GetComponent<Rigidbody>() != null)
-            {
-                enemy.GetComponent<Rigidbody>().isKinematic = true;
-            }
+            enemy.gameObject.GetComponentInChildren<Animator>().speed = 0;
+            enemy.DisableColliders();
+            Debug.Log($"Enemy {enemy.name} is disabled.");
+            //enemy.enabled = false;
+            enemy.Stop();
+            //if (enemy.GetComponent<Rigidbody>() != null)
+            //{
+            //    enemy.GetComponent<Rigidbody>().isKinematic = true;
+            //    enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            //}
         }
 
         if (timeAndScorePanel != null)
