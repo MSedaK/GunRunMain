@@ -2597,9 +2597,9 @@ MonoBehaviour:
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
   vfxD: {fileID: 0}
-  killsToWeaponB: 10
-  killsToWeaponC: 18
-  killsToWeaponD: 28
+  killsToWeaponB: 2
+  killsToWeaponC: 4
+  killsToWeaponD: 6
   vfxDelay: 0.2
 --- !u!4 &686354534
 Transform:
@@ -3293,7 +3293,7 @@ MonoBehaviour:
     type: 3}
   tallEnemy: {fileID: 7890586833633972550, guid: fdae9d1ce8c2dc848846dfcf53282b8f,
     type: 3}
-  middleEnemy: {fileID: 6616776804236398250, guid: 844cde6d34f322c4485240e487e5cde3,
+  middleEnemy: {fileID: 6616776804236398250, guid: d846b19da27474b47ac087569a65e517,
     type: 3}
   enemySpawnInterval: 2
   delayBeforeFirstWave: 5
