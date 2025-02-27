@@ -56,42 +56,44 @@ public class WeaponManager : MonoBehaviour
     {
         if (currentWeapon == 0 && killCount >= killsToWeaponB)
         {
-            StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA, vfxB)); // Eski ve yeni silah VFX'lerini geçiyoruz
+            StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA, vfxB));
             currentWeapon = 1;
         }
         else if (currentWeapon == 1 && killCount >= killsToWeaponC)
         {
-            StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB, vfxC)); // Eski ve yeni silah VFX'lerini geçiyoruz
+            StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB, vfxC));
             currentWeapon = 2;
+        }
+        else if (currentWeapon == 2 && killCount >= killsToWeaponD) 
+        {
+            StartCoroutine(SwitchWeaponWithVFX(weaponC, weaponD, vfxC, vfxD));
+            currentWeapon = 3;
         }
 
         UpdateWeaponUI();
     }
 
+
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
-        // 1. Eski silahýn VFX'ini çalýþtýr ve 3 saniye sonra yok et
         if (currentWeaponVFX != null)
         {
             GameObject spawnedVFX = Instantiate(currentWeaponVFX, currentWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 1f); // VFX 3 saniye sonra yok olur
+            Destroy(spawnedVFX, 1f); 
         }
 
         currentWeaponObj.SetActive(false);
 
         yield return new WaitForSeconds(vfxDelay);
 
-        // 4. Yeni silahýn VFX'ini çalýþtýr ve 3 saniye sonra yok et
         if (nextWeaponVFX != null)
         {
             GameObject spawnedVFX = Instantiate(nextWeaponVFX, nextWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 1f); // VFX 3 saniye sonra yok olur
+            Destroy(spawnedVFX, 1f); 
         }
 
-        // 5. Yeni silahý aç
         nextWeaponObj.SetActive(true);
 
-        // Silah deðiþtirildiðini log'a yaz
         Debug.Log("Yeni silaha geçildi: " + nextWeaponObj.name);
 
         UpdateWeaponUI();
@@ -102,7 +104,9 @@ public class WeaponManager : MonoBehaviour
         SetWeaponUIImageAlpha(weaponAImage, currentWeapon == 0 ? 1f : 0.5f);
         SetWeaponUIImageAlpha(weaponBImage, currentWeapon == 1 ? 1f : 0.5f);
         SetWeaponUIImageAlpha(weaponCImage, currentWeapon == 2 ? 1f : 0.5f);
+        SetWeaponUIImageAlpha(weaponDImage, currentWeapon == 3 ? 1f : 0.5f); 
     }
+
 
     private void SetWeaponUIImageAlpha(Image image, float alpha)
     {

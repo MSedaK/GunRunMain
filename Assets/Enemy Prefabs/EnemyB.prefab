@@ -701,6 +701,8 @@ MonoBehaviour:
   speed: 10
   speedIncrease1: 1.5
   speedIncrease2: 2
+  colliders:
+  - {fileID: 8323801529303494359}
 --- !u!54 &2005344425693268036
 Rigidbody:
   m_ObjectHideFlags: 0

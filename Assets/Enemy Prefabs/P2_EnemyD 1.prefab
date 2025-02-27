@@ -425,6 +425,9 @@ MonoBehaviour:
   speed: 10
   speedIncrease1: 1.5
   speedIncrease2: 2
+  colliders:
+  - {fileID: 2026207767592761706}
+  - {fileID: 8248406156378939938}
 --- !u!195 &-2202519020922433339
 NavMeshAgent:
   m_ObjectHideFlags: 0
