@@ -94,6 +94,7 @@ MonoBehaviour:
   ammoText: {fileID: 4910399504568144516}
   ammoUI: {fileID: 3208449498836831364}
   useDualBarrel: 0
+  isAutomatic: 0
   fireCooldown: 0.5
 --- !u!82 &6724985295172540221
 AudioSource:
@@ -628,7 +629,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6609816492044203315}
-  m_Mesh: {fileID: -4147266318922990756, guid: 0e0a0d1a1d79da1468c0cfc01600086f, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &837550582730861701
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -711,7 +712,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8807864803668258509}
-  m_Mesh: {fileID: 4579454407841743219, guid: 0e0a0d1a1d79da1468c0cfc01600086f, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &7268749103969256701
 MeshRenderer:
   m_ObjectHideFlags: 0

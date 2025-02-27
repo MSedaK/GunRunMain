@@ -193,12 +193,17 @@ PrefabInstance:
     - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
       propertyPath: velocity
-      value: 30
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: isBaretta
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
       propertyPath: fireCooldown
-      value: 0.3
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7884374309539900226, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
@@ -1100,7 +1105,7 @@ PrefabInstance:
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: hapticStrength
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
@@ -2552,6 +2557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
+  secondaryScoreText: {fileID: 0}
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 0}
   backgroundMusic: {fileID: 1598248144}
@@ -2715,9 +2721,9 @@ MonoBehaviour:
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
   vfxD: {fileID: 0}
-  killsToWeaponB: 2
-  killsToWeaponC: 4
-  killsToWeaponD: 6
+  killsToWeaponB: 10
+  killsToWeaponC: 18
+  killsToWeaponD: 28
   vfxDelay: 0.2
 --- !u!4 &686354534
 Transform:
@@ -5201,7 +5207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940753537500fe74dbcab41b13c015fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 30
+  velocity: 60
   bulletPrefab: {fileID: 4858235730514071926, guid: a785f12ef03d8e945b40c415dbf4f56b,
     type: 3}
   barrel1: {fileID: 711083242}
@@ -5224,6 +5230,8 @@ MonoBehaviour:
   useDualBarrel: 1
   isAutomatic: 0
   fireCooldown: 1
+  isBaretta: 0
+  isLeftHanded: 0
 --- !u!1 &1241236171
 GameObject:
   m_ObjectHideFlags: 0
@@ -5493,6 +5501,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 488160, guid: d9809c5e8418bb047bf2c8ba1d1a2cec,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1461067530}
     - targetCorrespondingSourceObject: {fileID: 2774251407684675044, guid: d9809c5e8418bb047bf2c8ba1d1a2cec,
         type: 3}
       insertIndex: -1
@@ -5948,10 +5960,125 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
+  secondaryScoreText: {fileID: 0}
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 0}
   backgroundMusic: {fileID: 1598248144}
   gameDuration: 120
+--- !u!1001 &1461067529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1178519582}
+    m_Modifications:
+    - target: {fileID: 1782022931659092156, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_Name
+      value: Canik 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782022931659092156, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.44999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.44999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.018100012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.030900002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08250001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: velocity
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: isBaretta
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: fireCooldown
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601680754758611970, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: isLeftHanded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884374309539900226, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f873154d2b77e04b90101bfab9e3c22, type: 3}
+--- !u!4 &1461067530 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461067529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1471895619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6239,6 +6366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
+  secondaryScoreText: {fileID: 1072771642}
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 1787585507}
   backgroundMusic: {fileID: 1598248144}
@@ -6730,19 +6858,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.15359008
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9881347
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6750,7 +6878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -197.67
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7060,8 +7188,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.8240147, y: 7.839983, z: 4.416426}
-  m_Center: {x: 0.11838292, y: 0.056798816, z: -0.10558796}
+  m_Size: {x: 3.2397802, y: 7.839983, z: 3.6119182}
+  m_Center: {x: 0.23232651, y: 0.056798935, z: 0.1713177}
 --- !u!1 &1750434390
 GameObject:
   m_ObjectHideFlags: 0
@@ -9166,7 +9294,7 @@ PrefabInstance:
     - target: {fileID: 330169171559280388, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: velocity
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 330169171559280388, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
@@ -9476,7 +9604,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _globalMeshMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 2111a514fae79b44a86e61b50d1d452b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6fb60ad978ac4184da102fbaf103225d, type: 2}
     - target: {fileID: 5201637225824680237, guid: d211279b66f25334e984011a5ebfce5b,
         type: 3}
       propertyPath: OnDestructibleMeshCreated.m_PersistentCalls.m_Calls.Array.size
