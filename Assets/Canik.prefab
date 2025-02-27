@@ -78,8 +78,10 @@ MonoBehaviour:
     type: 3}
   barrel1: {fileID: 4554389053451868561}
   barrel2: {fileID: 0}
+  barrel3: {fileID: 0}
   targetDirection1: {fileID: 1035974652741622666}
   targetDirection2: {fileID: 0}
+  targetDirection3: {fileID: 0}
   audioSource: {fileID: 6724985295172540221}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 3578077172020105891}
@@ -92,6 +94,7 @@ MonoBehaviour:
   ammoText: {fileID: 4910399504568144516}
   ammoUI: {fileID: 3208449498836831364}
   useDualBarrel: 0
+  fireCooldown: 0.5
 --- !u!82 &6724985295172540221
 AudioSource:
   m_ObjectHideFlags: 0
