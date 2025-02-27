@@ -1162,11 +1162,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shooting Point a
       objectReference: {fileID: 0}
-    - target: {fileID: 8075824266339289663, guid: 5baa7f65da3ae7c448453fe5f806f678,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89da6fbe39442304cba0487efbfc52fa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8447598622872520049, guid: 5baa7f65da3ae7c448453fe5f806f678, type: 3}
@@ -7068,8 +7063,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.8240147, y: 7.839983, z: 4.416426}
-  m_Center: {x: 0.11838292, y: 0.056798816, z: -0.10558796}
+  m_Size: {x: 3.2397802, y: 7.839983, z: 3.6119182}
+  m_Center: {x: 0.23232651, y: 0.056798935, z: 0.1713177}
 --- !u!1 &1750434390
 GameObject:
   m_ObjectHideFlags: 0

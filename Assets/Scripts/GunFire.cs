@@ -107,6 +107,7 @@ public class GunFire : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
+            audioSource.Stop();
             audioSource.loop = true;
             audioSource.Play();
         }
@@ -124,6 +125,7 @@ public class GunFire : MonoBehaviour
         StopFireSound(); 
     }
 
+
     private void StopFireSound()
     {
         if (audioSource.isPlaying)
@@ -132,6 +134,7 @@ public class GunFire : MonoBehaviour
             audioSource.Stop();
         }
     }
+
 
     public void Fire()
     {
