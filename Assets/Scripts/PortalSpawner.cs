@@ -91,7 +91,7 @@ public class PortalSpawner : MonoBehaviour
 
     float GetEnemySpeedForWave(int waveNumber)
     {
-        return 5f + (waveNumber - 1) * 2f;
+        return 7f + (waveNumber - 1) * 2f;
     }
 
     EnemyWaveData GetWaveData(int wave)

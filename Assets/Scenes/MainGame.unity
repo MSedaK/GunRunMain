@@ -1090,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: fireCooldown
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
@@ -1100,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: hapticStrength
-      value: 0.2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
@@ -1117,6 +1117,11 @@ PrefabInstance:
       propertyPath: targetDirection3
       value: 
       objectReference: {fileID: 297733485}
+    - target: {fileID: 4520457646829681431, guid: 5baa7f65da3ae7c448453fe5f806f678,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c93534263ff15954b99fb0b249954b79, type: 3}
     - target: {fileID: 6015830261724825702, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5077,7 +5082,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9db176e1ad4d89647a0bbcbd8b28693b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3ca0dfddfd600f245a95f9e8e66ef1b9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -5196,7 +5201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940753537500fe74dbcab41b13c015fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 20
+  velocity: 30
   bulletPrefab: {fileID: 4858235730514071926, guid: a785f12ef03d8e945b40c415dbf4f56b,
     type: 3}
   barrel1: {fileID: 711083242}
@@ -5218,7 +5223,7 @@ MonoBehaviour:
   ammoUI: {fileID: 521157899}
   useDualBarrel: 1
   isAutomatic: 0
-  fireCooldown: 0.7
+  fireCooldown: 1
 --- !u!1 &1241236171
 GameObject:
   m_ObjectHideFlags: 0
@@ -6213,7 +6218,6 @@ GameObject:
   - component: {fileID: 1598248143}
   - component: {fileID: 1598248142}
   - component: {fileID: 1598248144}
-  - component: {fileID: 1598248145}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6238,7 +6242,7 @@ MonoBehaviour:
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 1787585507}
   backgroundMusic: {fileID: 1598248144}
-  gameDuration: 20
+  gameDuration: 120
 --- !u!4 &1598248143
 Transform:
   m_ObjectHideFlags: 0
@@ -6350,33 +6354,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!54 &1598248145
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598248141}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1615602506
 GameObject:
   m_ObjectHideFlags: 0
@@ -9204,7 +9181,7 @@ PrefabInstance:
     - target: {fileID: 330169171559280388, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: fireCooldown
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 330169171559280388, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
