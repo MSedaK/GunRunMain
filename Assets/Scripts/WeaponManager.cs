@@ -74,7 +74,7 @@ public class WeaponManager : MonoBehaviour
         if (currentWeaponVFX != null)
         {
             GameObject spawnedVFX = Instantiate(currentWeaponVFX, currentWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 3f); // VFX 3 saniye sonra yok olur
+            Destroy(spawnedVFX, 1f); // VFX 3 saniye sonra yok olur
         }
 
         currentWeaponObj.SetActive(false);
@@ -85,7 +85,7 @@ public class WeaponManager : MonoBehaviour
         if (nextWeaponVFX != null)
         {
             GameObject spawnedVFX = Instantiate(nextWeaponVFX, nextWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 3f); // VFX 3 saniye sonra yok olur
+            Destroy(spawnedVFX, 1f); // VFX 3 saniye sonra yok olur
         }
 
         // 5. Yeni silahý aç

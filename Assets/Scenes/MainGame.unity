@@ -658,7 +658,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SceneSettings.SceneJsons.Array.data[0]
       value: 
-      objectReference: {fileID: 4900000, guid: 5c33e7b3e50fc944889c808743559b6f, type: 3}
+      objectReference: {fileID: 4900000, guid: 1c73847af159bbe49ab9032ccd89a381, type: 3}
     - target: {fileID: 3613868102660323786, guid: c2e00db6d2dfa42ac8d821db8d493a44,
         type: 3}
       propertyPath: SceneSettings.SceneJsons.Array.data[1]
@@ -1007,6 +1007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velocity
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
+        type: 3}
+      propertyPath: fireCooldown
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
@@ -9034,6 +9039,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 223974227}
     m_Modifications:
+    - target: {fileID: 792597179404387870, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
+        type: 3}
+      propertyPath: gunAnimator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7035964873916763385, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
       propertyPath: m_Name
@@ -9057,17 +9067,17 @@ PrefabInstance:
     - target: {fileID: 8528949889512615058, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710677
+      value: -0.7120258
       objectReference: {fileID: 0}
     - target: {fileID: 8528949889512615058, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8528949889512615058, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071069
+      value: 0.7021533
       objectReference: {fileID: 0}
     - target: {fileID: 8528949889512615058, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
@@ -9082,14 +9092,15 @@ PrefabInstance:
     - target: {fileID: 8528949889512615058, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 270.8
       objectReference: {fileID: 0}
     - target: {fileID: 8528949889512615058, guid: 6377fa2e6237b7440929fc7dbbb8b40d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3514167051925573173, guid: 6377fa2e6237b7440929fc7dbbb8b40d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
