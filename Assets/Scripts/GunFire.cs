@@ -67,18 +67,12 @@ public class GunFire : MonoBehaviour
             if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && !isFiring)
             {
                 isFiring = true;
-                audioSource.loop = true; 
-                if (!audioSource.isPlaying) 
-                {
-                    audioSource.Play();
-                }
                 StartCoroutine(AutoFire());
             }
             else if (!OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || currentAmmo <= 0)
             {
                 isFiring = false;
-                audioSource.loop = false; 
-                audioSource.Stop();
+                StopFireSound(); 
             }
         }
         else
@@ -95,6 +89,7 @@ public class GunFire : MonoBehaviour
         }
     }
 
+
     private IEnumerator FireWithCooldown()
     {
         canFire = false; 
@@ -107,9 +102,15 @@ public class GunFire : MonoBehaviour
 
         canFire = true; 
     }
-    
+
     private IEnumerator AutoFire()
     {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
         while (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0)
         {
             Fire();
@@ -118,6 +119,17 @@ public class GunFire : MonoBehaviour
             UpdateAmmoDisplay();
 
             yield return new WaitForSeconds(fireCooldown);
+        }
+
+        StopFireSound(); 
+    }
+
+    private void StopFireSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.loop = false;
+            audioSource.Stop();
         }
     }
 

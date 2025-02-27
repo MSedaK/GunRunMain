@@ -1100,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: hapticStrength
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
@@ -2721,9 +2721,9 @@ MonoBehaviour:
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
   vfxD: {fileID: 0}
-  killsToWeaponB: 2
-  killsToWeaponC: 4
-  killsToWeaponD: 6
+  killsToWeaponB: 10
+  killsToWeaponC: 18
+  killsToWeaponD: 28
   vfxDelay: 0.2
 --- !u!4 &686354534
 Transform:
