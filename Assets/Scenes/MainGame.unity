@@ -9479,7 +9479,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _globalMeshMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 2111a514fae79b44a86e61b50d1d452b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6fb60ad978ac4184da102fbaf103225d, type: 2}
     - target: {fileID: 5201637225824680237, guid: d211279b66f25334e984011a5ebfce5b,
         type: 3}
       propertyPath: OnDestructibleMeshCreated.m_PersistentCalls.m_Calls.Array.size
