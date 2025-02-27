@@ -53,16 +53,16 @@ public class EnemyHealth : MonoBehaviour
             adjustedDamage = damage * bodyMultiplier;
             ShowFloatingText(adjustedDamage, bodyCollider, bodyFloatingTextPrefab);
         }
-        else if (hitCollider == legsCollider)
+        else /*if (hitCollider == legsCollider)*/
         {
             adjustedDamage = damage * legsMultiplier;
             ShowFloatingText(adjustedDamage, legsCollider, legsFloatingTextPrefab);
         }
-        else
-        {
-            adjustedDamage = damage;
-            ShowFloatingText(adjustedDamage, hitCollider, bodyFloatingTextPrefab);
-        }
+        //else
+        //{
+        //    adjustedDamage = damage;
+        //    ShowFloatingText(adjustedDamage, hitCollider, bodyFloatingTextPrefab);
+        //}
 
         currentHealth -= adjustedDamage;
 
