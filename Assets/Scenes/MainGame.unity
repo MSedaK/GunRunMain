@@ -2552,6 +2552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
+  secondaryScoreText: {fileID: 0}
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 0}
   backgroundMusic: {fileID: 1598248144}
@@ -5948,6 +5949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
+  secondaryScoreText: {fileID: 0}
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 0}
   backgroundMusic: {fileID: 1598248144}
@@ -6239,6 +6241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartCanvas: {fileID: 482062134}
   scoreText: {fileID: 1734365164}
+  secondaryScoreText: {fileID: 1072771642}
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 1787585507}
   backgroundMusic: {fileID: 1598248144}

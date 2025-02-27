@@ -67,11 +67,18 @@ public class GunFire : MonoBehaviour
             if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && currentAmmo > 0 && !isFiring)
             {
                 isFiring = true;
+                audioSource.loop = true; 
+                if (!audioSource.isPlaying) 
+                {
+                    audioSource.Play();
+                }
                 StartCoroutine(AutoFire());
             }
             else if (!OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || currentAmmo <= 0)
             {
                 isFiring = false;
+                audioSource.loop = false; 
+                audioSource.Stop();
             }
         }
         else
