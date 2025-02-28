@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         timerText.text = Mathf.Ceil(gameTimer).ToString();
     }
 
-    // Skor UI'yi güncelleyen fonksiyon
     private void UpdateScoreUI()
     {
         if (scoreText != null)

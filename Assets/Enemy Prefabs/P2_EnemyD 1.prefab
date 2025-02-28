@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: -2202519020922433339}
-  totalHealth: 100
+  totalHealth: 2000
   headshotMultiplier: 2
   bodyMultiplier: 1
   legsMultiplier: 0.7

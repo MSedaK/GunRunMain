@@ -1,6 +1,7 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 using System.Collections;
 
 public class UIBulletCollision : MonoBehaviour
@@ -8,11 +9,11 @@ public class UIBulletCollision : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject infoPanel;
     public GameObject optionsPanel;
-    public TextMeshProUGUI countdownText; // Geri sayým için UI metni
+    public TextMeshProUGUI countdownText;
 
     private void Start()
     {
-        if (countdownText) countdownText.gameObject.SetActive(false); // Geri sayým baþlangýçta gizli
+        if (countdownText) countdownText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,9 +60,13 @@ public class UIBulletCollision : MonoBehaviour
         {
             countdownText.gameObject.SetActive(true);
 
+            DeactivatePanelAndChildren(mainMenuPanel);
+            DeactivatePanelAndChildren(infoPanel);
+            DeactivatePanelAndChildren(optionsPanel);
+
             for (int i = 5; i > 0; i--)
             {
-                countdownText.text = "Starting in " + i + "...";
+                countdownText.text = i.ToString();
                 yield return new WaitForSeconds(1f);
             }
 
@@ -73,6 +78,37 @@ public class UIBulletCollision : MonoBehaviour
         {
             yield return new WaitForSeconds(5f);
             SceneManager.LoadScene("MainGame");
+        }
+    }
+
+    private void DeactivatePanelAndChildren(GameObject panel)
+    {
+        if (panel != null)
+        {
+            var image = panel.GetComponent<Image>();
+            var collider = panel.GetComponent<Collider>();
+            var textMeshPro = panel.GetComponent<TextMeshProUGUI>();
+            if (image) image.enabled = false;
+            if (collider) collider.enabled = false;
+            if (textMeshPro) textMeshPro.enabled = false;
+
+            DisableComponentsInChildren(panel.transform);
+        }
+    }
+
+    private void DisableComponentsInChildren(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            var childImage = child.GetComponent<Image>();
+            var childCollider = child.GetComponent<Collider>();
+            var childTextMeshPro = child.GetComponent<TextMeshProUGUI>();
+
+            if (childImage) childImage.enabled = false;
+            if (childCollider) childCollider.enabled = false;
+            if (childTextMeshPro) childTextMeshPro.enabled = false;
+
+            DisableComponentsInChildren(child);
         }
     }
 }

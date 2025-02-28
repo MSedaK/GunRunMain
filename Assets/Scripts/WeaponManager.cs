@@ -31,9 +31,17 @@ public class WeaponManager : MonoBehaviour
     public int killsToWeaponD = 36;
     public float vfxDelay = 0.5f;
 
+    [Header("Weapon Scale Settings")]
+    public float activeGlobalScale = 1.2f;
+    public float inactiveGlobalScale = 1.0f;
+
+    [Header("UI Image Scale Settings")]
+    public float activeUIImageScale = 0.8f;
+    public float inactiveUIImageScale = 0.6f;
+
     private void Start()
     {
-        UpdateWeaponUI(); 
+        UpdateWeaponUI();
     }
 
     private void OnEnable()
@@ -58,28 +66,43 @@ public class WeaponManager : MonoBehaviour
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA, vfxB));
             currentWeapon = 1;
+            HandleBarettaSwitch(weaponB);
         }
         else if (currentWeapon == 1 && killCount >= killsToWeaponC)
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB, vfxC));
             currentWeapon = 2;
+            HandleBarettaSwitch(weaponC);
         }
-        else if (currentWeapon == 2 && killCount >= killsToWeaponD) 
+        else if (currentWeapon == 2 && killCount >= killsToWeaponD)
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponC, weaponD, vfxC, vfxD));
             currentWeapon = 3;
+            HandleBarettaSwitch(weaponD);
         }
 
         UpdateWeaponUI();
     }
 
+    private void HandleBarettaSwitch(GameObject newWeapon)
+    {
+        GunFire gunFire = newWeapon.GetComponent<GunFire>();
+        if (gunFire != null && gunFire.isBaretta)
+        {
+            gunFire.isLeftHanded = false; 
+            if (!gunFire.isAutomatic)
+            {
+                gunFire.enabled = false;
+            }
+        }
+    }
 
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
         if (currentWeaponVFX != null)
         {
             GameObject spawnedVFX = Instantiate(currentWeaponVFX, currentWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 1f); 
+            Destroy(spawnedVFX, 1f);
         }
 
         currentWeaponObj.SetActive(false);
@@ -89,7 +112,7 @@ public class WeaponManager : MonoBehaviour
         if (nextWeaponVFX != null)
         {
             GameObject spawnedVFX = Instantiate(nextWeaponVFX, nextWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 1f); 
+            Destroy(spawnedVFX, 1f);
         }
 
         nextWeaponObj.SetActive(true);
@@ -101,20 +124,37 @@ public class WeaponManager : MonoBehaviour
 
     private void UpdateWeaponUI()
     {
-        SetWeaponUIImageAlpha(weaponAImage, currentWeapon == 0 ? 1f : 0.5f);
-        SetWeaponUIImageAlpha(weaponBImage, currentWeapon == 1 ? 1f : 0.5f);
-        SetWeaponUIImageAlpha(weaponCImage, currentWeapon == 2 ? 1f : 0.5f);
-        SetWeaponUIImageAlpha(weaponDImage, currentWeapon == 3 ? 1f : 0.5f); 
+        SetWeaponUIImageAlphaAndScale(weaponAImage, currentWeapon == 0);
+        SetWeaponUIImageAlphaAndScale(weaponBImage, currentWeapon == 1);
+        SetWeaponUIImageAlphaAndScale(weaponCImage, currentWeapon == 2);
+        SetWeaponUIImageAlphaAndScale(weaponDImage, currentWeapon == 3);
+
+        SetWeaponGlobalScale(weaponA, currentWeapon == 0 ? activeGlobalScale : inactiveGlobalScale);
+        SetWeaponGlobalScale(weaponB, currentWeapon == 1 ? activeGlobalScale : inactiveGlobalScale);
+        SetWeaponGlobalScale(weaponC, currentWeapon == 2 ? activeGlobalScale : inactiveGlobalScale);
+        SetWeaponGlobalScale(weaponD, currentWeapon == 3 ? activeGlobalScale : inactiveGlobalScale);
     }
 
-
-    private void SetWeaponUIImageAlpha(Image image, float alpha)
+    private void SetWeaponUIImageAlphaAndScale(Image image, bool isActive)
     {
         if (image != null)
         {
             Color color = image.color;
-            color.a = alpha;
+            color.a = isActive ? 1f : 0.5f;
             image.color = color;
+
+            image.rectTransform.localScale = Vector3.one * (isActive ? activeUIImageScale : inactiveUIImageScale);
+        }
+    }
+
+    private void SetWeaponGlobalScale(GameObject weapon, float scale)
+    {
+        if (weapon != null)
+        {
+            Transform parent = weapon.transform.parent;
+            weapon.transform.SetParent(null);
+            weapon.transform.localScale = Vector3.one * scale;
+            weapon.transform.SetParent(parent);
         }
     }
 }
