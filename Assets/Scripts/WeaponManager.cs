@@ -128,11 +128,6 @@ public class WeaponManager : MonoBehaviour
         SetWeaponUIImageAlphaAndScale(weaponBImage, currentWeapon == 1);
         SetWeaponUIImageAlphaAndScale(weaponCImage, currentWeapon == 2);
         SetWeaponUIImageAlphaAndScale(weaponDImage, currentWeapon == 3);
-
-        SetWeaponGlobalScale(weaponA, currentWeapon == 0 ? activeGlobalScale : inactiveGlobalScale);
-        SetWeaponGlobalScale(weaponB, currentWeapon == 1 ? activeGlobalScale : inactiveGlobalScale);
-        SetWeaponGlobalScale(weaponC, currentWeapon == 2 ? activeGlobalScale : inactiveGlobalScale);
-        SetWeaponGlobalScale(weaponD, currentWeapon == 3 ? activeGlobalScale : inactiveGlobalScale);
     }
 
     private void SetWeaponUIImageAlphaAndScale(Image image, bool isActive)
@@ -147,14 +142,4 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    private void SetWeaponGlobalScale(GameObject weapon, float scale)
-    {
-        if (weapon != null)
-        {
-            Transform parent = weapon.transform.parent;
-            weapon.transform.SetParent(null);
-            weapon.transform.localScale = Vector3.one * scale;
-            weapon.transform.SetParent(parent);
-        }
-    }
 }

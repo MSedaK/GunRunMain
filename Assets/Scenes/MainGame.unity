@@ -260,6 +260,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35999182
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3599918
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35999182
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01810001
       objectReference: {fileID: 0}
@@ -897,37 +912,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &161463483
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 161463484}
-  m_Layer: 0
-  m_Name: UI_HafifMak
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &161463484
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161463483}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212549540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,12 +6397,17 @@ PrefabInstance:
     - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.44999996
+      value: 0.35999176
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3599918
       objectReference: {fileID: 0}
     - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.44999996
+      value: 0.35999176
       objectReference: {fileID: 0}
     - target: {fileID: 3611074825679745082, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
@@ -9643,7 +9632,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _globalMeshMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 6fb60ad978ac4184da102fbaf103225d, type: 2}
+      objectReference: {fileID: 2100000, guid: 2111a514fae79b44a86e61b50d1d452b, type: 2}
     - target: {fileID: 5201637225824680237, guid: d211279b66f25334e984011a5ebfce5b,
         type: 3}
       propertyPath: OnDestructibleMeshCreated.m_PersistentCalls.m_Calls.Array.size
@@ -9736,4 +9725,3 @@ SceneRoots:
   - {fileID: 1043884479}
   - {fileID: 1097889446}
   - {fileID: 2132101665}
-  - {fileID: 161463484}
