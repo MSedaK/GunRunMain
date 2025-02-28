@@ -45,13 +45,16 @@ public class GunFire : MonoBehaviour
 
     [Header("Weapon Type")]
     public bool isBaretta = false;  
-    public bool isLeftHanded = false; 
+    public bool isLeftHanded = false;
+
+    private float automaticTimer;
 
     void Start()
     {
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
         EnemyHealth.OnEnemyKilled += Reload;
+        automaticTimer = fireCooldown;
     }
 
     void OnDestroy()
@@ -68,23 +71,46 @@ public class GunFire : MonoBehaviour
 
         OVRInput.Button fireButton = isLeftHanded ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
 
+
+
         if (isAutomatic)
         {
-            if (OVRInput.Get(fireButton) && currentAmmo > 0 && !isFiring)
+            if (OVRInput.Get(fireButton) || Input.GetKeyDown(KeyCode.Space) && currentAmmo > 0 && !isFiring)
             {
+                Debug.Log("Firing");
                 isFiring = true;
-                StartCoroutine(AutoFire(fireButton));
+                audioSource.Play();
+                //Fire();
+                //StartCoroutine(HapticFeedback());
+                //currentAmmo -= useDualBarrel ? 2 : 1;
+                //UpdateAmmoDisplay();
             }
-            else if (!OVRInput.Get(fireButton) || currentAmmo <= 0)
+            else if (currentAmmo <= 0 || Input.GetKeyUp(KeyCode.Space) && isFiring)
             {
+                Debug.Log("Stopped");
+                audioSource.Stop();
                 isFiring = false;
-                StopFireSound();
+                //StopFireSound();
+            }
+
+            automaticTimer -= Time.deltaTime;
+
+            if (isFiring && automaticTimer < 0f)
+            {
+                Fire();
+                StartCoroutine(HapticFeedback());
+                currentAmmo -= useDualBarrel ? 2 : 1;
+                UpdateAmmoDisplay();
+                automaticTimer = fireCooldown;
             }
         }
         else
         {
-            if (OVRInput.GetDown(fireButton) && currentAmmo > 0 && canFire)
+            //if (OVRInput.GetDown(fireButton) &&)
+
+            if ((Input.GetKeyDown(KeyCode.Space) || OVRInput.GetDown(fireButton)) && currentAmmo > 0 && canFire)
             {
+                Debug.Log("Firing");
                 StartCoroutine(FireWithCooldown());
             }
         }
@@ -102,6 +128,7 @@ public class GunFire : MonoBehaviour
         StartCoroutine(HapticFeedback());
         currentAmmo -= useDualBarrel ? 2 : 1;
         UpdateAmmoDisplay();
+        audioSource.Play();
 
         yield return new WaitForSeconds(fireCooldown);
 
@@ -110,24 +137,25 @@ public class GunFire : MonoBehaviour
 
     private IEnumerator AutoFire(OVRInput.Button fireButton)
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.Stop();
-            audioSource.loop = true;
-            audioSource.Play();
-        }
+        yield return null;
+        //if (!audioSource.isPlaying)
+        //{
+        //    audioSource.Stop();
+        //    audioSource.loop = true;
+        //    audioSource.Play();
+        //}
 
-        while (OVRInput.Get(fireButton) && currentAmmo > 0)
-        {
-            Fire();
-            StartCoroutine(HapticFeedback());
-            currentAmmo -= useDualBarrel ? 2 : 1;
-            UpdateAmmoDisplay();
+        //while (OVRInput.Get(fireButton) && currentAmmo > 0)
+        //{
+        //    Fire();
+        //    StartCoroutine(HapticFeedback());
+        //    currentAmmo -= useDualBarrel ? 2 : 1;
+        //    UpdateAmmoDisplay();
 
-            yield return new WaitForSeconds(fireCooldown);
-        }
+        //    yield return new WaitForSeconds(fireCooldown);
+        //}
 
-        StopFireSound();
+        //StopFireSound();
     }
 
     private void StopFireSound()
@@ -172,7 +200,7 @@ public class GunFire : MonoBehaviour
             bulletScript.damageEffectPrefab = damageEffectPrefab;
         }
 
-        audioSource.Play();
+        //audioSource.Play();
 
         if (muzzleFlashPrefab != null)
         {

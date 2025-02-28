@@ -1389,7 +1389,7 @@ PrefabInstance:
     - target: {fileID: 3573310724492690862, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
@@ -1450,7 +1450,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: c93534263ff15954b99fb0b249954b79, type: 3}
+      objectReference: {fileID: 8300000, guid: f0b1b6f43489e8548990c6d487d9ce45, type: 3}
     - target: {fileID: 6015830261724825702, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1491,6 +1491,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shooting Point a
       objectReference: {fileID: 0}
+    - target: {fileID: 8075824266339289663, guid: 5baa7f65da3ae7c448453fe5f806f678,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89da6fbe39442304cba0487efbfc52fa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8447598622872520049, guid: 5baa7f65da3ae7c448453fe5f806f678, type: 3}
@@ -7153,7 +7158,7 @@ MonoBehaviour:
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 1787585507}
   backgroundMusic: {fileID: 1598248144}
-  gameDuration: 10
+  gameDuration: 120
 --- !u!4 &1598248143
 Transform:
   m_ObjectHideFlags: 0
