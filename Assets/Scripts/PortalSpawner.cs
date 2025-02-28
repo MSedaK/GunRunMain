@@ -25,6 +25,7 @@ public class PortalSpawner : MonoBehaviour
 
     private int currentWave = 1;
     private bool isSpawning = false;
+    private bool isGameOver = false;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class PortalSpawner : MonoBehaviour
 
         yield return new WaitForSeconds(delayBeforeFirstWave);
 
-        while (true)
+        while (!isGameOver)
         {
             isSpawning = true;
             float enemySpeed = GetEnemySpeedForWave(currentWave);
@@ -63,7 +64,7 @@ public class PortalSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(EnemyWaveData waveData, float enemySpeed)
     {
-        if (!isSpawning) yield break;
+        if (!isSpawning || isGameOver) yield break;
 
         for (int i = 0; i < waveData.spawnSequence.Length; i++)
         {
@@ -94,6 +95,12 @@ public class PortalSpawner : MonoBehaviour
         return 7f + (waveNumber - 1) * 2f;
     }
 
+    public void StopSpawning()
+    {
+        isGameOver = true; 
+        isSpawning = false; 
+        StopAllCoroutines(); 
+    }
     EnemyWaveData GetWaveData(int wave)
     {
         switch (wave)

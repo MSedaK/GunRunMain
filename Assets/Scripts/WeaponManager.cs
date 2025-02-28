@@ -99,10 +99,14 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
+
         if (currentWeaponVFX != null)
         {
-            GameObject spawnedVFX = Instantiate(currentWeaponVFX, currentWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 1f);
+            if (currentWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+            {
+                ps.Stop();
+            }
+            currentWeaponVFX.SetActive(false);
         }
 
         currentWeaponObj.SetActive(false);
@@ -111,8 +115,14 @@ public class WeaponManager : MonoBehaviour
 
         if (nextWeaponVFX != null)
         {
-            GameObject spawnedVFX = Instantiate(nextWeaponVFX, nextWeaponObj.transform.position, Quaternion.identity);
-            Destroy(spawnedVFX, 1f);
+            nextWeaponVFX.SetActive(true);
+            if (nextWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem psNext))
+            {
+                psNext.Play();
+                yield return new WaitForSeconds(psNext.main.duration);
+                psNext.Stop();
+            }
+            nextWeaponVFX.SetActive(false);
         }
 
         nextWeaponObj.SetActive(true);
@@ -121,6 +131,7 @@ public class WeaponManager : MonoBehaviour
 
         UpdateWeaponUI();
     }
+
 
     private void UpdateWeaponUI()
     {

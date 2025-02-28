@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject timeAndScorePanel;
     public AudioSource backgroundMusic;
+    private PortalSpawner portalSpawner;
 
     private float gameTimer;
     public float gameDuration = 150f;
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
         {
             backgroundMusic.Play();
         }
+
+        portalSpawner = FindObjectOfType<PortalSpawner>();
 
         UpdateScoreUI(); 
     }
@@ -82,6 +85,11 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
         isGameOver = true;
+
+        if (portalSpawner != null)
+        {
+            portalSpawner.StopSpawning();
+        }
 
         EnemyBehavior[] enemies = FindObjectsOfType<EnemyBehavior>();
         foreach (EnemyBehavior enemy in enemies)
