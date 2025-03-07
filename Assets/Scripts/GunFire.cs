@@ -172,7 +172,10 @@ public class GunFire : MonoBehaviour
             bulletScript.damageEffectPrefab = damageEffectPrefab;
         }
 
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
 
         if (muzzleFlashPrefab != null)
         {
