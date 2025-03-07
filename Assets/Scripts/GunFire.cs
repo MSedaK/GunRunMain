@@ -41,26 +41,29 @@ public class GunFire : MonoBehaviour
 
     [Header("Fire Settings")]
     public float fireCooldown = 0.5f;
-    private bool canFire = true;
+    public bool canFire = true;
 
     [Header("Weapon Type")]
     public bool isBaretta = false;  
-    public bool isLeftHanded = false; 
+    public bool isLeftHanded = false;
+
 
     void Start()
     {
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
         EnemyHealth.OnEnemyKilled += Reload;
+
+        // Sol el Baretta'nýn baþlangýçta açýk olmasý için bu satýrý kaldýr
+        // if (isBaretta && isLeftHanded) gameObject.SetActive(false);
     }
 
-    void OnDestroy()
-    {
-        EnemyHealth.OnEnemyKilled -= Reload;
-    }
+
 
     void Update()
     {
+        if (!canFire) return; // Eðer ateþ edilemiyorsa, tamamen devre dýþý býrak.
+
         if (ammoUI != null)
         {
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
@@ -94,6 +97,8 @@ public class GunFire : MonoBehaviour
             Reload();
         }
     }
+
+
 
     private IEnumerator FireWithCooldown()
     {

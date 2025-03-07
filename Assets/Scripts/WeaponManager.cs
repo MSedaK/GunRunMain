@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,16 +57,41 @@ public class WeaponManager : MonoBehaviour
     private void OnEnemyKilled()
     {
         enemyKillCount++;
+
+        // Eğer USP (weaponB) açılmadıysa, silah değiştirme fonksiyonunu çağırma!
+        if (enemyKillCount < killsToWeaponB)
+        {
+            return; // **Silah değişimi olmayacak, böylece sol el açık kalacak.**
+        }
+
         CheckWeaponSwitch(enemyKillCount);
     }
 
+    private void DisableLeftHandWeapons()
+    {
+        GunFire[] allGuns = FindObjectsOfType<GunFire>();
+        foreach (GunFire gun in allGuns)
+        {
+            if (gun.isBaretta && gun.isLeftHanded)
+            {
+                gun.gameObject.SetActive(false);
+                Debug.Log($"{gun.gameObject.name} sol elde olduğu için kapatıldı.");
+            }
+        }
+    }
+
+
+
     public void CheckWeaponSwitch(int killCount)
     {
-        if (currentWeapon == 0 && killCount >= killsToWeaponB)
+        if (currentWeapon == 0 && killCount >= killsToWeaponB) // **İlk USP açıldığında**
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA, vfxB));
             currentWeapon = 1;
             HandleBarettaSwitch(weaponB);
+
+            DisableLeftHandWeapons(); // ✅ **USP açıldığında sol eldeki silah kapanacak!**
+            Debug.Log("USP açıldı, sol el silahı kapatıldı.");
         }
         else if (currentWeapon == 1 && killCount >= killsToWeaponC)
         {
@@ -84,22 +109,53 @@ public class WeaponManager : MonoBehaviour
         UpdateWeaponUI();
     }
 
+
+
+
     private void HandleBarettaSwitch(GameObject newWeapon)
     {
         GunFire gunFire = newWeapon.GetComponent<GunFire>();
         if (gunFire != null && gunFire.isBaretta)
         {
-            gunFire.isLeftHanded = false; 
+            gunFire.isLeftHanded = false;
+
             if (!gunFire.isAutomatic)
             {
-                gunFire.enabled = false;
+                // Ateş etmesini engelle
+                gunFire.canFire = false;
+
+                // Tüm Renderer bileşenlerini kapat (silahın görünürlüğünü kaldır)
+                Renderer[] renderers = newWeapon.GetComponentsInChildren<Renderer>();
+                foreach (Renderer renderer in renderers)
+                {
+                    renderer.enabled = false;
+                }
+
+                // Tüm Collider bileşenlerini devre dışı bırak (silahla etkileşim olmasın)
+                Collider[] colliders = newWeapon.GetComponentsInChildren<Collider>();
+                foreach (Collider collider in colliders)
+                {
+                    collider.enabled = false;
+                }
+
+                // Eğer silah sol eldeyse, GameObject'i tamamen kapat
+                if (gunFire.isLeftHanded)
+                {
+                    newWeapon.SetActive(false);
+                    Debug.Log($"{newWeapon.name} sol eldeydi, tamamen devre dışı bırakıldı.");
+                }
             }
         }
     }
 
+
+
+
+
+
+
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
-
         if (currentWeaponVFX != null)
         {
             if (currentWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
@@ -110,7 +166,6 @@ public class WeaponManager : MonoBehaviour
         }
 
         currentWeaponObj.SetActive(false);
-
         yield return new WaitForSeconds(vfxDelay);
 
         if (nextWeaponVFX != null)
@@ -125,12 +180,29 @@ public class WeaponManager : MonoBehaviour
             nextWeaponVFX.SetActive(false);
         }
 
+        GunFire gunFire = nextWeaponObj.GetComponent<GunFire>();
+        if (gunFire != null)
+        {
+            if (gunFire.isBaretta && !gunFire.isAutomatic && gunFire.isLeftHanded)
+            {
+                gunFire.canFire = false;
+                nextWeaponObj.SetActive(false); // **Ama artık `yield break;` yok!**
+                Debug.Log($"{nextWeaponObj.name} sol eldeydi, kapatıldı ama VFX çalışmaya devam etti.");
+            }
+            else
+            {
+                gunFire.canFire = true;
+            }
+        }
+
         nextWeaponObj.SetActive(true);
-
-        Debug.Log("Yeni silaha ge�ildi: " + nextWeaponObj.name);
-
+        Debug.Log("Yeni silaha geçildi: " + nextWeaponObj.name);
         UpdateWeaponUI();
     }
+
+
+
+
 
 
     private void UpdateWeaponUI()
