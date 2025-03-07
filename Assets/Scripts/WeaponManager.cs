@@ -156,6 +156,7 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
+        // Eski silahın VFX'ini kapat
         if (currentWeaponVFX != null)
         {
             if (currentWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
@@ -165,40 +166,50 @@ public class WeaponManager : MonoBehaviour
             currentWeaponVFX.SetActive(false);
         }
 
-        currentWeaponObj.SetActive(false);
-        yield return new WaitForSeconds(vfxDelay);
+        // Eski silahın ateş etmesini engelle (GunFire devre dışı)
+        GunFire currentGunFire = currentWeaponObj.GetComponent<GunFire>();
+        if (currentGunFire != null)
+        {
+            currentGunFire.enabled = false;
+            Debug.Log($"{currentWeaponObj.name} silahı kapatıldı.");
+        }
 
+        // Eski silahı tamamen kapat
+        currentWeaponObj.SetActive(false);
+        yield return new WaitForSeconds(vfxDelay); // Küçük bir gecikme ekleyelim
+
+        // Yeni silahın VFX'ini aç ve oynat
         if (nextWeaponVFX != null)
         {
-            nextWeaponVFX.SetActive(true);
+            nextWeaponVFX.SetActive(true); // **Yeni VFX açılıyor**
+
             if (nextWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem psNext))
             {
                 psNext.Play();
+                Debug.Log("Silah değiştirme VFX oynatılıyor...");
+
+                // **VFX tamamlanana kadar bekle**
                 yield return new WaitForSeconds(psNext.main.duration);
-                psNext.Stop();
-            }
-            nextWeaponVFX.SetActive(false);
-        }
 
-        GunFire gunFire = nextWeaponObj.GetComponent<GunFire>();
-        if (gunFire != null)
-        {
-            if (gunFire.isBaretta && !gunFire.isAutomatic && gunFire.isLeftHanded)
-            {
-                gunFire.canFire = false;
-                nextWeaponObj.SetActive(false); // **Ama artık `yield break;` yok!**
-                Debug.Log($"{nextWeaponObj.name} sol eldeydi, kapatıldı ama VFX çalışmaya devam etti.");
-            }
-            else
-            {
-                gunFire.canFire = true;
+                psNext.Stop(); // **VFX animasyonu tamamlandıktan sonra durdur**
             }
         }
 
+        // Yeni silahı aç
         nextWeaponObj.SetActive(true);
         Debug.Log("Yeni silaha geçildi: " + nextWeaponObj.name);
+
+        // Yeni silahın GunFire bileşenini aç
+        GunFire nextGunFire = nextWeaponObj.GetComponent<GunFire>();
+        if (nextGunFire != null)
+        {
+            nextGunFire.enabled = true;
+            Debug.Log($"{nextWeaponObj.name} silahı açıldı.");
+        }
+
         UpdateWeaponUI();
     }
+
 
 
 
