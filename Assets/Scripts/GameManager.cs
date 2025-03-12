@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject restartCanvas;
-    public TextMeshProUGUI scoreText; 
+    public TextMeshProUGUI scoreText;
     public TextMeshProUGUI secondaryScoreText;
     public TextMeshProUGUI timerText;
     public GameObject timeAndScorePanel;
@@ -16,8 +19,7 @@ public class GameManager : MonoBehaviour
     private float gameTimer;
     public float gameDuration = 150f;
 
-    private int score = 0; 
-
+    public int score = 0;
     private bool isGameOver = false;
 
     private void Awake()
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         portalSpawner = FindObjectOfType<PortalSpawner>();
 
-        UpdateScoreUI(); 
+        UpdateScoreUI();
     }
 
     private void Update()
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int damage)
     {
         score += damage;
-        UpdateScoreUI(); 
+        UpdateScoreUI();
     }
 
     private void UpdateTimerUI()
@@ -73,11 +75,11 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = score.ToString(); 
+            scoreText.text = score.ToString();
         }
         if (secondaryScoreText != null)
         {
-            secondaryScoreText.text = score.ToString(); 
+            secondaryScoreText.text = score.ToString();
         }
     }
 
@@ -85,6 +87,8 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
         isGameOver = true;
+
+        SaveBestScores();
 
         if (portalSpawner != null)
         {
@@ -96,7 +100,6 @@ public class GameManager : MonoBehaviour
         {
             enemy.gameObject.GetComponentInChildren<Animator>().speed = 0;
             enemy.DisableColliders();
-            Debug.Log($"Enemy {enemy.name} is disabled.");
             enemy.Stop();
         }
 
@@ -127,4 +130,41 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void SaveBestScores()
+    {
+        List<ScoreEntry> bestScores = GetBestScores();
+
+        bestScores.Add(new ScoreEntry { score = score, date = DateTime.Now.ToString("dd/MM/yyyy") });
+        bestScores = bestScores.OrderByDescending(s => s.score).Take(5).ToList();
+
+        string scoresJson = JsonUtility.ToJson(new ScoreList { scores = bestScores });
+        PlayerPrefs.SetString("BestScores", scoresJson);
+        PlayerPrefs.Save();
+
+        Debug.Log("Yeni Best Score Listesi Kaydedildi: " + string.Join(", ", bestScores.Select(s => s.score + " (" + s.date + ")")));
+    }
+
+    public List<ScoreEntry> GetBestScores()
+    {
+        string json = PlayerPrefs.GetString("BestScores", "");
+        if (!string.IsNullOrEmpty(json))
+        {
+            return JsonUtility.FromJson<ScoreList>(json).scores;
+        }
+        return new List<ScoreEntry>(); 
+    }
+}
+
+[System.Serializable]
+public class ScoreEntry
+{
+    public int score;
+    public string date;
+}
+
+[System.Serializable]
+public class ScoreList
+{
+    public List<ScoreEntry> scores;
 }
