@@ -45,7 +45,7 @@ public class WeaponInfoSwitcher : MonoBehaviour
 
     private void PreviousWeapon()
     {
-        if (currentIndex > 0)
+        if (currentIndex >= 0)
         {
             currentIndex--;
             UpdateWeaponDisplay();
