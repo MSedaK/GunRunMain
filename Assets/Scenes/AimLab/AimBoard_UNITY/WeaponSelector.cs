@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WeaponSelector : MonoBehaviour
@@ -22,6 +23,12 @@ public class WeaponSelector : MonoBehaviour
 
     public void SelectWeapon(string weaponName)
     {
+        StartCoroutine(AddDelay(0.1f, weaponName));
+    }
+
+    private IEnumerator AddDelay(float t, string weaponName)
+    {
+        yield return new WaitForSeconds(t);
         if (activeWeapon != null)
         {
             if (activeWeapon == GlockR || activeWeapon == GlockL)
@@ -37,7 +44,7 @@ public class WeaponSelector : MonoBehaviour
 
         if (weaponName.Contains("Glock"))
         {
-            activeWeapon = GlockR;  
+            activeWeapon = GlockR;
             GlockR.SetActive(true);
             GlockL.SetActive(true);
         }
