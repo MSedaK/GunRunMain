@@ -7,6 +7,7 @@ public class GunUIInteractor : MonoBehaviour
     public LayerMask uiLayer; // Set this to "UI" in the Inspector
     public WeaponSelector weaponSelector;
 
+
     private void Start()
     {
         
