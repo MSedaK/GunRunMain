@@ -7469,7 +7469,7 @@ MonoBehaviour:
   timerText: {fileID: 1977108806}
   timeAndScorePanel: {fileID: 1787585507}
   backgroundMusic: {fileID: 1598248144}
-  gameDuration: 120
+  gameDuration: 10
   score: 0
 --- !u!4 &1598248143
 Transform:

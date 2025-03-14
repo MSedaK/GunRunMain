@@ -2799,7 +2799,7 @@ MonoBehaviour:
   tutorialPanel: {fileID: 520281608}
   chooseGunPanel: {fileID: 272249374}
   tutorialText: {fileID: 472948164}
-  typingSpeed: 0
+  typingSpeed: 0.1
 --- !u!4 &565223305
 Transform:
   m_ObjectHideFlags: 0
@@ -4084,7 +4084,7 @@ PrefabInstance:
     - target: {fileID: 3892971771085916419, guid: df322b73ee6eb974b8f36b84756a002f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
