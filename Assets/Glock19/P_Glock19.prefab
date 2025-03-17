@@ -434,7 +434,11 @@ MonoBehaviour:
   ammoText: {fileID: 4768405385468966595}
   ammoUI: {fileID: 4292299423282939328}
   useDualBarrel: 0
+  isAutomatic: 0
   fireCooldown: 0.5
+  canFire: 1
+  isBaretta: 0
+  isLeftHanded: 0
 --- !u!82 &2562141723468078657
 AudioSource:
   m_ObjectHideFlags: 0
