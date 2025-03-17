@@ -560,25 +560,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940753537500fe74dbcab41b13c015fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 40
+  velocity: 100
   bulletPrefab: {fileID: 4858235730514071926, guid: 394911edc6b548747a1abc01b82d45c6,
     type: 3}
   barrel1: {fileID: 9105319374040586313}
   barrel2: {fileID: 0}
+  barrel3: {fileID: 0}
   targetDirection1: {fileID: 6613115476945527772}
   targetDirection2: {fileID: 0}
+  targetDirection3: {fileID: 0}
   audioSource: {fileID: 4510910186579397101}
   ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
   gunAnimator: {fileID: 9006950979986371680}
   muzzleFlashPrefab: {fileID: 6980259576133684760, guid: 1f58a1dea6bbd9347843e4935585e6a2,
     type: 3}
-  hapticStrength: 0.5
+  hapticStrength: 1
   bulletHitSound: {fileID: 8300000, guid: 32aca17d1605a69408e53e178ba3eda8, type: 3}
   damageEffectPrefab: {fileID: 0}
   maxAmmo: 30
   ammoText: {fileID: 7033056310289761196}
   ammoUI: {fileID: 2365704234526027334}
   useDualBarrel: 0
+  isAutomatic: 0
+  fireCooldown: 0.5
+  canFire: 1
+  isBaretta: 0
+  isLeftHanded: 0
 --- !u!82 &4510910186579397101
 AudioSource:
   m_ObjectHideFlags: 0
