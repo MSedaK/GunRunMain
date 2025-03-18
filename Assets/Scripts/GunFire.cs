@@ -9,12 +9,9 @@ public class GunFire : MonoBehaviour
     public float velocity;
     public GameObject bulletPrefab;
 
-    public Transform barrel1;
-    public Transform barrel2;
-    public Transform barrel3;
-    public Transform targetDirection1;
-    public Transform targetDirection2;
-    public Transform targetDirection3;
+    // 5 farklý barrel ve hedef yönü ekledik
+    public Transform barrel1, barrel2, barrel3, barrel4, barrel5;
+    public Transform targetDirection1, targetDirection2, targetDirection3, targetDirection4, targetDirection5;
 
     public AudioSource audioSource;
     public ParticleSystem ps;
@@ -44,7 +41,7 @@ public class GunFire : MonoBehaviour
     public bool canFire = true;
 
     [Header("Weapon Type")]
-    public bool isBaretta = false;  
+    public bool isBaretta = false;
     public bool isLeftHanded = false;
 
 
@@ -53,16 +50,11 @@ public class GunFire : MonoBehaviour
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
         EnemyHealth.OnEnemyKilled += Reload;
-
-        // Sol el Baretta'nýn baþlangýçta açýk olmasý için bu satýrý kaldýr
-        // if (isBaretta && isLeftHanded) gameObject.SetActive(false);
     }
-
-
 
     void Update()
     {
-        if (!canFire) return; // Eðer ateþ edilemiyorsa, tamamen devre dýþý býrak.
+        if (!canFire) return;
 
         if (ammoUI != null)
         {
@@ -98,14 +90,12 @@ public class GunFire : MonoBehaviour
         }
     }
 
-
-
     private IEnumerator FireWithCooldown()
     {
         canFire = false;
         Fire();
         StartCoroutine(HapticFeedback());
-        currentAmmo -= useDualBarrel ? 2 : 1;
+        currentAmmo -= useDualBarrel ? 5 : 1; // Dual Barrel açýkken 5 mermi eksiliyor
         UpdateAmmoDisplay();
 
         yield return new WaitForSeconds(fireCooldown);
@@ -126,7 +116,7 @@ public class GunFire : MonoBehaviour
         {
             Fire();
             StartCoroutine(HapticFeedback());
-            currentAmmo -= useDualBarrel ? 2 : 1;
+            currentAmmo -= useDualBarrel ? 5 : 1;
             UpdateAmmoDisplay();
 
             yield return new WaitForSeconds(fireCooldown);
@@ -148,10 +138,13 @@ public class GunFire : MonoBehaviour
     {
         FireFromBarrel(barrel1, targetDirection1);
 
-        if (useDualBarrel && barrel2 && barrel3 != null && targetDirection2 != null)
+        if (useDualBarrel)
         {
+            // 5 farklý barrel'dan ateþ et
             FireFromBarrel(barrel2, targetDirection2);
             FireFromBarrel(barrel3, targetDirection3);
+            FireFromBarrel(barrel4, targetDirection4);
+            FireFromBarrel(barrel5, targetDirection5);
         }
 
         if (gunAnimator != null)
@@ -167,6 +160,8 @@ public class GunFire : MonoBehaviour
 
     private void FireFromBarrel(Transform barrel, Transform target)
     {
+        if (barrel == null || target == null) return; // Eðer barrel veya hedef null ise atýþý yapma
+
         GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, Quaternion.LookRotation(target.position - barrel.position));
         spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (target.position - barrel.position).normalized;
 
