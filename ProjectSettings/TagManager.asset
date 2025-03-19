@@ -19,6 +19,7 @@ TagManager:
   - RetryButton
   - BackToMainMenu
   - Stick
+  - Magic
   layers:
   - Default
   - TransparentFX

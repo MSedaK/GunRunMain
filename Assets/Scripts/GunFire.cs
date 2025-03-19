@@ -9,7 +9,6 @@ public class GunFire : MonoBehaviour
     public float velocity;
     public GameObject bulletPrefab;
 
-    // 5 farklý barrel ve hedef yönü ekledik
     public Transform barrel1, barrel2, barrel3, barrel4, barrel5;
     public Transform targetDirection1, targetDirection2, targetDirection3, targetDirection4, targetDirection5;
 
@@ -44,12 +43,21 @@ public class GunFire : MonoBehaviour
     public bool isBaretta = false;
     public bool isLeftHanded = false;
 
+    [Header("Magic System")]
+    public bool isMagicalGun = false; 
+    private bool isMagicTouching = false;
+    public float tiltAngle = -15f; 
+    public float rotationSpeed = 5f; 
+
+    private Quaternion originalRotation;
 
     void Start()
     {
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
         EnemyHealth.OnEnemyKilled += Reload;
+
+        originalRotation = transform.localRotation;
     }
 
     void Update()
@@ -59,6 +67,15 @@ public class GunFire : MonoBehaviour
         if (ammoUI != null)
         {
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
+        }
+
+        if (isMagicalGun)
+        {
+            Quaternion targetRotation = isMagicTouching
+                ? originalRotation 
+                : Quaternion.AngleAxis(tiltAngle, transform.right) * originalRotation; 
+
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
         OVRInput.Button fireButton = isLeftHanded ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
@@ -95,7 +112,7 @@ public class GunFire : MonoBehaviour
         canFire = false;
         Fire();
         StartCoroutine(HapticFeedback());
-        currentAmmo -= useDualBarrel ? 5 : 1; // Dual Barrel açýkken 5 mermi eksiliyor
+        currentAmmo -= useDualBarrel ? 5 : 1;
         UpdateAmmoDisplay();
 
         yield return new WaitForSeconds(fireCooldown);
@@ -140,7 +157,6 @@ public class GunFire : MonoBehaviour
 
         if (useDualBarrel)
         {
-            // 5 farklý barrel'dan ateþ et
             FireFromBarrel(barrel2, targetDirection2);
             FireFromBarrel(barrel3, targetDirection3);
             FireFromBarrel(barrel4, targetDirection4);
@@ -160,7 +176,7 @@ public class GunFire : MonoBehaviour
 
     private void FireFromBarrel(Transform barrel, Transform target)
     {
-        if (barrel == null || target == null) return; // Eðer barrel veya hedef null ise atýþý yapma
+        if (barrel == null || target == null) return; 
 
         GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, Quaternion.LookRotation(target.position - barrel.position));
         spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (target.position - barrel.position).normalized;
@@ -213,4 +229,23 @@ public class GunFire : MonoBehaviour
         this.isBaretta = isBaretta;
         this.isLeftHanded = isLeftHanded;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isMagicalGun && other.CompareTag("Magic"))
+        {
+            Debug.Log("Magic temas etti!");
+            isMagicTouching = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (isMagicalGun && other.CompareTag("Magic"))
+        {
+            Debug.Log("Magic temas kayboldu!");
+            isMagicTouching = false;
+        }
+    }
+
 }
