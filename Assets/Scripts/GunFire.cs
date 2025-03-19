@@ -73,10 +73,15 @@ public class GunFire : MonoBehaviour
         {
             Quaternion targetRotation = isMagicTouching
                 ? originalRotation 
-                : Quaternion.AngleAxis(tiltAngle, transform.right) * originalRotation; 
+                : Quaternion.AngleAxis(tiltAngle, transform.up) * originalRotation; 
 
             transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+            //Debug.LogError("isMagicTouching: " + isMagicTouching);
         }
+
+        transform.Rotate(Vector3.right, 10f * Time.deltaTime);
+        //Debug.Log("Rotation: " + transform.localEulerAngles);
 
         OVRInput.Button fireButton = isLeftHanded ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
 
@@ -234,7 +239,7 @@ public class GunFire : MonoBehaviour
     {
         if (isMagicalGun && other.CompareTag("Magic"))
         {
-            Debug.Log("Magic temas etti!");
+            //Debug.LogError("Magic temas etti!");
             isMagicTouching = true;
         }
     }
@@ -243,7 +248,7 @@ public class GunFire : MonoBehaviour
     {
         if (isMagicalGun && other.CompareTag("Magic"))
         {
-            Debug.Log("Magic temas kayboldu!");
+            //Debug.LogError("Magic temas kayboldu!");
             isMagicTouching = false;
         }
     }

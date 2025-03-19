@@ -2869,7 +2869,7 @@ PrefabInstance:
     - target: {fileID: 1258210445803200224, guid: bd21630900acd964e9771c85db7d3e62,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0.2188
       objectReference: {fileID: 0}
     - target: {fileID: 1258210445803200224, guid: bd21630900acd964e9771c85db7d3e62,
         type: 3}
@@ -2997,18 +2997,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1232345936}
-    - targetCorrespondingSourceObject: {fileID: 1890912710195496026, guid: bd21630900acd964e9771c85db7d3e62,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1232345937}
-    - targetCorrespondingSourceObject: {fileID: 1890912710195496026, guid: bd21630900acd964e9771c85db7d3e62,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1232345938}
-    - targetCorrespondingSourceObject: {fileID: 1890912710195496026, guid: bd21630900acd964e9771c85db7d3e62,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1232345939}
   m_SourcePrefab: {fileID: 100100000, guid: bd21630900acd964e9771c85db7d3e62, type: 3}
 --- !u!1 &552133807
 GameObject:
@@ -6222,99 +6210,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1232345937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232345932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940753537500fe74dbcab41b13c015fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 100
-  bulletPrefab: {fileID: 4858235730514071926, guid: a785f12ef03d8e945b40c415dbf4f56b,
-    type: 3}
-  barrel1: {fileID: 1471895620}
-  barrel2: {fileID: 474891033}
-  barrel3: {fileID: 1902306038}
-  barrel4: {fileID: 1876775133}
-  barrel5: {fileID: 490070797}
-  targetDirection1: {fileID: 1610751733}
-  targetDirection2: {fileID: 783013319}
-  targetDirection3: {fileID: 1943809082}
-  targetDirection4: {fileID: 1420848085}
-  targetDirection5: {fileID: 1196609309}
-  audioSource: {fileID: 1232345935}
-  ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
-  gunAnimator: {fileID: 1232345936}
-  muzzleFlashPrefab: {fileID: 6980259576133684760, guid: 1f58a1dea6bbd9347843e4935585e6a2,
-    type: 3}
-  hapticStrength: 100
-  bulletHitSound: {fileID: 0}
-  damageEffectPrefab: {fileID: 0}
-  maxAmmo: 10
-  ammoText: {fileID: 487518780}
-  ammoUI: {fileID: 521157899}
-  useDualBarrel: 1
-  isAutomatic: 0
-  fireCooldown: 0.5
-  canFire: 1
-  isBaretta: 0
-  isLeftHanded: 0
-  isMagicalGun: 1
-  tiltAngle: -15
-  rotationSpeed: 5
---- !u!65 &1232345938
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232345932}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0683758, y: 0.8497363, z: 0.99522626}
-  m_Center: {x: 0.11, y: 0.10905871, z: 0.0023835949}
---- !u!54 &1232345939
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232345932}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!1001 &1247993036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7372,7 +7267,7 @@ PrefabInstance:
     - target: {fileID: 1782022931659092156, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3472728863921705846, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
@@ -7571,7 +7466,7 @@ PrefabInstance:
     - target: {fileID: 7884374309539900226, guid: 5f873154d2b77e04b90101bfab9e3c22,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9708,7 +9603,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f22b09d48f8c011478a65c76bc99da17,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.019
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f22b09d48f8c011478a65c76bc99da17,
         type: 3}
@@ -9760,6 +9655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: G_Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f22b09d48f8c011478a65c76bc99da17,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9768,6 +9668,18 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1925031632}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f22b09d48f8c011478a65c76bc99da17,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1925031637}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f22b09d48f8c011478a65c76bc99da17,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1925031636}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f22b09d48f8c011478a65c76bc99da17,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1925031635}
   m_SourcePrefab: {fileID: 100100000, guid: f22b09d48f8c011478a65c76bc99da17, type: 3}
 --- !u!4 &1925031629 stripped
 Transform:
@@ -9796,6 +9708,99 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &1925031635
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368932146}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &1925031636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368932146}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.022196911, y: 0.0035124484, z: 0.00692379}
+  m_Center: {x: 0.00014706727, y: 0.00024498277, z: 0.0009020431}
+--- !u!114 &1925031637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368932146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940753537500fe74dbcab41b13c015fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 100
+  bulletPrefab: {fileID: 4858235730514071926, guid: a785f12ef03d8e945b40c415dbf4f56b,
+    type: 3}
+  barrel1: {fileID: 1471895620}
+  barrel2: {fileID: 474891033}
+  barrel3: {fileID: 1902306038}
+  barrel4: {fileID: 1876775133}
+  barrel5: {fileID: 490070797}
+  targetDirection1: {fileID: 1610751733}
+  targetDirection2: {fileID: 783013319}
+  targetDirection3: {fileID: 1943809082}
+  targetDirection4: {fileID: 1420848085}
+  targetDirection5: {fileID: 1196609309}
+  audioSource: {fileID: 1232345935}
+  ps: {fileID: 3449020657780214422, guid: e149d31226196b14cacf4499b808e7f3, type: 3}
+  gunAnimator: {fileID: 1232345936}
+  muzzleFlashPrefab: {fileID: 6980259576133684760, guid: 1f58a1dea6bbd9347843e4935585e6a2,
+    type: 3}
+  hapticStrength: 100
+  bulletHitSound: {fileID: 0}
+  damageEffectPrefab: {fileID: 0}
+  maxAmmo: 10
+  ammoText: {fileID: 487518780}
+  ammoUI: {fileID: 521157899}
+  useDualBarrel: 1
+  isAutomatic: 0
+  fireCooldown: 0.5
+  canFire: 1
+  isBaretta: 0
+  isLeftHanded: 0
+  isMagicalGun: 1
+  tiltAngle: -15
+  rotationSpeed: 16
 --- !u!1 &1936801469
 GameObject:
   m_ObjectHideFlags: 0

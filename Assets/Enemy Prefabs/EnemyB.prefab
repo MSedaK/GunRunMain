@@ -144,17 +144,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.65707
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.61
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.3635
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 985a6b6ee79fce442aaacbf2d8f1a9a0,
         type: 3}
@@ -684,7 +684,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e9fddb0122068b8449dd071833ee7a9d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6635
+      value: -2.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9fddb0122068b8449dd071833ee7a9d,
         type: 3}
@@ -810,7 +810,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 7.86
-  m_BaseOffset: 4.57
+  m_BaseOffset: 9.33
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5983245924216379642
