@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 3e1ed589804d56d4b88046e2a9706bdc
-  - enabled: 0
-    path: Assets/Scenes/MainGame Light.unity
-    guid: cafc937e510f519488d695f5a5ada81c
   - enabled: 1
     path: Assets/Scenes/AimLab.unity
     guid: 53d44cc612ff2c846a53da70b7ad0534

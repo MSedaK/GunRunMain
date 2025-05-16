@@ -71,11 +71,11 @@ public class GunFire : MonoBehaviour
 
         if (isMagicalGun)
         {
-            Quaternion targetRotation = isMagicTouching
-                ? originalRotation 
-                : Quaternion.AngleAxis(tiltAngle, transform.up) * originalRotation; 
+            //Quaternion targetRotation = isMagicTouching
+            //    ? originalRotation 
+            //    : Quaternion.AngleAxis(tiltAngle, transform.up) * originalRotation; 
 
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
+            //transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
             //Debug.LogError("isMagicTouching: " + isMagicTouching);
         }

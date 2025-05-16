@@ -101,9 +101,9 @@ public class WeaponManager : MonoBehaviour
         }
         else if (currentWeapon == 2 && killCount >= killsToWeaponD)
         {
-            StartCoroutine(SwitchWeaponWithVFX(weaponC, weaponD, vfxC, vfxD));
-            currentWeapon = 3;
-            HandleBarettaSwitch(weaponD);
+            //StartCoroutine(SwitchWeaponWithVFX(weaponC, weaponD, vfxC, vfxD));
+            //currentWeapon = 3;
+            //HandleBarettaSwitch(weaponD);
         }
 
         UpdateWeaponUI();
