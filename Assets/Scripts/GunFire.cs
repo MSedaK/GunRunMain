@@ -43,11 +43,11 @@ public class GunFire : MonoBehaviour
     public bool isBaretta = false;
     public bool isLeftHanded = false;
 
-    [Header("Magic System")]
-    public bool isMagicalGun = false; 
-    private bool isMagicTouching = false;
-    public float tiltAngle = -15f; 
-    public float rotationSpeed = 5f; 
+    //[Header("Magic System")]
+    //public bool isMagicalGun = false; 
+    //private bool isMagicTouching = false;
+    //public float tiltAngle = -15f; 
+    //public float rotationSpeed = 5f; 
 
     private Quaternion originalRotation;
 
@@ -69,8 +69,8 @@ public class GunFire : MonoBehaviour
             ammoUI.transform.rotation = Quaternion.LookRotation(ammoUI.transform.position - Camera.main.transform.position);
         }
 
-        if (isMagicalGun)
-        {
+        //if (isMagicalGun)
+        //{
             //Quaternion targetRotation = isMagicTouching
             //    ? originalRotation 
             //    : Quaternion.AngleAxis(tiltAngle, transform.up) * originalRotation; 
@@ -78,9 +78,9 @@ public class GunFire : MonoBehaviour
             //transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
             //Debug.LogError("isMagicTouching: " + isMagicTouching);
-        }
+        //}
 
-        transform.Rotate(Vector3.right, 10f * Time.deltaTime);
+        //transform.Rotate(Vector3.right, 10f * Time.deltaTime);
         //Debug.Log("Rotation: " + transform.localEulerAngles);
 
         OVRInput.Button fireButton = isLeftHanded ? OVRInput.Button.PrimaryIndexTrigger : OVRInput.Button.SecondaryIndexTrigger;
@@ -235,22 +235,21 @@ public class GunFire : MonoBehaviour
         this.isLeftHanded = isLeftHanded;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (isMagicalGun && other.CompareTag("Magic"))
-        {
+    //private void OnTriggerEnter(Collider other)
+    //{
+        //if (isMagicalGun && other.CompareTag("Magic"))
+     //   {
             //Debug.LogError("Magic temas etti!");
-            isMagicTouching = true;
-        }
-    }
+     //       isMagicTouching = true;
+    //    }
+   // }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (isMagicalGun && other.CompareTag("Magic"))
-        {
+    //private void OnTriggerExit(Collider other)
+   // {
+     //   if (isMagicalGun && other.CompareTag("Magic"))
+     //   {
             //Debug.LogError("Magic temas kayboldu!");
-            isMagicTouching = false;
-        }
-    }
+     //       isMagicTouching = false;
+      //  }
 
 }

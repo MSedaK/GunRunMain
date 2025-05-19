@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,17 @@ public class AdvancedPortalSpawner : MonoBehaviour
     public GameObject portalPrefabA, portalPrefabB, portalPrefabC;
 
     [Header("Enemy Prefabs")]
-    public GameObject tur1Enemy; 
-    public GameObject tur2Enemy;  
-    public GameObject tur3Enemy; 
+    public GameObject tur1Enemy;
+    public GameObject tur2Enemy;
+    public GameObject tur3Enemy;
 
     [Header("Spawn Settings")]
     public float enemySpawnInterval = 2f;
-    public float delayBeforeFirstSpawn = 10f;
-    public int enemiesPerStage = 30;
+    public float delayBeforeFirstSpawn = 5f;
+
+    [Header("Stage Score Thresholds")]
+    public int stage2ScoreThreshold = 200;
+    public int stage3ScoreThreshold = 500;
 
     [Header("Spawn Points")]
     public Vector3[] spawnPointsA, spawnPointsB, spawnPointsC;
@@ -24,23 +28,22 @@ public class AdvancedPortalSpawner : MonoBehaviour
     private List<string> portals = new List<string> { "A", "B", "C" };
     private Dictionary<string, Vector3[]> portalSpawnPoints;
     private Dictionary<string, GameObject> portalPrefabs;
-
     private Dictionary<string, int> consecutivePortalCounts = new();
     private Dictionary<string, GameObject> lastEnemyPerPortal = new();
 
     private bool isGameOver = false;
-    private bool isSpawning = false;
+    private int currentStage = 1;
 
     void Start()
     {
-        portalSpawnPoints = new()
+        portalSpawnPoints = new Dictionary<string, Vector3[]>
         {
             { "A", spawnPointsA },
             { "B", spawnPointsB },
             { "C", spawnPointsC }
         };
 
-        portalPrefabs = new()
+        portalPrefabs = new Dictionary<string, GameObject>
         {
             { "A", portalPrefabA },
             { "B", portalPrefabB },
@@ -48,7 +51,25 @@ public class AdvancedPortalSpawner : MonoBehaviour
         };
 
         SpawnPortals();
-        StartCoroutine(StartStageSpawning());
+        StartCoroutine(SpawnEnemiesContinuously());
+    }
+
+    void Update()
+    {
+        if (isGameOver) return;
+
+        int score = GameManager.Instance.score;
+
+        if (currentStage == 1 && score >= stage2ScoreThreshold)
+        {
+            Debug.LogError("[STAGE] Stage 2'ye geçildi!");
+            currentStage = 2;
+        }
+        else if (currentStage == 2 && score >= stage3ScoreThreshold)
+        {
+            Debug.LogError("[STAGE] Stage 3'e geçildi!");
+            currentStage = 3;
+        }
     }
 
     void SpawnPortals()
@@ -58,85 +79,85 @@ public class AdvancedPortalSpawner : MonoBehaviour
         Instantiate(portalPrefabC, new Vector3(-116.2f, -4.6f, 1.8f), Quaternion.identity);
     }
 
-    IEnumerator StartStageSpawning()
+    IEnumerator SpawnEnemiesContinuously()
     {
         yield return new WaitForSeconds(delayBeforeFirstSpawn);
 
-        int stage = 1;
         while (!isGameOver)
         {
-            isSpawning = true;
-            List<GameObject> enemyList = GetEnemiesByStage(stage);
-            yield return StartCoroutine(SpawnEnemies(enemyList));
-            isSpawning = false;
+            GameObject enemyPrefab = GetRandomEnemyForStage(currentStage);
+            string portal = GetPreferredPortalForEnemy(enemyPrefab);
+            Vector3 spawnPos = GetRandomSpawnPoint(portal);
 
-            stage++;
-            yield return new WaitForSeconds(5f);
-        }
-    }
-
-    IEnumerator SpawnEnemies(List<GameObject> enemies)
-    {
-        if (!isSpawning || isGameOver) yield break;
-
-        consecutivePortalCounts.Clear();
-        lastEnemyPerPortal.Clear();
-
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            if (!isSpawning || isGameOver) yield break;
-
-            GameObject selectedEnemy = enemies[i];
-            string selectedPortal = GetValidPortalForEnemy(selectedEnemy);
-
-            if (selectedPortal == null)
-            {
-                yield return new WaitForSeconds(0.5f);
-                i--;
-                continue;
-            }
-
-            Vector3 spawnPos = GetRandomSpawnPoint(selectedPortal);
-            GameObject enemy = Instantiate(selectedEnemy, spawnPos, Quaternion.identity);
-
+            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
             enemy.tag = "Enemy";
 
-            if (!consecutivePortalCounts.ContainsKey(selectedPortal))
-                consecutivePortalCounts[selectedPortal] = 0;
-
-            consecutivePortalCounts[selectedPortal]++;
-            foreach (var portal in portals.Where(p => p != selectedPortal))
+            if (!consecutivePortalCounts.ContainsKey(portal))
                 consecutivePortalCounts[portal] = 0;
 
-            lastEnemyPerPortal[selectedPortal] = selectedEnemy;
+            consecutivePortalCounts[portal]++;
+            foreach (var p in portals.Where(p => p != portal))
+                consecutivePortalCounts[p] = 0;
+
+            lastEnemyPerPortal[portal] = enemyPrefab;
+
+            Debug.LogError($"[SPAWN] {enemyPrefab.name} türü {portal} portalýndan spawn oldu. Pozisyon: {spawnPos}");
 
             yield return new WaitForSeconds(enemySpawnInterval);
         }
     }
 
-    string GetValidPortalForEnemy(GameObject enemy)
+    GameObject GetRandomEnemyForStage(int stage)
+    {
+        List<GameObject> pool = new List<GameObject>();
+
+        if (stage == 1)
+        {
+            pool.AddRange(Enumerable.Repeat(tur1Enemy, 5));
+            pool.AddRange(Enumerable.Repeat(tur2Enemy, 5));
+        }
+        else if (stage == 2)
+        {
+            pool.AddRange(Enumerable.Repeat(tur1Enemy, 4));
+            pool.AddRange(Enumerable.Repeat(tur2Enemy, 4));
+            pool.AddRange(Enumerable.Repeat(tur3Enemy, 2));
+        }
+        else
+        {
+            pool.AddRange(Enumerable.Repeat(tur1Enemy, 3));
+            pool.AddRange(Enumerable.Repeat(tur2Enemy, 3));
+            pool.AddRange(Enumerable.Repeat(tur3Enemy, 4));
+        }
+
+        return pool[Random.Range(0, pool.Count)];
+    }
+
+    string GetPreferredPortalForEnemy(GameObject enemy)
     {
         List<string> validPortals = new();
 
         foreach (string portal in portals)
         {
-            if (consecutivePortalCounts.TryGetValue(portal, out int count) && count >= 2)
-                continue;
+            bool tooManyConsecutive = consecutivePortalCounts.TryGetValue(portal, out int count) && count >= 2;
+            bool sameEnemyLast = lastEnemyPerPortal.TryGetValue(portal, out GameObject lastEnemy) && lastEnemy == enemy;
 
-            if (lastEnemyPerPortal.TryGetValue(portal, out GameObject lastEnemy) && lastEnemy == enemy)
-                continue;
-
-            validPortals.Add(portal);
+            if (!tooManyConsecutive && !sameEnemyLast)
+                validPortals.Add(portal);
         }
 
-        var currentSameTypeCount = lastEnemyPerPortal.Values.Count(v => v == enemy);
-        if (currentSameTypeCount >= 2)
+        int sameTypeCount = lastEnemyPerPortal.Values.Count(e => e == enemy);
+        if (sameTypeCount >= 3)
         {
             validPortals = validPortals.Where(p => lastEnemyPerPortal.TryGetValue(p, out var e) && e != enemy).ToList();
         }
 
-        if (validPortals.Count == 0) return null;
-        return validPortals[Random.Range(0, validPortals.Count)];
+        if (validPortals.Count > 0)
+        {
+            return validPortals[Random.Range(0, validPortals.Count)];
+        }
+
+        Debug.LogWarning($"[PORTAL OVERRIDE] {enemy.name} için kural dýþý portal seçimi yapýlýyor.");
+        return portals[Random.Range(0, portals.Count)];
     }
 
     Vector3 GetRandomSpawnPoint(string portal)
@@ -145,43 +166,15 @@ public class AdvancedPortalSpawner : MonoBehaviour
         return points[Random.Range(0, points.Length)];
     }
 
-    List<GameObject> GetEnemiesByStage(int stage)
-    {
-        Dictionary<GameObject, float> spawnRatios = stage switch
-        {
-            1 => new() { { tur1Enemy, 0.5f }, { tur2Enemy, 0.5f } },
-            2 => new() { { tur1Enemy, 0.45f }, { tur2Enemy, 0.45f }, { tur3Enemy, 0.1f } },
-            3 => new() { { tur1Enemy, 0.3f }, { tur2Enemy, 0.3f }, { tur3Enemy, 0.4f } },
-            _ => new() { { tur1Enemy, 0.3f }, { tur2Enemy, 0.3f }, { tur3Enemy, 0.4f } },
-        };
-
-        List<GameObject> result = new();
-        foreach (var kvp in spawnRatios)
-        {
-            int count = Mathf.RoundToInt(kvp.Value * enemiesPerStage);
-            for (int i = 0; i < count; i++)
-                result.Add(kvp.Key);
-        }
-
-        for (int i = 0; i < result.Count; i++)
-        {
-            int rnd = Random.Range(i, result.Count);
-            (result[i], result[rnd]) = (result[rnd], result[i]);
-        }
-
-        return result;
-    }
-
     public void StopSpawning()
     {
         isGameOver = true;
-        isSpawning = false;
         StopAllCoroutines();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
-            enemy.gameObject.SetActive(false);
+            enemy.SetActive(false);
         }
     }
 }

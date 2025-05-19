@@ -56,16 +56,16 @@ public class WeaponManager : MonoBehaviour
 
     private void OnEnemyKilled()
     {
-        enemyKillCount++;
+        int currentScore = GameManager.Instance.score;
 
-        // Eğer USP (weaponB) açılmadıysa, silah değiştirme fonksiyonunu çağırma!
-        if (enemyKillCount < killsToWeaponB)
+        if (currentScore < killsToWeaponB)
         {
-            return; // **Silah değişimi olmayacak, böylece sol el açık kalacak.**
+            return; 
         }
 
-        CheckWeaponSwitch(enemyKillCount);
+        CheckWeaponSwitch(currentScore);
     }
+
 
     private void DisableLeftHandWeapons()
     {
@@ -80,37 +80,31 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-
-
-    public void CheckWeaponSwitch(int killCount)
+    public void CheckWeaponSwitch(int score)
     {
-        if (currentWeapon == 0 && killCount >= killsToWeaponB) // **İlk USP açıldığında**
+        if (currentWeapon == 0 && score >= killsToWeaponB)
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponA, weaponB, vfxA, vfxB));
             currentWeapon = 1;
             HandleBarettaSwitch(weaponB);
-
-            DisableLeftHandWeapons(); // ✅ **USP açıldığında sol eldeki silah kapanacak!**
+            DisableLeftHandWeapons();
             Debug.Log("USP açıldı, sol el silahı kapatıldı.");
         }
-        else if (currentWeapon == 1 && killCount >= killsToWeaponC)
+        else if (currentWeapon == 1 && score >= killsToWeaponC)
         {
             StartCoroutine(SwitchWeaponWithVFX(weaponB, weaponC, vfxB, vfxC));
             currentWeapon = 2;
             HandleBarettaSwitch(weaponC);
         }
-        else if (currentWeapon == 2 && killCount >= killsToWeaponD)
+        else if (currentWeapon == 2 && score >= killsToWeaponD)
         {
-            //StartCoroutine(SwitchWeaponWithVFX(weaponC, weaponD, vfxC, vfxD));
-            //currentWeapon = 3;
-            //HandleBarettaSwitch(weaponD);
+            // StartCoroutine(SwitchWeaponWithVFX(weaponC, weaponD, vfxC, vfxD));
+            // currentWeapon = 3;
+            // HandleBarettaSwitch(weaponD);
         }
 
         UpdateWeaponUI();
     }
-
-
-
 
     private void HandleBarettaSwitch(GameObject newWeapon)
     {
@@ -156,7 +150,6 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
-        // Eski silahın VFX'ini kapat
         if (currentWeaponVFX != null)
         {
             if (currentWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem ps))
@@ -166,7 +159,6 @@ public class WeaponManager : MonoBehaviour
             currentWeaponVFX.SetActive(false);
         }
 
-        // Eski silahın ateş etmesini engelle (GunFire devre dışı)
         GunFire currentGunFire = currentWeaponObj.GetComponent<GunFire>();
         if (currentGunFire != null)
         {
@@ -174,11 +166,9 @@ public class WeaponManager : MonoBehaviour
             Debug.Log($"{currentWeaponObj.name} silahı kapatıldı.");
         }
 
-        // Eski silahı tamamen kapat
         currentWeaponObj.SetActive(false);
-        yield return new WaitForSeconds(vfxDelay); // Küçük bir gecikme ekleyelim
+        yield return new WaitForSeconds(vfxDelay); 
 
-        // Yeni silahın VFX'ini aç ve oynat
         if (nextWeaponVFX != null)
         {
             nextWeaponVFX.SetActive(true); // **Yeni VFX açılıyor**
@@ -188,18 +178,15 @@ public class WeaponManager : MonoBehaviour
                 psNext.Play();
                 Debug.Log("Silah değiştirme VFX oynatılıyor...");
 
-                // **VFX tamamlanana kadar bekle**
                 yield return new WaitForSeconds(psNext.main.duration);
 
-                psNext.Stop(); // **VFX animasyonu tamamlandıktan sonra durdur**
+                psNext.Stop(); 
             }
         }
 
-        // Yeni silahı aç
         nextWeaponObj.SetActive(true);
         Debug.Log("Yeni silaha geçildi: " + nextWeaponObj.name);
 
-        // Yeni silahın GunFire bileşenini aç
         GunFire nextGunFire = nextWeaponObj.GetComponent<GunFire>();
         if (nextGunFire != null)
         {
@@ -209,11 +196,6 @@ public class WeaponManager : MonoBehaviour
 
         UpdateWeaponUI();
     }
-
-
-
-
-
 
 
     private void UpdateWeaponUI()

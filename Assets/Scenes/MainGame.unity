@@ -1441,6 +1441,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
         type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4858235730514071926, guid: 9367642f663d047458dd07b45aa322f7,
+        type: 3}
+    - target: {fileID: 4094079984866826877, guid: 5baa7f65da3ae7c448453fe5f806f678,
+        type: 3}
       propertyPath: fireCooldown
       value: 0.01
       objectReference: {fileID: 0}
@@ -3522,9 +3528,9 @@ MonoBehaviour:
   vfxB: {fileID: 1182861576}
   vfxC: {fileID: 1077543925}
   vfxD: {fileID: 0}
-  killsToWeaponB: 15
-  killsToWeaponC: 23
-  killsToWeaponD: 30
+  killsToWeaponB: 2000
+  killsToWeaponC: 5000
+  killsToWeaponD: 8000
   vfxDelay: 0.2
   activeGlobalScale: 1.2
   inactiveGlobalScale: 1
@@ -6082,7 +6088,8 @@ MonoBehaviour:
     type: 3}
   enemySpawnInterval: 2
   delayBeforeFirstSpawn: 10
-  enemiesPerStage: 30
+  stage2ScoreThreshold: 2000
+  stage3ScoreThreshold: 5000
   spawnPointsA:
   - {x: 5.55, y: 2.18, z: -86.31}
   spawnPointsB:
@@ -9877,9 +9884,6 @@ MonoBehaviour:
   canFire: 1
   isBaretta: 0
   isLeftHanded: 0
-  isMagicalGun: 0
-  tiltAngle: -15
-  rotationSpeed: 16
 --- !u!82 &1925031640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11025,52 +11029,52 @@ PrefabInstance:
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0050278218
+      value: 0.0125
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.008724882
+      value: -0.015
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13150072
+      value: 0.1547
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7032332
+      value: 0.7120995
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.073912784
+      value: 0.0034168938
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7032332
+      value: 0.70206183
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.073912784
+      value: -0.003465746
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 12
+      value: 0.558
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 89.187
       objectReference: {fileID: 0}
     - target: {fileID: 8741299131344236963, guid: 838cce0ec0b560242bebc96a38be7940,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
