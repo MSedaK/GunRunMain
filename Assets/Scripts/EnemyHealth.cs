@@ -30,6 +30,9 @@ public class EnemyHealth : MonoBehaviour
 
     private GunFire gunFire;
 
+    public int scoreValue = 50;
+    private bool isDead = false;
+
     void Start()
     {
         currentHealth = totalHealth;
@@ -66,7 +69,7 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= adjustedDamage;
 
-        GameManager.Instance.AddScore((int)adjustedDamage);
+        //GameManager.Instance.AddScore((int)adjustedDamage);
 
         if (currentHealth <= 0)
         {
@@ -106,7 +109,12 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
         OnEnemyKilled?.Invoke();
+
+        GameManager.Instance.AddScore(scoreValue);
 
         if (gunFire != null)
         {
@@ -135,6 +143,7 @@ public class EnemyHealth : MonoBehaviour
 
         Destroy(gameObject, Mathf.Max(sfxDuration, 0.4f));
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

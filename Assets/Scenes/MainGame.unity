@@ -4306,7 +4306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &989108046
 Transform:
   m_ObjectHideFlags: 0
@@ -6038,6 +6038,71 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1925031629}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1209143836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209143838}
+  - component: {fileID: 1209143837}
+  m_Layer: 0
+  m_Name: 'AdvancedPortalSpawner '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1209143837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209143836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9836a3e891a47dd438e31dc32cdcac6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalPrefabA: {fileID: 5558067654107143860, guid: b83eb6d64aaa91545840560abfd50d9d,
+    type: 3}
+  portalPrefabB: {fileID: 5558067654107143860, guid: 6f89f4a5c61f50442860a52d68776372,
+    type: 3}
+  portalPrefabC: {fileID: 5558067654107143860, guid: db426e1459566c342b66ce92c641b12b,
+    type: 3}
+  tur1Enemy: {fileID: 7389302909607681519, guid: 5804638824575d742ae3baec28851a70,
+    type: 3}
+  tur2Enemy: {fileID: 7428738968409397903, guid: 754eadd4f43189d42bf9a91a6703a77c,
+    type: 3}
+  tur3Enemy: {fileID: 6616776804236398250, guid: d846b19da27474b47ac087569a65e517,
+    type: 3}
+  enemySpawnInterval: 2
+  delayBeforeFirstSpawn: 10
+  enemiesPerStage: 30
+  spawnPointsA:
+  - {x: 5.55, y: 2.18, z: -86.31}
+  spawnPointsB:
+  - {x: 6, y: -3, z: 112}
+  spawnPointsC:
+  - {x: -128.31, y: -0.67, z: 1.43}
+--- !u!4 &1209143838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209143836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232345932 stripped
 GameObject:
@@ -11266,6 +11331,7 @@ SceneRoots:
   - {fileID: 624129843}
   - {fileID: 1745996862}
   - {fileID: 686354534}
+  - {fileID: 1209143838}
   - {fileID: 989108046}
   - {fileID: 1852058055}
   - {fileID: 920205801}

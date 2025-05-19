@@ -530,13 +530,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5563279828299346826}
-  totalHealth: 100
+  totalHealth: 150
   headshotMultiplier: 2
   bodyMultiplier: 1
   legsMultiplier: 0.7
   headCollider: {fileID: 5772473069757679888}
-  bodyCollider: {fileID: 0}
-  legsCollider: {fileID: 8130103865649402268}
+  bodyCollider: {fileID: 8130103865649402268}
+  legsCollider: {fileID: 0}
   deathVFX: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
     type: 3}
   headshotFloatingTextPrefab: {fileID: 7127387094801913698, guid: c5e7dd17942346046b73eccfe886afd7,
@@ -547,6 +547,7 @@ MonoBehaviour:
     type: 3}
   damageSFX: {fileID: 8300000, guid: 867cc66055f5bff4eb5af9ddeb38b1dc, type: 3}
   deathSFX: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
+  scoreValue: 150
 --- !u!82 &-7959274240020546496
 AudioSource:
   m_ObjectHideFlags: 0

@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: -2202519020922433339}
-  totalHealth: 2000
+  totalHealth: 450
   headshotMultiplier: 2
   bodyMultiplier: 1
   legsMultiplier: 0.7
@@ -480,6 +480,7 @@ MonoBehaviour:
     type: 3}
   damageSFX: {fileID: 8300000, guid: 024d7c4e076aec745ae91618e8f44f36, type: 3}
   deathSFX: {fileID: 8300000, guid: 7cac697f5470fbc4ab4652d55302ba5f, type: 3}
+  scoreValue: 450
 --- !u!54 &-7038175001512135560
 Rigidbody:
   m_ObjectHideFlags: 0
