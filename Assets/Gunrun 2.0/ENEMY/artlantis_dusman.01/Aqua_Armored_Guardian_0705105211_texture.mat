@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RoboticEnemyMaterial
+  m_Name: Aqua_Armored_Guardian_0705105211_texture
   m_Shader: {fileID: 4800000, guid: d4e5f67890123456789012345678abcd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 03f433bed431f3f408a2e0cf5a59876d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5754bf536627adb4f8efc2e31413c16e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
@@ -45,7 +45,7 @@ Material:
     - _CircuitSpeed: 1
     - _EyeIntensity: 10
     - _EyePulseSpeed: 2
-    - _FresnelPower: 10
+    - _FresnelPower: 6.89
     - _Metallic: 1
     - _NeonIntensity: 10
     - _Roughness: 0.608
@@ -55,6 +55,6 @@ Material:
     - _CircuitTiling: {r: 1, g: 1, b: 0, a: 0}
     - _EyeColor: {r: 0, g: 1, b: 0, a: 1}
     - _LeftEyeCenter: {r: 0.375, g: 0.775, b: 0.075, a: 0.075}
-    - _NeonColor: {r: 1, g: 0, b: 0.010215282, a: 1}
+    - _NeonColor: {r: 1, g: 0.2601105, b: 0, a: 1}
     - _RightEyeCenter: {r: 0.625, g: 0.775, b: 0.075, a: 0.075}
   m_BuildTextureStacks: []
