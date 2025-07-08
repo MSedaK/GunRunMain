@@ -9,8 +9,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AtlasSpace;
-using AtlasSpace.Management;
+//using AtlasSpace;
+//using AtlasSpace.Management;
 using UnityEngine;
 
 namespace QuickOutline
@@ -95,10 +95,10 @@ namespace QuickOutline
 
         void Awake()
         {
-            PlatformManager pmInstance = PlatformManager.QueryInstance();
-            if(pmInstance != null)
+            //PlatformManager pmInstance = PlatformManager.QueryInstance();
+            //if(pmInstance != null)
             {
-                if (pmInstance.IsPlatform(Platform.Mobile))
+                //if (pmInstance.IsPlatform(Platform.Mobile))
                     this.enabled = false;
             }
 
