@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 578460720685083781}
   - component: {fileID: 7781138615186303573}
   - component: {fileID: 7242784908786428504}
+  - component: {fileID: 1653760884862120508}
+  - component: {fileID: 5526650817061890690}
   m_Layer: 0
   m_Name: Bullet 1
   m_TagString: Bullet
@@ -165,6 +167,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9596548c5445d56428922c6e613f3d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1653760884862120508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858235730514071926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2863895982
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 5526650817061890690}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &5526650817061890690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858235730514071926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &7922867503895192068
 GameObject:
   m_ObjectHideFlags: 0
