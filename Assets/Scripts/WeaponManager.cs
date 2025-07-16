@@ -10,11 +10,11 @@ public class WeaponManager : MonoBehaviour
     public GameObject weaponC;
     public GameObject weaponD;
 
-    [Header("Weapon UI Images")]
-    public Image weaponAImage;
-    public Image weaponBImage;
-    public Image weaponCImage;
-    public Image weaponDImage;
+    //[Header("Weapon UI Images")]
+    //public Image weaponAImage;
+    //public Image weaponBImage;
+    //public Image weaponCImage;
+    //public Image weaponDImage;
 
     [Header("Weapon VFX")]
     public GameObject vfxA;
@@ -41,7 +41,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateWeaponUI();
+        //UpdateWeaponUI();
     }
 
     private void OnEnable()
@@ -103,7 +103,7 @@ public class WeaponManager : MonoBehaviour
             // HandleBarettaSwitch(weaponD);
         }
 
-        UpdateWeaponUI();
+        //UpdateWeaponUI();
     }
 
     private void HandleBarettaSwitch(GameObject newWeapon)
@@ -115,24 +115,20 @@ public class WeaponManager : MonoBehaviour
 
             if (!gunFire.isAutomatic)
             {
-                // Ateş etmesini engelle
                 gunFire.canFire = false;
 
-                // Tüm Renderer bileşenlerini kapat (silahın görünürlüğünü kaldır)
                 Renderer[] renderers = newWeapon.GetComponentsInChildren<Renderer>();
                 foreach (Renderer renderer in renderers)
                 {
                     renderer.enabled = false;
                 }
 
-                // Tüm Collider bileşenlerini devre dışı bırak (silahla etkileşim olmasın)
                 Collider[] colliders = newWeapon.GetComponentsInChildren<Collider>();
                 foreach (Collider collider in colliders)
                 {
                     collider.enabled = false;
                 }
 
-                // Eğer silah sol eldeyse, GameObject'i tamamen kapat
                 if (gunFire.isLeftHanded)
                 {
                     newWeapon.SetActive(false);
@@ -141,12 +137,6 @@ public class WeaponManager : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-
 
     private IEnumerator SwitchWeaponWithVFX(GameObject currentWeaponObj, GameObject nextWeaponObj, GameObject currentWeaponVFX, GameObject nextWeaponVFX)
     {
@@ -171,7 +161,7 @@ public class WeaponManager : MonoBehaviour
 
         if (nextWeaponVFX != null)
         {
-            nextWeaponVFX.SetActive(true); // **Yeni VFX açılıyor**
+            nextWeaponVFX.SetActive(true);
 
             if (nextWeaponVFX.TryGetComponent<ParticleSystem>(out ParticleSystem psNext))
             {
@@ -194,17 +184,17 @@ public class WeaponManager : MonoBehaviour
             Debug.Log($"{nextWeaponObj.name} silahı açıldı.");
         }
 
-        UpdateWeaponUI();
+        //UpdateWeaponUI();
     }
 
 
-    private void UpdateWeaponUI()
-    {
-        SetWeaponUIImageAlphaAndScale(weaponAImage, currentWeapon == 0);
-        SetWeaponUIImageAlphaAndScale(weaponBImage, currentWeapon == 1);
-        SetWeaponUIImageAlphaAndScale(weaponCImage, currentWeapon == 2);
-        SetWeaponUIImageAlphaAndScale(weaponDImage, currentWeapon == 3);
-    }
+    //private void UpdateWeaponUI()
+    //{
+    //    SetWeaponUIImageAlphaAndScale(weaponAImage, currentWeapon == 0);
+    //    SetWeaponUIImageAlphaAndScale(weaponBImage, currentWeapon == 1);
+    //    SetWeaponUIImageAlphaAndScale(weaponCImage, currentWeapon == 2);
+    //    SetWeaponUIImageAlphaAndScale(weaponDImage, currentWeapon == 3);
+    //}
 
     private void SetWeaponUIImageAlphaAndScale(Image image, bool isActive)
     {
