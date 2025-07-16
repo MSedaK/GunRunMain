@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.XR;
 using TMPro;
 using Meta.XR.MRUtilityKit;
+using Fusion;
 
-public class GunFire : MonoBehaviour
+public class GunFire : NetworkBehaviour
 {
     public float velocity;
     public GameObject bulletPrefab;
@@ -16,6 +17,8 @@ public class GunFire : MonoBehaviour
     public ParticleSystem ps;
     public Animator gunAnimator;
     public GameObject muzzleFlashPrefab;
+
+    private NetworkRunner _runner;
 
     [Header("Haptic Feedback Settings")]
     public float hapticStrength = 0.5f;
@@ -53,12 +56,21 @@ public class GunFire : MonoBehaviour
 
     void Start()
     {
+        if (!GetComponent<NetworkObject>().HasStateAuthority)
+        {
+            this.enabled = false;
+            return;
+        }
+
+        _runner = NetworkManager.Instance.Runner;
+
         currentAmmo = maxAmmo;
         UpdateAmmoDisplay();
         EnemyHealth.OnEnemyKilled += Reload;
 
         originalRotation = transform.localRotation;
     }
+
 
     void Update()
     {
@@ -158,6 +170,8 @@ public class GunFire : MonoBehaviour
 
     public void Fire()
     {
+        RPC_PlayFireEffects(); // herkese efekt ve sesi gönder
+
         FireFromBarrel(barrel1, targetDirection1);
 
         if (useDualBarrel)
@@ -167,45 +181,64 @@ public class GunFire : MonoBehaviour
             FireFromBarrel(barrel4, targetDirection4);
             FireFromBarrel(barrel5, targetDirection5);
         }
+    }
+
+
+    private void FireFromBarrel(Transform barrel, Transform target)
+    {
+        if (barrel == null || target == null) return;
+
+        Quaternion rotation = Quaternion.LookRotation(target.position - barrel.position);
+        Vector3 direction = (target.position - barrel.position).normalized;
+
+        if (_runner == null)
+            _runner = NetworkManager.Instance.Runner;
+
+        if (HasStateAuthority)
+        {
+            _runner.Spawn(
+                bulletPrefab,
+                barrel.position,
+                rotation,
+                Object.InputAuthority,
+                (runner, no) =>
+                {
+                    Rigidbody rb = no.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.velocity = direction * velocity;
+                    }
+
+                    Bullet bulletScript = no.GetComponent<Bullet>();
+                    if (bulletScript != null)
+                    {
+                        bulletScript.hitSound = bulletHitSound;
+                        bulletScript.damageEffectPrefab = damageEffectPrefab;
+                    }
+                });
+        }
+    }
+
+
+    [Fusion.Rpc(Fusion.RpcSources.StateAuthority, Fusion.RpcTargets.All)]
+    public void RPC_PlayFireEffects()
+    {
+        if (ps != null) ps.Play();
+
+        if (audioSource != null) audioSource.Play();
 
         if (gunAnimator != null)
         {
             gunAnimator.SetTrigger("Shoot");
         }
 
-        if (ps != null)
+        if (muzzleFlashPrefab != null && barrel1 != null)
         {
-            ps.Play();
-        }
-    }
-
-    private void FireFromBarrel(Transform barrel, Transform target)
-    {
-        if (barrel == null || target == null) return; 
-
-        GameObject spawnedBullet = Instantiate(bulletPrefab, barrel.position, Quaternion.LookRotation(target.position - barrel.position));
-        spawnedBullet.GetComponent<Rigidbody>().velocity = velocity * (target.position - barrel.position).normalized;
-
-        Bullet bulletScript = spawnedBullet.GetComponent<Bullet>();
-        if (bulletScript != null)
-        {
-            bulletScript.hitSound = bulletHitSound;
-            bulletScript.damageEffectPrefab = damageEffectPrefab;
-        }
-
-        if (audioSource != null)
-        {
-            audioSource.Play();
-        }
-
-        if (muzzleFlashPrefab != null)
-        {
-            GameObject flash = Instantiate(muzzleFlashPrefab, barrel.position, barrel.rotation);
+            GameObject flash = Instantiate(muzzleFlashPrefab, barrel1.position, barrel1.rotation);
             Destroy(flash, 0.2f);
         }
-
-        Destroy(spawnedBullet, 2f);
     }
+
 
     private IEnumerator HapticFeedback()
     {
